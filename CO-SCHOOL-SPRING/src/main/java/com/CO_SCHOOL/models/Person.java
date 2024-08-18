@@ -25,6 +25,7 @@ public class Person implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String username;
+    private String email;
     private String password;
 
     @Enumerated(EnumType.STRING)

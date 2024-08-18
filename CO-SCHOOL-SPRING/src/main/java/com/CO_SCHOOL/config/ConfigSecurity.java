@@ -32,8 +32,7 @@ public class ConfigSecurity {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
-                                .requestMatchers("/api/auth/login").permitAll()
-                                .requestMatchers("/api/person/get_technicians").permitAll()
+                                .requestMatchers("api/auth/login").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);
