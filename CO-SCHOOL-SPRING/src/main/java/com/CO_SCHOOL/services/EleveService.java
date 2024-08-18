@@ -14,11 +14,12 @@ public class EleveService {
     @Autowired
     private EleveRepo eleveRepo;
 
-    public Eleve insertEleve(Eleve eleve) {
+    public String insertEleve(Eleve eleve) {
         Set<Role> roles = new HashSet<>();
         roles.add(Role.ROLE_ELEVE);
         eleve.setRoles(roles);
-        return eleveRepo.save(eleve);
+        eleveRepo.save(eleve);
+        return "Eleve inserted successfully";
     }
 
 }
