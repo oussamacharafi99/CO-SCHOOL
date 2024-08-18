@@ -14,7 +14,7 @@ public class EleveController {
     @Autowired
     private EleveService eleveService;
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public String insertEleve(@RequestBody Eleve eleve) {
         return eleveService.insertEleve(eleve);
     }

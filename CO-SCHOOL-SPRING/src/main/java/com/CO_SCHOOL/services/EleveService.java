@@ -4,6 +4,7 @@ import com.CO_SCHOOL.enums.Role;
 import com.CO_SCHOOL.models.Eleve;
 import com.CO_SCHOOL.repositories.EleveRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -14,7 +15,12 @@ public class EleveService {
     @Autowired
     private EleveRepo eleveRepo;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+
     public String insertEleve(Eleve eleve) {
+        eleve.setPassword(passwordEncoder.encode(eleve.getPassword()));
         Set<Role> roles = new HashSet<>();
         roles.add(Role.ROLE_ELEVE);
         eleve.setRoles(roles);

@@ -33,6 +33,7 @@ public class ConfigSecurity {
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
+                                .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);
