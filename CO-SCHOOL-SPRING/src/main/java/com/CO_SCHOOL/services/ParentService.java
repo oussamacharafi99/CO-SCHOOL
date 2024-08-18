@@ -5,6 +5,7 @@ import com.CO_SCHOOL.models.Eleve;
 import com.CO_SCHOOL.models.Parent;
 import com.CO_SCHOOL.repositories.ParentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -15,7 +16,11 @@ public class ParentService {
     @Autowired
     private ParentRepo parentRepo;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public Parent insertParent(Parent parent) {
+        parent.setPassword(passwordEncoder.encode(parent.getPassword()));
         Set<Role> roles = new HashSet<>();
         roles.add(Role.ROLE_PARENT);
         parent.setRoles(roles);
