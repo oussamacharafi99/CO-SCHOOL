@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
-@RequestMapping("auth")
-@CrossOrigin
+@RequestMapping("api/auth")
 public class PersonAuth {
 
     @Autowired
@@ -25,7 +25,7 @@ public class PersonAuth {
     private PersonService personService;
 
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public JwtDto login(@RequestBody Person personLogin) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(personLogin.getUsername(), personLogin.getPassword())
