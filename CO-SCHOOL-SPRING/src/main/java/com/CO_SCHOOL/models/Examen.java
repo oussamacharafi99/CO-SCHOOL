@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -30,8 +32,8 @@ public class Examen {
     @JoinColumn(name = "prof_id")
     private Professeur professeur;
 
-    @ManyToOne
-    @JoinColumn(name = "eleve_id")
-    private Eleve eleve;
+    @OneToMany(mappedBy = "examen")
+    @JsonIgnore
+    private List<ExamenEleve> examenEleves;
 
 }
