@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ExamanService {
+public class ExamenService {
 
     @Autowired
     private ExamenRepo examenRepo;
@@ -21,10 +21,21 @@ public class ExamanService {
         return examenRepo.findById(id).orElseThrow(()-> new RuntimeException("No examen found with id: " + id));
     }
 
-    public List<Examen> GetAllExaman() {
-        return examenRepo.fintAllExamen();
+    public List<Examen> getAllExamen() {
+        return examenRepo.findAll();
+    }
+
+//    public List<Examen> getExamenByEleveId(Integer id) {
+//        return examenRepo.findByIdEleve(id);
+//    }
+
+    public List<Examen> getExamenByProfId(Integer profId) {
+        return examenRepo.findAllByProfesseurId(profId);
     }
 
 
+    public Examen updateExaman(Examen examen) {
+        return examenRepo.save(examen);
+    }
 
 }

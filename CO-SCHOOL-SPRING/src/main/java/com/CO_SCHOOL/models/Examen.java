@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.models;
 
+import com.CO_SCHOOL.enums.Semester;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,12 +22,17 @@ public class Examen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String examen_name;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate examen_date;
 
     private String class_room;
 
     private String matter;
+
+    @Enumerated(EnumType.STRING)
+    private Semester semester;
 
     @ManyToOne
     @JoinColumn(name = "prof_id")

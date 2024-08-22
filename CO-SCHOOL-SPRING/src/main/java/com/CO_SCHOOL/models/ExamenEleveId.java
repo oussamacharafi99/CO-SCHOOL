@@ -7,12 +7,12 @@ import java.util.Objects;
 
 @Embeddable
 public class ExamenEleveId implements Serializable {
-    private int examenId;
-    private int eleveId;
+    private Integer examenId;
+    private Integer eleveId;
 
     public ExamenEleveId() {}
 
-    public ExamenEleveId(int examenId, int eleveId) {
+    public ExamenEleveId(Integer examenId, Integer eleveId) {
         this.examenId = examenId;
         this.eleveId = eleveId;
     }
@@ -22,12 +22,11 @@ public class ExamenEleveId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ExamenEleveId that = (ExamenEleveId) o;
-        return examenId == that.examenId && eleveId == that.eleveId;
+        return Objects.equals(examenId, that.examenId) && Objects.equals(eleveId, that.eleveId);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(examenId, eleveId);
     }
-
 }
