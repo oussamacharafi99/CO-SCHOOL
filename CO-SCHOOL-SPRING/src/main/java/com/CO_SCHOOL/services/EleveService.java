@@ -1,6 +1,7 @@
 package com.CO_SCHOOL.services;
 
 import com.CO_SCHOOL.enums.Role;
+import com.CO_SCHOOL.exeptions.CoEcoSchoolExepion;
 import com.CO_SCHOOL.models.Eleve;
 import com.CO_SCHOOL.repositories.EleveRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class EleveService {
         eleve.setRoles(roles);
         eleveRepo.save(eleve);
         return "Eleve inserted successfully";
+    }
+
+    public Eleve getEleveById(Integer id) {
+        return eleveRepo.findById(id).orElseThrow(()-> new CoEcoSchoolExepion("No Eleve found with id: " + id));
     }
 
 }

@@ -34,6 +34,8 @@ public class ConfigSecurity {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")
+                                .requestMatchers("api/examen/**").hasRole("PROF")
+                                .requestMatchers("api/examen_eleve/**").hasRole("PROF")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);
