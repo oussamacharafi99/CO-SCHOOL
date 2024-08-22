@@ -19,4 +19,5 @@ public class Eleve extends Person{
     @OneToMany(mappedBy = "eleve")
     @JsonIgnore
     private List<ExamenEleve> examenEleves;
+    
 }
