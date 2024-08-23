@@ -1,12 +1,40 @@
-<header>
-  <div class="logo">
-    <img src="../../../assets/images/black_logo.png" alt="">
-  </div>
+<header class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid container">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/images/white.png" alt="Logo" class="logo">
+    </a>
 
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Service</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#" [ngClass]="{active: activeLink === 'home'}" (click)="setActive('home')">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" [ngClass]="{active: activeLink === 'about'}" (click)="setActive('about')">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" [ngClass]="{active: activeLink === 'service'}" (click)="setActive('service')">Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" [ngClass]="{active: activeLink === 'contact'}" (click)="setActive('contact')">Contact</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="../../../assets/icons/linkedin (1).png" alt="LinkedIn"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="../../../assets/icons/instagram (1).png" alt="Instagram"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="../../../assets/icons/github-sign.png" alt="GitHub"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>

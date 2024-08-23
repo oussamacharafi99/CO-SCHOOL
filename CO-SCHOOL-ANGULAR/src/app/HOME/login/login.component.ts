@@ -80,4 +80,8 @@ export class LoginComponent implements OnInit{
     }
     this.valide();
   }
+  check: boolean = false;
+  onOpenOrClose(check: boolean): void {
+    this.check = check;
+  }
 }
