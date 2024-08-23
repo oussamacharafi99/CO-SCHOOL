@@ -1,0 +1,32 @@
+<div class="main">
+  <div class="main-wrapper">
+    <div class="main-left">
+        <img src="../../assets/images/girl.jpg" alt="image" >
+    </div>
+    <div class="main-right">
+
+      <div class="logo">
+        <img src="../../assets/images/black_logo.png" alt="">
+      </div>
+
+      <div class="content">
+        <h2>Let the journey begin !</h2>
+        <p>Unlock a world of education with a single click! Please login into your account.</p>
+      </div>
+
+      <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+        <div class="group">
+          <label for="username">Username:</label><br>
+          <input id="username" formControlName="username" type="text"  placeholder="Username"/>
+        </div>
+        <div class="group">
+          <label for="password">Password:</label><br>
+          <input id="password" formControlName="password" type="password" placeholder="Password"/>
+        </div>
+        <button type="submit" [disabled]="formLogin.invalid">Login</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>
