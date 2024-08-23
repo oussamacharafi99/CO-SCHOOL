@@ -29,7 +29,6 @@
 .main-right{
   width: 50%;
   height: 100%;
-  border: 1px solid black;
 }
 .logo{
   width: 140px;
@@ -46,4 +45,89 @@
   font-size: 14px;
   font-weight: 200;
 }
+form{
+  padding: 15px 0 ;
+}
+.group{
+  width: 100%;
+  padding-bottom: 6px;
+}
+.group > label{
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 0;
+}
+.icon-input{
+  width: 80%;
+  border: 1px solid #bababa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-radius:calc( var(--border-raduis-pr) / 4);
+}
+.icon-input > input {
+  border: none;
+  outline: none;
+}
+form > a{
+  color: var(--color-link);
+  font-size: 12px;
+  text-align: left;
+  width: 80%;
+  padding-bottom: 5px;
+}
+form > button{
+  width: 80%;
+}
 
+
+@media screen and (max-width: 800px) {
+  .main-wrapper{
+    width: 80%;
+    border-radius: var(--border-raduis-pr);
+    background: var(--color-light);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.219);
+    margin: 0 auto;
+    display: flex;
+    padding: 40px;
+    justify-content: space-between;
+  }
+  .main-left{
+    display: none;
+  }
+  .main-right{
+    width: 100%;
+  }
+  .icon-input{
+    width: 100%;
+    border: 1px solid #bababa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius:calc( var(--border-raduis-pr) / 4);
+  }
+  form > a{
+    color: var(--color-link);
+    font-size: 12px;
+    text-align: left;
+    width: 100%;
+    padding-bottom: 5px;
+  }
+  form > button{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1100px) and (min-width: 500px) {
+  .main-wrapper{
+    width: 80%;
+    border-radius: var(--border-raduis-pr);
+    background: var(--color-light);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.219);
+    margin: 0 auto;
+    display: flex;
+    padding: 40px;
+    justify-content: space-between;
+  }
+}

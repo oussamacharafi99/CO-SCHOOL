@@ -16,28 +16,22 @@
 
       <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
         <div class="group">
-          <label for="username">username:</label><br>
+          <label for="username">username</label><br>
           <div class="icon-input">
               <input id="username" formControlName="username" type="text" placeholder="@enna.com" aria-label="Username"/>
-              <img src="../../../assets/icons/email.png" alt="email icon">
-          </div>
-          <div class="error-message" *ngIf="formLogin.get('username')?.invalid && formLogin.get('username')?.touched">
-              Username is required.
+              <img src="../../assets/icons/email.png" alt="email icon">
           </div>
         </div>
         <div class="group">
-          <label for="password">password:</label><br>
+          <label for="password">password</label><br>
           <div class="icon-input">
               <input id="password" formControlName="password" type="password" placeholder="*******" aria-label="Password"/>
-              <img src="../../../assets/icons/padlock.png" alt="padlock icon">
-          </div>
-          <div class="error-message" *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
-              Password is required.
+              <img src="../../assets/icons/padlock.png" alt="padlock icon">
           </div>
         </div>
+        <a>Forgot password ?</a><br>
         <button type="submit" [disabled]="formLogin.invalid || isLoading">Login</button>
         <div *ngIf="isLoading">Loading...</div>
-        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       </form>
 
 
