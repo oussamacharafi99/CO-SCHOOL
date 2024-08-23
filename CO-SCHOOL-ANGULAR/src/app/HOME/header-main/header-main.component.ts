@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderMainComponent {
 
+  activeLink: string = 'home';
+
+  setActive(link: string) {
+    this.activeLink = link;
+  }
 }

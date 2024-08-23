@@ -1,35 +1,36 @@
-<!-- <div class="main">
-  <div class="main-wrapper">
-    <div class="main-left">
-        <img src="../../assets/images/girl.jpg" alt="image" >
-    </div>
-    <div class="main-right">
-
-      <div class="logo">
-        <img src="../../assets/images/black_logo.png" alt="">
-      </div>
-
-      <div class="content">
-        <h2>Let the journey begin !</h2>
-        <p>Unlock a world of education with a single click! Please login into your account.</p>
-      </div>
-
-
-
-
-    </div>
-  </div>
-</div> -->
-
-
 <div class="main">
   <div class="main-wrapper">
     <div class="content">
-      <h1><i>Let</i> the <span>journey</span> <br>begin <i> !</i></h1>
+      <div class="logo d-none d-md-block">
+        <img src="../../../assets/images/black.png" alt="">
+      </div>
+      <h1><i>Let</i> the <span>journey</span> begin <i> !</i></h1>
       <p>Unlock a world of education with a single click!
-        <br> Please login into your account.</p>
+        Please login into your account.</p>
+        <button class="login1" (click)="onOpenOrClose(true)">Login</button>
     </div>
-    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+  </div>
+</div>
+
+<section class="popup" [ngStyle]="{'display': check ? 'flex' : 'none'}">
+  <button (click)="onOpenOrClose(false)">Close</button>
+
+    <div class="login-wrapper">
+      <div class="main-left d-none d-md-block">
+          <img src="../../assets/images/girl.jpg" alt="image" >
+      </div>
+      <div class="main-right">
+
+        <div class="logo1">
+          <img src="../../assets/images/black.png" alt="">
+        </div>
+
+        <div class="content1">
+          <h2>Let the journey begin !</h2>
+          <p>Unlock a world of education with a single click! Please login into your account.</p>
+        </div>
+
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
       <div class="group">
         <label for="username">username</label><br>
         <div class="icon-input">
@@ -48,5 +49,9 @@
       <button type="submit" [disabled]="formLogin.invalid || isLoading">Login</button>
       <div *ngIf="isLoading">Loading...</div>
     </form>
-  </div>
-</div>
+
+      </div>
+    </div>
+</section>
+
+
