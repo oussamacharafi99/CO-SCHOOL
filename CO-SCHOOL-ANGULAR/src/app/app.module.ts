@@ -8,13 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
+import { AboutComponent } from './HOME/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeMainComponent,
-    HeaderMainComponent
+    HeaderMainComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

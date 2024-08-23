@@ -56,7 +56,17 @@
   border-radius: calc(var(--border-raduis-pr) /4);
   font-size: 20px;
   color: var(--color-dark);
+  border: 2px solid transparent;
+  transition: .4s;
 }
+
+.login1:hover{
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+  box-shadow: 4px 4px 15px black ;
+}
+
 
 /* login */
 .login-wrapper{
@@ -243,7 +253,7 @@ form > button{
   }
 
   .content{
-    padding: 50px 20px 20px 80px;
+    padding: 20px 20px 20px 20px;
     text-align: left;
     font-family: "Lilita One", sans-serif;
   }
@@ -279,3 +289,15 @@ form > button{
   }
 }
 
+.scroll{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+.scroll > h5{
+  transform: rotate(90deg);
+  color: var(--color-primary);
+  font-weight: 800;
+  padding: 20px 0;
+}
