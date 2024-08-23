@@ -1,0 +1,32 @@
+header{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  top: 20px;
+  margin: 0 auto;
+}
+.logo{
+  width: 130px;
+}
+.logo > img{
+  width: 100%;
+}
+
+header > ul{
+  display: flex;
+  align-items: center;
+}
+li{
+  list-style: none;
+}
+header > ul > li > a{
+  padding: 8px;
+  color: var(--color-secondary);
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 800;
+  margin: 0 5px;
+  border: 1px solid black;
+}
