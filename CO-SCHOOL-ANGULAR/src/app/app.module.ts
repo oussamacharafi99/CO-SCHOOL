@@ -9,6 +9,7 @@ import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
 import { AboutComponent } from './HOME/about/about.component';
+import { ServiceHomeComponent } from './HOME/service-home/service-home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AboutComponent } from './HOME/about/about.component';
     LoginComponent,
     HomeMainComponent,
     HeaderMainComponent,
-    AboutComponent
+    AboutComponent,
+    ServiceHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,10 @@
 }
 img{
   border-radius: 12px;
+  transition: .5s;
+}
+img:hover{
+  transform: scale(1.1);
 }
 
 .responsive-container-block {
