@@ -11,6 +11,7 @@ import { HeaderMainComponent } from './HOME/header-main/header-main.component';
 import { AboutComponent } from './HOME/about/about.component';
 import { ServiceHomeComponent } from './HOME/service-home/service-home.component';
 import { ContactMainComponent } from './HOME/contact-main/contact-main.component';
+import { ErrorMainComponent } from './HOME/error-main/error-main.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactMainComponent } from './HOME/contact-main/contact-main.component
     HeaderMainComponent,
     AboutComponent,
     ServiceHomeComponent,
-    ContactMainComponent
+    ContactMainComponent,
+    ErrorMainComponent
   ],
   imports: [
     BrowserModule,
