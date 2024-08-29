@@ -27,8 +27,6 @@ public class Examen {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate examen_date;
 
-    private String class_room;
-
     private String matter;
 
     @Enumerated(EnumType.STRING)
@@ -37,6 +35,10 @@ public class Examen {
     @ManyToOne
     @JoinColumn(name = "prof_id")
     private Professeur professeur;
+
+    @ManyToOne
+    @JoinColumn(name = "class_group_id")
+    private ClasseGroup classGroup;
 
     @OneToMany(mappedBy = "examen")
     @JsonIgnore
