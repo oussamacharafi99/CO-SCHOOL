@@ -2,9 +2,7 @@ package com.CO_SCHOOL.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,5 +17,13 @@ public class Eleve extends Person{
     @OneToMany(mappedBy = "eleve")
     @JsonIgnore
     private List<ExamenEleve> examenEleves;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Parent parent;
+
+    @ManyToOne
+    @JoinColumn(name = "class_group_id")
+    private ClasseGroup classeGroup;
+
 }

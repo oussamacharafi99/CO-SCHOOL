@@ -18,5 +18,8 @@ public class Professeur extends Person{
     @JsonIgnore
     private List<Examen> examens;
 
+    @ManyToOne
+    @JoinColumn(name = "class_group_id")
+    private ClasseGroup classeGroup;
 
 }
