@@ -10,13 +10,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/classeGroup")
+@CrossOrigin("*")
 public class ClasseGroupController {
 
     @Autowired
     private ClasseGroupService classeGroupService;
 
     @PostMapping("save")
-    public String save(ClasseGroup classeGroup) {
+    public String save(@RequestBody ClasseGroup classeGroup) {
         classeGroupService.save(classeGroup);
         return "The class group has been saved";
     }

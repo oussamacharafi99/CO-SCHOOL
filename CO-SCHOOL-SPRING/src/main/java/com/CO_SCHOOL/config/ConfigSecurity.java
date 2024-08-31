@@ -36,6 +36,8 @@ public class ConfigSecurity {
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")
                                 .requestMatchers("api/examen/**").hasRole("PROF")
                                 .requestMatchers("api/examen_eleve/**").hasRole("PROF")
+                                .requestMatchers("api/classeGroup/save").hasRole("ADMIN")
+                                .requestMatchers("api/classeGroup/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);
