@@ -12,6 +12,7 @@ import { AboutComponent } from './HOME/about/about.component';
 import { ServiceHomeComponent } from './HOME/service-home/service-home.component';
 import { ContactMainComponent } from './HOME/contact-main/contact-main.component';
 import { ErrorMainComponent } from './HOME/error-main/error-main.component';
+import { ModeHomeComponent } from './HOME/mode-home/mode-home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ErrorMainComponent } from './HOME/error-main/error-main.component';
     AboutComponent,
     ServiceHomeComponent,
     ContactMainComponent,
-    ErrorMainComponent
+    ErrorMainComponent,
+    ModeHomeComponent
   ],
   imports: [
     BrowserModule,

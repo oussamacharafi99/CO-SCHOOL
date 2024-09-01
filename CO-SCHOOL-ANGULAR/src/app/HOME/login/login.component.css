@@ -73,7 +73,7 @@
   width: 60%;
   height: 80%;
   border-radius: var(--border-raduis-pr);
-  background: var(--color-light);
+  background: var(--background-color);
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.219);
   margin: 0 auto;
   display: flex;
@@ -100,9 +100,10 @@
 .logo1 > img{
   width: 100%;
 }
-.content1 > h1{
-    font-size: 36px;
+.content1 > #lets{
+    font-size: 17px;
     font-weight: bold;
+    color: var(--text-color);
 }
 .content1 > p{
   font-size: 14px;
@@ -120,7 +121,7 @@
   font-size: 12px;
   font-weight: 800;
   padding: 5px 0;
-  color: var(--color-dark);
+  color: var(--text-color);
 }
 .icon-input{
   width: 80%;
@@ -130,11 +131,13 @@
   justify-content: space-between;
   padding: 5px 10px;
   border-radius:calc( var(--border-raduis-pr) / 4);
+  background: var(--primary-color);
 }
 .icon-input > input {
   border: none;
   outline: none;
   background: transparent;
+  color: var(--text-color);
 }
 form > a{
   color: var(--color-link);

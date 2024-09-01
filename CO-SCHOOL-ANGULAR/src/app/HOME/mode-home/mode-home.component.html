@@ -1,0 +1,16 @@
+<!-- <button (click)="toggleTheme()">
+    {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
+</button> -->
+<form>
+    <input
+      id="dark-mode"
+      class="toggle"
+      type="checkbox"
+      [checked]="isDarkMode"
+      (change)="toggleTheme()"
+    />
+    <label for="dark-mode" class="toggle-label">
+      <span class="slider"></span>
+      <span class="label-text">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
+    </label>
+  </form>
