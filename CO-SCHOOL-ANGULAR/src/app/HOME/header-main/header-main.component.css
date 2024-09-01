@@ -1,10 +1,10 @@
 header {
-  background: rgba(0, 0, 0, 0.187);
+  background: var(--bg-header);
   backdrop-filter: blur(10px);
 }
 
 a {
-  color: var(--color-light);
+  color: var(--text-color);
   border-bottom: 2px solid transparent;
   transition: color 0.3s, border-bottom 0.3s;
   font-weight: 700;
