@@ -1,55 +1,24 @@
 
-  form{
-    padding:  0 20px;
-  }
-  .toggle {
-    display: none;
-  }
-  
+.toggle {
+  display: none;
+}
 
-  .toggle-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-  }
-  
 
-  .slider {
-    position: relative;
-    width: 50px;
-    height: 24px;
-    background-color: black;
-    border-radius: 50px;
-    transition: background-color 0.3s;
-  }
-  
+.toggle-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
 
-  .toggle:checked + .toggle-label .slider {
-    background-color: var(--primary-color);
-  }
-  
+/* Icon styling */
+.toggle-label i {
+  font-size: 22px;  /* Adjust the icon size */
+  color: var(--text-color);
+  transition: color 0.3s;
+}
 
-  .slider:before {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: white;
-    transition: transform 0.3s;
-  }
-  
-
-  .toggle:checked + .toggle-label .slider:before {
-    transform: translateX(26px);
-  }
-  
-
-  .label-text {
-    margin-left: 10px;
-    color: var(--text-color);
-  }
-  
+/* Dark theme specific styles */
+.dark-theme .toggle-label i {
+  color: var(--dark-text-color);
+}

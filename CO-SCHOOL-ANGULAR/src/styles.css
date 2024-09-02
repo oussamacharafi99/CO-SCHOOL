@@ -18,7 +18,9 @@
     --color-light: #FFF;
     --color-link : #0A5CDF;
     --border-raduis-pr : 25px;
-    --bg-header:#ffffff30;
+    --bg-header:#00000030;
+    --bg-service:#fff;
+    --color-border:#6c6c6c;
   }
   ::-webkit-scrollbar {
     width: 3px;
@@ -43,6 +45,8 @@
     --text-color: #fff;
     --color-border:#6c6c6c;
     --bg-header:#00000030;
+    --gradient-color : linear-gradient(360deg , var(--background-color) , rgba(0, 0, 0, 0.023));
+    --bg-service: url("./assets/images/dfsdfdf-min.jpg") no-repeat top right/cover;
   }
   
   body {

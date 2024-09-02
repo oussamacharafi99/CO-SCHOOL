@@ -15,6 +15,7 @@ a {
 }
 
 p {
+
   font-size: 0.9rem;
   margin: 1rem 0;
   line-height: 1.5;
@@ -28,12 +29,11 @@ section {
   padding: 30px;
 }
 
-h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+h1{
+  font-size: 40px;
+  font-weight: 800;
   color: var(--color-primary);
-  font-size: 1.825rem;
-  margin: 1.3rem 0;
+  text-align: center;
 }
 
 .section-lead {
@@ -50,6 +50,7 @@ h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   color: #56ceba;
+
   font-size: 1.3rem;
   margin: 1rem 0 0.6rem;
 }
@@ -60,12 +61,9 @@ h3 {
   -webkit-box-align: center;
   align-items: center;
 }
-.service1 , .service2{
-  padding: 20px;
+.service1 , .service2, .service3{
+  padding: 15px;
 } 
-.service3{
-  padding: 10px 20px;
-}
 
 .service {
   background: var(--primary-color);
@@ -77,7 +75,7 @@ h3 {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  border: .5px solid var(--color-border);
+  border: .5px solid transparent;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -90,6 +88,7 @@ h3 {
 }
 
 .service i {
+
   font-size: 3.45rem;
   margin: 1rem 0;
 }
@@ -97,34 +96,35 @@ h3 {
 .service1 i,
 .service1 h4,
 .service1 .cta {
-  color: #42b7ca;
+  color: var(--color-primary);
 }
 
 .service1:hover {
-  border: .5px solid #42b7ca;
+  border: .5px solid var(--color-primary);
 }
 
 .service2 i,
 .service2 h4,
 .service2 .cta {
-  color: #425fca;
+  color: var(--color-primary);
 }
 
 .service2:hover {
-  border: .5px solid #425fca;
+  border: .5px solid var(--color-primary);
 }
 
 .service3 i,
 .service3 h4,
 .service3 .cta {
-  color: #9c42ca;
+  color: var(--color-primary);
 }
 
 .service3:hover {
-  border: .5px solid #9c42ca;
+  border: .5px solid var(--color-primary);
 }
 
 .service .cta span {
+
   font-size: 0.6rem;
 }
 
@@ -145,3 +145,4 @@ h3 {
     flex-direction: column;
   }
 }
+
