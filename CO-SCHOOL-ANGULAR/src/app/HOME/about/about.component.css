@@ -1,4 +1,4 @@
-* {
+/* * {
   font-family: Nunito, sans-serif;
 }
 
@@ -14,6 +14,7 @@
   margin-right: 0px;
   margin-bottom: 40px;
   margin-left: 0px;
+  text-align: justify;
 }
 img{
   border-radius: 12px;
@@ -522,5 +523,77 @@ body {
 
   .wk-mobile-12 {
     width: 100%;
+  }
+} */
+
+.main{
+  width: 100%;
+  padding: 60px 10px;
+}
+.main-wrapper{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.left{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+.left > div{
+  width: 300px;
+  height: 300px;
+  border: 20px solid var(--primary-color);
+}
+.img1{
+  background: url("../../../assets/images/about-1.jpg") no-repeat top left/cover;
+  z-index: 1;
+  position: absolute;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.317);
+}
+.img2{
+  background: url("../../../assets/images/about.jpg") no-repeat top left/cover;
+  position: absolute;
+  left: 200px;
+  top: -110px;
+  z-index: 2;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.317);
+}
+.right{
+  width: 50%;
+  height: 100%;
+  padding-right: 50px;
+  border-left: 1px solid var(--border-color);
+}
+.right >  p {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--border-color);
+}
+.right >  h2{
+  font-size: 45px;
+  font-weight: 900;
+  color: var(--color-primary);
+}
+.right >  h4{
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-color);
+  padding: 20px 10px;
+  text-align: justify;
+}
+@media screen and (max-width : 800px) {
+  .right{
+    width: 90%;
+    height: 100%;
+    padding-right: 1px;
+  }  
+  .left{
+    display: none;
   }
 }

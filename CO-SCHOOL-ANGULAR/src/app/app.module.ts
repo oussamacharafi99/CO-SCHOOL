@@ -13,6 +13,10 @@ import { ServiceHomeComponent } from './HOME/service-home/service-home.component
 import { ContactMainComponent } from './HOME/contact-main/contact-main.component';
 import { ErrorMainComponent } from './HOME/error-main/error-main.component';
 import { ModeHomeComponent } from './HOME/mode-home/mode-home.component';
+import { DashboardComponent } from './DASHBOARD-ELEVE/dashboard/dashboard.component';
+import { DashboardEleveMenuComponent } from './DASHBOARD-ELEVE/dashboard-eleve-menu/dashboard-eleve-menu.component';
+import { OurCoursesMainComponent } from './HOME/our-courses-main/our-courses-main.component';
+import { DashboardEleveHeaderComponent } from './DASHBOARD-ELEVE/dashboard-eleve-header/dashboard-eleve-header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { ModeHomeComponent } from './HOME/mode-home/mode-home.component';
     ServiceHomeComponent,
     ContactMainComponent,
     ErrorMainComponent,
-    ModeHomeComponent
+    ModeHomeComponent,
+    DashboardComponent,
+    DashboardEleveMenuComponent,
+    OurCoursesMainComponent,
+    DashboardEleveHeaderComponent
   ],
   imports: [
     BrowserModule,

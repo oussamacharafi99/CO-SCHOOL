@@ -9,12 +9,11 @@
 .main-wrapper{
   width: 100%;
   height: 100%;
-  border-radius: var(--border-raduis-pr);
   margin: 0 auto;
-  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--gradient-color);
 }
 
 .content{
@@ -62,9 +61,8 @@
 
 .login1:hover{
   border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  background: transparent;
-  box-shadow: 4px 4px 15px black ;
+  color: var(--text-color);
+  background: var(--color-primary);
 }
 
 
@@ -259,6 +257,9 @@ form > button{
     padding: 20px 20px 20px 20px;
     text-align: left;
     font-family: "Lilita One", sans-serif;
+  }
+  .content > h1{
+    font-size: 30px;
   }
 }
 
