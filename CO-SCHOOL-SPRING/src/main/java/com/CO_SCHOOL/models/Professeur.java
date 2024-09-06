@@ -1,6 +1,5 @@
 package com.CO_SCHOOL.models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,14 +11,14 @@ import java.util.List;
 @Setter
 @Entity
 @DiscriminatorValue("PROFESSEUR")
-public class Professeur extends Person{
+public class Professeur extends Person {
 
     @OneToMany(mappedBy = "professeur")
     @JsonIgnore
     private List<Examen> examens;
 
-    @ManyToOne
-    @JoinColumn(name = "class_group_id")
-    private ClasseGroup classeGroup;
 
+    @ManyToMany(mappedBy = "professeurs")
+    @JsonIgnore
+    private List<ClasseGroup> classeGroups;
 }

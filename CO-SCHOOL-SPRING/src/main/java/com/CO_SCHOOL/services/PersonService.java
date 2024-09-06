@@ -14,4 +14,8 @@ public class PersonService {
     public Person findByUsername(String username) {
         return personRepo.findByUsername(username);
     }
+
+    public Person findByIdentificationId(String identificationId) {
+        return personRepo.findByIdentificationId(identificationId);
+    }
 }

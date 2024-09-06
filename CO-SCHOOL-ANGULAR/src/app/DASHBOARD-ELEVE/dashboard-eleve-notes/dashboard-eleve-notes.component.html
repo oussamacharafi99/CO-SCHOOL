@@ -1,0 +1,89 @@
+
+<div class="main">
+    <div class="main-wrapper">
+      <div class="search-zoon">
+        <h1>Suivi des notes</h1>
+        <form [formGroup]="formSearch" (ngSubmit)="searching()">
+          <div class="form-group">
+            <label for="semester">Select Semester</label>
+            <select id="semester" formControlName="semester" class="form-control">
+              <option value="" disabled>Select Semester</option>
+              <option value="FIRST_SEMESTER">Premier Semester</option>
+              <option value="SECOND_SEMESTER">Deuxiame Semester</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="year">Select Year</label>
+            <select id="year" formControlName="year" class="form-control">
+              <option value="" disabled>Select Year</option>
+              <option *ngFor="let year of year" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <button type="submit"><i class="pi pi-search"></i></button>
+          </div>
+        </form>
+      </div>
+
+
+      <div class="result">
+        <div class="resPdf">
+        <h1>Résultats</h1>
+        <div class="info" *ngIf="listResult && listResult.length > 0">
+            <div>
+            <h3>{{info[0]}}<span>{{school}}</span></h3><br>
+            <h3>{{info[3]}}<span>{{semester}}</span></h3><br>
+            </div>
+            <div>
+              <h3>{{info[1]}}<span>{{classe}}</span></h3>
+              <h3>{{info[2]}}<span>{{resultYear}}</span></h3>
+            </div>
+        </div>
+      
+        <div *ngIf="listResult && listResult.length > 0; else noResults">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Matière</th>
+                <th>Premier contrôle</th>
+                <th>Deuxième contrôle</th>
+                <th>Troisième contrôle</th>
+                <th>Quatrième contrôle</th>
+                <th>Activités intégrées</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let result of listResult">
+                <td>{{ result.matter }}</td>
+                <td>{{ result.firstNote }}</td>
+                <td>{{ result.secondNote }}</td>
+                <td>{{ result.thirdNote }}</td>
+                <td>{{ result.fourthNote }}</td>
+                <td>{{ result.activitiesNote }}</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr id="res">
+                <td>Totale Resulte : </td>
+                <td>{{avgNote}}</td>
+              </tr>
+            </tbody>
+            
+          </table>
+        </div>
+          <button (click)="downloadPDF()" *ngIf="listResult && listResult.length > 0" id="Download"><i class="pi pi-download"></i></button>
+        </div>
+      
+        <ng-template #noResults>
+          <p>Aucun résultat trouvé.</p>
+        </ng-template>
+      </div>
+      
+     </div>
+  </div>
+
+
+  
+
