@@ -4,9 +4,37 @@
     </div>
 
     <ul>
-        <li><a href="#"><i class="pi pi-home"></i></a></li>
-        <li><a href="#"><i class="pi pi-chart-pie"></i></a></li>
-        <li><a href="#"><i class="pi pi-clipboard"></i></a></li>
-        <li><a href="#"><i class="pi pi-calendar"></i></a></li>
+        <li>
+            <a 
+               routerLink="#" 
+               (click)="setActiveLink('/home')" 
+               [ngClass]="{'active': activeLink === '/home'}">
+               <i class="pi pi-home"></i>
+            </a>
+        </li>
+        <li>
+            <a 
+               routerLink="#" 
+               (click)="setActiveLink('/chart-pie')" 
+               [ngClass]="{'active': activeLink === '/chart-pie'}">
+               <i class="pi pi-chart-pie"></i>
+            </a>
+        </li>
+        <li>
+            <a 
+               routerLink="#" 
+               (click)="setActiveLink('/clipboard')" 
+               [ngClass]="{'active': activeLink === '/clipboard'}">
+               <i class="pi pi-clipboard"></i>
+            </a>
+        </li>
+        <li>
+            <a 
+               routerLink="#" 
+               (click)="setActiveLink('/calendar')" 
+               [ngClass]="{'active': activeLink === '/calendar'}">
+               <i class="pi pi-calendar"></i>
+            </a>
+        </li>
     </ul>
 </div>

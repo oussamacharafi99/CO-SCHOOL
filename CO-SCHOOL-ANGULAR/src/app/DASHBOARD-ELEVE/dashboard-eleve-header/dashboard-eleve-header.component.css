@@ -41,6 +41,11 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .5s;
+}
+.search > label:hover{
+    background: var(--hover-bg);
+    color: var(--hover-color);
 }
 
 .controles{
@@ -58,7 +63,12 @@ header{
     padding: 10px 10px ;
     border-radius: 100%;
     margin: 0 5px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.089)
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.089);
+    transition: .5s;
+}
+.controles > a:hover{
+    background: var(--hover-bg);
+    color: var(--hover-color);
 }
 .user-info{
     display: flex;
@@ -73,7 +83,7 @@ header{
     border-radius: 100%;
 }
 .user-info > h1{
-    font-size: 20px;
+    font-size: 16px;
     margin: 0 5px;
 }
 .user-info > h1 > span{

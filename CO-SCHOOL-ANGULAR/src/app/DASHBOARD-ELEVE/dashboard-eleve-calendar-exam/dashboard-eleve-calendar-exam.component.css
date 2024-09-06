@@ -1,0 +1,14 @@
+.main{
+    width: 100%;
+    padding: 20px;
+}
+.main-wrapper{
+    width: 100%;
+    padding: 10px;
+}
+.calendar-zoon{
+    width: 100%;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 20px;
+}

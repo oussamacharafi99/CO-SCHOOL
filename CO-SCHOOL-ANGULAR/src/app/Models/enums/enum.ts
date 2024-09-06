@@ -9,3 +9,12 @@ export enum Role {
     ROLE_PARENT,
     ROLE_PROF
 }
+
+export enum Controle{
+    PREMIER_CONTROLE, 
+    DEUXIEME_CONTROLE, 
+    TROISIEME_CONTROLE, 
+    QUATRIEME_CONTROLE, 
+    ACTIVITES_INTEGREES
+    
+}

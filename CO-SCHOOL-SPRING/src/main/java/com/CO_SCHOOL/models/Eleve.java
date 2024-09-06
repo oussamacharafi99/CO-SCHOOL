@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 @DiscriminatorValue("ELEVE")
-public class Eleve extends Person{
+public class Eleve extends Person {
 
     @OneToMany(mappedBy = "eleve")
     @JsonIgnore
@@ -25,5 +25,4 @@ public class Eleve extends Person{
     @ManyToOne
     @JoinColumn(name = "class_group_id")
     private ClasseGroup classeGroup;
-
 }

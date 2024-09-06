@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './HOME/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { InterceptorAuth } from './Services/interceptor.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+// import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
 import { AboutComponent } from './HOME/about/about.component';
@@ -17,6 +17,9 @@ import { DashboardComponent } from './DASHBOARD-ELEVE/dashboard/dashboard.compon
 import { DashboardEleveMenuComponent } from './DASHBOARD-ELEVE/dashboard-eleve-menu/dashboard-eleve-menu.component';
 import { OurCoursesMainComponent } from './HOME/our-courses-main/our-courses-main.component';
 import { DashboardEleveHeaderComponent } from './DASHBOARD-ELEVE/dashboard-eleve-header/dashboard-eleve-header.component';
+import { DashboardEleveNotesComponent } from './DASHBOARD-ELEVE/dashboard-eleve-notes/dashboard-eleve-notes.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { DashboardEleveCalendarExamComponent } from './DASHBOARD-ELEVE/dashboard-eleve-calendar-exam/dashboard-eleve-calendar-exam.component';
 
 @NgModule({
   declarations: [
@@ -32,21 +35,23 @@ import { DashboardEleveHeaderComponent } from './DASHBOARD-ELEVE/dashboard-eleve
     DashboardComponent,
     DashboardEleveMenuComponent,
     OurCoursesMainComponent,
-    DashboardEleveHeaderComponent
+    DashboardEleveHeaderComponent,
+    DashboardEleveNotesComponent,
+    DashboardEleveCalendarExamComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    FullCalendarModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorAuth,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: InterceptorAuth,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

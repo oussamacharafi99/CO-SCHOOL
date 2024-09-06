@@ -15,7 +15,6 @@ public class ProfController {
 
     @PostMapping("add")
     public String insertProf(@RequestBody Professeur professeur) {
-        profService.insertProf(professeur);
-        return "the professeur is inserted successfully";
+        return profService.insertProf(professeur);
     }
 }

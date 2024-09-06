@@ -9,7 +9,6 @@ import lombok.Setter;
 
 import java.util.List;
 
-
 @Entity
 @Getter
 @Setter
@@ -23,12 +22,18 @@ public class ClasseGroup {
 
     private String class_room_name;
 
+    private String school_name;
+
     @OneToMany(mappedBy = "classeGroup")
     @JsonIgnore
     private List<Eleve> eleves;
 
-    @OneToMany(mappedBy = "classeGroup")
+    @ManyToMany
+    @JoinTable(
+            name = "classe_professeur",
+            joinColumns = @JoinColumn(name = "classe_id"),
+            inverseJoinColumns = @JoinColumn(name = "professeur_id")
+    )
     @JsonIgnore
     private List<Professeur> professeurs;
-
 }

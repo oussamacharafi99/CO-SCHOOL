@@ -4,6 +4,7 @@ import com.CO_SCHOOL.services.PersonDetailsImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -38,13 +39,14 @@ public class ConfigSecurity {
                                 .requestMatchers("api/auth/login").permitAll()
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")
                                 .requestMatchers("api/examen/**").hasRole("PROF")
-                                .requestMatchers("api/examen_eleve/result/**").permitAll()
+                                .requestMatchers("api/examen_eleve/result/total/**","api/examen_eleve/result/**").permitAll()
                                 .requestMatchers("api/examen_eleve/**").hasRole("PROF")
                                 .requestMatchers("api/classeGroup/save").hasRole("ADMIN")
                                 .requestMatchers("api/classeGroup/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);
+                http.cors(Customizer.withDefaults());
 
         http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

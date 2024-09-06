@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.models;
 
+import com.CO_SCHOOL.enums.Controle;
 import com.CO_SCHOOL.enums.Semester;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -22,7 +23,8 @@ public class Examen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String examen_name;
+    @Enumerated(EnumType.STRING)
+    private Controle examen_name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate examen_date;

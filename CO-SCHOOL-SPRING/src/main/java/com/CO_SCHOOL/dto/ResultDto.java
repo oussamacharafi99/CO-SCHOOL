@@ -11,10 +11,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultDto {
-    private String username;
-    private Double examen_note;
-    private String examen_name;
-    private String matter;
-    private Semester semester;
-    private String class_room_name;
+        private String username;
+        private String matter;
+        private Semester semester;
+        private String classRoomName;
+        private String school_name;
+        private Double firstNote;
+        private Double secondNote;
+        private Double thirdNote;
+        private Double fourthNote;
+        private Double activitiesNote;
 }
