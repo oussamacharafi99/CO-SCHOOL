@@ -20,6 +20,8 @@ import { DashboardEleveHeaderComponent } from './DASHBOARD-ELEVE/dashboard-eleve
 import { DashboardEleveNotesComponent } from './DASHBOARD-ELEVE/dashboard-eleve-notes/dashboard-eleve-notes.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { DashboardEleveCalendarExamComponent } from './DASHBOARD-ELEVE/dashboard-eleve-calendar-exam/dashboard-eleve-calendar-exam.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -38,13 +40,15 @@ import { DashboardEleveCalendarExamComponent } from './DASHBOARD-ELEVE/dashboard
     DashboardEleveHeaderComponent,
     DashboardEleveNotesComponent,
     DashboardEleveCalendarExamComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     // {

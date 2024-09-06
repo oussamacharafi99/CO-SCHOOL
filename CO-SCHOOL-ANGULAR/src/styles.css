@@ -24,6 +24,7 @@
     --hover-bg:#1F2937;
     --tb-color:#6c757d;
     --tb-color-hover:#d8e0e7;
+    --logo:url("./assets/images/black.png");
   }
   ::-webkit-scrollbar {
     width: 3px;
@@ -54,6 +55,7 @@
     --bg-service: url("./assets/images/dfsdfdf-min.jpg") no-repeat top right/cover;
     --tb-color:#d8e0e7;
     --tb-color-hover:#393f43;
+    --logo:url("./assets/images/white.png");
   }
   
   body {
