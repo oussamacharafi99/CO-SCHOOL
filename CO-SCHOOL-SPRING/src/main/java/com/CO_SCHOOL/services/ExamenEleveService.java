@@ -1,9 +1,6 @@
 package com.CO_SCHOOL.services;
 
-import com.CO_SCHOOL.dto.AvgNote;
-import com.CO_SCHOOL.dto.ExamenEleveDto;
-import com.CO_SCHOOL.dto.ExamenEleveNoteDto;
-import com.CO_SCHOOL.dto.ResultDto;
+import com.CO_SCHOOL.dto.*;
 import com.CO_SCHOOL.enums.Semester;
 import com.CO_SCHOOL.models.*;
 import com.CO_SCHOOL.repositories.ExamenEleveRepo;
@@ -11,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -74,6 +72,22 @@ public class ExamenEleveService {
     public AvgNote getFinaleSemesterNote(Integer eleveId, String semester, Integer year) {
         Double avgNoteValue = examenEleveRepo.getResultAvg(eleveId, semester, year);
         return new AvgNote(avgNoteValue);
+    }
+
+
+    @Transactional
+    public List<ExamenDateDto> getExamenDates(Integer eleveId) {
+        List<Object[]> results = examenEleveRepo.getExamenDate(eleveId);
+        return results.stream()
+                .map(result -> {
+                    String examenName = (String) result[0];
+                    String matter = (String) result[1];
+                    java.sql.Date sqlDate = (java.sql.Date) result[2];
+                    LocalDate examenDate = sqlDate.toLocalDate();
+                    Double examenNote = (Double) result[3];
+                    return new ExamenDateDto(examenName, matter, examenDate ,examenNote);
+                })
+                .collect(Collectors.toList());
     }
 
 

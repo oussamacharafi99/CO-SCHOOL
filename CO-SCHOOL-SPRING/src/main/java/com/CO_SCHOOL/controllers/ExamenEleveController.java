@@ -46,4 +46,9 @@ public class ExamenEleveController {
         return examenEleveService.getFinaleSemesterNote(eleve_id, semester, year);
     }
 
+    @GetMapping("/result/examen+date/{id}")
+    public List<ExamenDateDto> getExamenElevesByDate(@PathVariable Integer id) {
+        return examenEleveService.getExamenDates(id);
+    }
+
 }

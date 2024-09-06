@@ -1,0 +1,67 @@
+.main{
+    width: 100%;
+    padding: 20px;
+}
+.main-wrapper{
+    width: 100%;
+    padding: 10px;
+}
+.search-zoon{
+    width: 100%;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 20px;
+}
+.search-zoon > h1{
+    font-size: 20px;
+    padding: 10px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.search-zoon > form{
+    width: 100%;
+    display: flex;  
+    align-items: end;
+}
+.search-zoon > form > .form-group{
+    width: 25%;
+    margin: 10px;
+}
+.search-zoon > form > .form-group > select{
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+.search-zoon > form > .form-group > button{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--hover-bg);
+    background: var(--background-color);
+    color: var(--text-color);
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-zoon > form > .form-group > button:hover{
+    background: var(--hover-bg);
+    color: var(--hover-color);
+}
+.chart-section{
+    width: 100%;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chart-container {
+    width: 50%;
+    position: relative;
+}
+#chart2{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}

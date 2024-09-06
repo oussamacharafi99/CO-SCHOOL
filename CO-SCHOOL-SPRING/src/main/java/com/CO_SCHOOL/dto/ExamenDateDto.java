@@ -11,5 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ExamenDateDto {
     private String examen_name;
+    private String matter;
     private LocalDate examen_date;
+    private Double examen_note;
 }
