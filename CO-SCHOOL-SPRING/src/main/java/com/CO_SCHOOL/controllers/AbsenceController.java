@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("api/absence")
 @CrossOrigin("*")
 public class AbsenceController {
+
     @Autowired
     private AbsenceService absenceService;
 
