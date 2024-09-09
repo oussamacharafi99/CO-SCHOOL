@@ -22,6 +22,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DashboardEleveCalendarExamComponent } from './DASHBOARD-ELEVE/dashboard-eleve-calendar-exam/dashboard-eleve-calendar-exam.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DashboardEleveStatisticsComponent } from './DASHBOARD-ELEVE/dashboard-eleve-statistics/dashboard-eleve-statistics.component';
+import { DashboardEleveHomeComponent } from './DASHBOARD-ELEVE/dashboard-eleve-home/dashboard-eleve-home.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     OurCoursesMainComponent,
     DashboardEleveHeaderComponent,
     DashboardEleveNotesComponent,
-    DashboardEleveCalendarExamComponent
+    DashboardEleveCalendarExamComponent,
+    DashboardEleveStatisticsComponent,
+    DashboardEleveHomeComponent
     
   ],
   imports: [

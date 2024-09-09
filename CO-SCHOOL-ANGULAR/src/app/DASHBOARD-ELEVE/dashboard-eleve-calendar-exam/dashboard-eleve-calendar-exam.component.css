@@ -22,7 +22,7 @@ a{
 .info{
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 .info > h3{
     font-size: 14px;
@@ -43,11 +43,13 @@ a{
 .fc-theme-standard td{
     border: 1px solid var(--color-primary);
     border-right: none;
+    font-size: 14px;
 }
 .fc-theme-standard th{
     border-right: none;
     padding: 5px 0;
     border: 1px solid var(--color-primary);
+    font-size: 14px;
 }
 #calendar{
     padding: 0 10px;
