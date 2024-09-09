@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './HOME/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
@@ -24,6 +24,11 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { DashboardEleveStatisticsComponent } from './DASHBOARD-ELEVE/dashboard-eleve-statistics/dashboard-eleve-statistics.component';
 import { DashboardEleveHomeComponent } from './DASHBOARD-ELEVE/dashboard-eleve-home/dashboard-eleve-home.component';
+import { DashboardEleveAbsenceComponent } from './DASHBOARD-ELEVE/dashboard-eleve-absence/dashboard-eleve-absence.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -43,8 +48,8 @@ import { DashboardEleveHomeComponent } from './DASHBOARD-ELEVE/dashboard-eleve-h
     DashboardEleveNotesComponent,
     DashboardEleveCalendarExamComponent,
     DashboardEleveStatisticsComponent,
-    DashboardEleveHomeComponent
-    
+    DashboardEleveHomeComponent,
+    DashboardEleveAbsenceComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,12 @@ import { DashboardEleveHomeComponent } from './DASHBOARD-ELEVE/dashboard-eleve-h
     HttpClientModule,
     ReactiveFormsModule,
     FullCalendarModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    FormsModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     // {

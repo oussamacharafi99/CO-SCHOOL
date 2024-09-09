@@ -40,7 +40,6 @@ li > a {
     transition: .5s;
 }
 
-
 li > a:hover {
     background: var(--hover-bg);
     color: var(--hover-color);
@@ -50,4 +49,9 @@ li > a.active {
     background: var(--hover-bg);
     color: var(--hover-color);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+li:first-of-type > a.match {
+    background: var(--hover-bg);
+    color: var(--hover-color);
 }
