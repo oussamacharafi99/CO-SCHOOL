@@ -1,1 +1,15 @@
-<p>dashboard-eleve-home works!</p>
+<div class="main">
+    <div class="main-wrapper">
+        <div class="info">
+            <div class="info-class">
+                <h1>-<span> {{classe_name}}</span>-</h1><br>
+                <div>
+                    <p>Les Professeurs</p>
+                    <ul>
+                        <li *ngFor="let prof of listProfOfClasse"><span>{{prof.professor_name}}</span><a href="#">Message</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

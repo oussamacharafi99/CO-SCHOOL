@@ -42,7 +42,7 @@
             </div>
         </div>
       
-        <div *ngIf="listResult && listResult.length > 0; else noResults">
+        <div *ngIf="listResult && listResult.length >= 7 ; else noResults">
           <table class="custom-table">
             <thead>
               <tr>
@@ -73,7 +73,7 @@
             
           </table>
         </div>
-          <button (click)="downloadPDF()" *ngIf="listResult && listResult.length > 0" id="Download"><i class="pi pi-download"></i></button>
+          <button (click)="downloadPDF()" *ngIf="listResult && listResult.length >= 7" id="Download"><i class="pi pi-download"></i></button>
         </div>
       
         <ng-template #noResults>
