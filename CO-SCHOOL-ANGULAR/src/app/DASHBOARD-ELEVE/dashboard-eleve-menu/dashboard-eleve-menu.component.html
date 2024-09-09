@@ -8,7 +8,10 @@
             <a 
                routerLink="/eleve-dashboard" 
                (click)="setActiveLink('/eleve-dashboard')" 
-               [ngClass]="{'active': activeLink === '/eleve-dashboard'}">
+               [ngClass]="{
+                   'active': activeLink === '/eleve-dashboard', 
+                   'match': isFirstLinkActive()
+               }">
                <i class="pi pi-home"></i>
             </a>
         </li>
@@ -31,8 +34,8 @@
         <li>
             <a 
                routerLink="/eleve-dashboard/calendar" 
-               (click)="setActiveLink('eleve-dashboard/calendar')" 
-               [ngClass]="{'active': activeLink === 'eleve-dashboard/calendar'}">
+               (click)="setActiveLink('/eleve-dashboard/calendar')" 
+               [ngClass]="{'active': activeLink === '/eleve-dashboard/calendar'}">
                <i class="pi pi-calendar"></i>
             </a>
         </li>

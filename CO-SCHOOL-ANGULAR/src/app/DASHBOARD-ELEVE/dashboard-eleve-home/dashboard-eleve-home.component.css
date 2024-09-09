@@ -78,3 +78,8 @@
     color: black;
     background: var(--color-primary);
 }
+
+/* ------------------ */
+.info-absence{
+    width: 70%;
+}
