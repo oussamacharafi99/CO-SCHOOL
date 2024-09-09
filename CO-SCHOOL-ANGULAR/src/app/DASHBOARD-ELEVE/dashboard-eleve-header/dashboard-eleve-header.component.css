@@ -59,19 +59,19 @@ header{
     text-decoration: none;
     color: var(--text-color);
     font-size: 22px;
-    background: var(--primary-color);
+    /* background: var(--primary-color); */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 10px ;
+    /* padding: 10px 10px ; */
     border-radius: 100%;
-    margin: 0 5px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.089);
+    margin: 0 20px 0 0;
+    /* box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.089); */
     transition: .5s;
 }
 .controles > a:hover{
-    background: var(--hover-bg);
-    color: var(--hover-color);
+    /* background: var(--hover-bg);
+    color: var(--hover-color); */
 }
 .user-info{
     display: flex;
