@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalTime;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -20,14 +22,12 @@ public class Absence {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String date;
+    
+    private LocalTime time;
 
     private String motif;
 
     @ManyToOne
     @JoinColumn(name = "eleve_id")
     private Eleve eleve;
-
-    @ManyToOne
-    @JoinColumn(name = "prof_id")
-    private Professeur professeur;
 }

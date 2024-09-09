@@ -18,6 +18,10 @@ public class Eleve extends Person {
     @JsonIgnore
     private List<ExamenEleve> examenEleves;
 
+    @OneToMany(mappedBy = "eleve")
+    @JsonIgnore
+    private List<Absence> absences;
+
     @ManyToOne
     @JoinColumn(name = "parent_id")
     private Parent parent;
@@ -25,4 +29,5 @@ public class Eleve extends Person {
     @ManyToOne
     @JoinColumn(name = "class_group_id")
     private ClasseGroup classeGroup;
+
 }

@@ -1,6 +1,7 @@
 package com.CO_SCHOOL.controllers;
 
 
+import com.CO_SCHOOL.dto.ClasseProfDto;
 import com.CO_SCHOOL.models.ClasseGroup;
 import com.CO_SCHOOL.services.ClasseGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,10 @@ public class ClasseGroupController {
     public String update(@PathVariable Integer id, @RequestBody ClasseGroup classeGroup) {
         classeGroupService.update(id, classeGroup);
         return "The class group has been updated";
+    }
+
+    @GetMapping("profs+class/{id}")
+    public List<ClasseProfDto> getProsByClassGroupId(@PathVariable Integer id) {
+        return classeGroupService.findAllProfByClassGroupId(id);
     }
 }
