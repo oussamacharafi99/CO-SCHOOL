@@ -41,6 +41,7 @@ public class ConfigSecurity {
                                 .requestMatchers("api/examen/**").hasRole("PROF")
                                 .requestMatchers("api/examen_eleve/result/total/**","api/examen_eleve/result/**","api/examen_eleve/result/examen+date/**").permitAll()
                                 .requestMatchers("api/examen_eleve/**").hasRole("PROF")
+                                .requestMatchers("api/classeGroup/profs+class/**").permitAll()
                                 .requestMatchers("api/classeGroup/save").hasRole("ADMIN")
                                 .requestMatchers("api/classeGroup/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
