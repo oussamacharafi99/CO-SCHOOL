@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/core';
+import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ExamenDateDto } from 'src/app/Models/dto/ExamenDateDto';
@@ -14,13 +14,13 @@ import { examenEleveService } from 'src/app/Services/examen_eleve.service';
 export class DashboardEleveCalendarExamComponent implements OnInit {
   examensDates!: ExamenDateDto[];
   status!: string;
-
   currentDate!: string;
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     dateClick: (arg: any) => this.handleDateClick(arg),
+    eventClick: (arg: EventClickArg) => this.handleEventClick(arg), 
     events: [],
     eventColor: "transparent",
     eventTextColor: "var(--text-color)",
@@ -35,11 +35,13 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
       const events = this.examensDates.map(exam => ({
         title: `${exam.examen_name} \n- ${exam.matter}`,
         date: exam.examen_date,
-        backgroundColor: exam.examen_note === null ? 'var(--color-primary)' : 'green',
+        backgroundColor: exam.examen_note === null ? 'var(--color-primary)' : '#0fc70f',
         textColor: 'var(--text-color)',
         extendedProps: {
           examName: exam.examen_name,
-          examDate: exam.examen_date
+          examDate: exam.examen_date,
+          examMatter: exam.matter,
+          examNote: exam.examen_note
         }
       }));
 
@@ -51,6 +53,15 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
 
     const now = new Date();
     this.currentDate = now.toLocaleDateString();
+  }
+
+  handleEventClick(arg: EventClickArg) {
+    const examName = arg.event.extendedProps['examName'];
+    const examMatter = arg.event.extendedProps['examMatter'];
+    const examDate = arg.event.extendedProps['examDate'];
+    const examNote = arg.event.extendedProps['examNote'];
+
+    alert(`Exam: ${examName}\nMatter: ${examMatter}\nDate: ${examDate}\nNote: ${examNote !== null ? examNote : 'Not yet graded'}`);
   }
 
   handleDateClick(arg: any) {
