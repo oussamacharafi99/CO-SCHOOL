@@ -1,19 +1,48 @@
 <div class="main">
     <div class="main-wrapper">
-        <div class="info">
-            <div class="info-class">
-                <h1>-<span> {{classe_name}}</span>-</h1><br>
-                <div>
-                    <p>Les Professeurs</p>
-                    <ul>
-                        <li *ngFor="let prof of listProfOfClasse"><span>{{prof.professor_name}}</span><a href="#">Message</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="info-absence">
-                <app-dashboard-eleve-absence></app-dashboard-eleve-absence>
-            </div>
+      <div class="info">
+        <div class="info-class">
+          <h1>-<span>{{ classe_name }}</span>-</h1><br>
+          <div>
+            <p>Les Professeurs</p>
+            <ul>
+              <li *ngFor="let prof of listProfOfClasse">
+                <span>{{ prof.professor_name }}</span><a href="#">Message</a>
+              </li>
+            </ul>
+          </div>
+          <br>
+          <div>
+            <p>Votre information</p>
+            <form [formGroup]="fromChangePass" (ngSubmit)="changePassword()">
+              <div class="group">
+                <h2>Nom et Prénom : <span>{{ eleveInfo.username }}</span></h2>
+                <h2>Age : <span>{{ eleveInfo.age }} ans</span></h2>
+                <h2>Email : <span>{{ eleveInfo.email }}</span></h2>
+              </div>
+  
+              <div class="group-password">
+                <div class="flow" *ngIf="isFlowVisible"></div>
+                <input 
+                  #passwordInput 
+                  type="text" 
+                  formControlName="password" 
+                  placeholder="Nouveau mot de passe">
+                <p (click)="toggleFlow(passwordInput)">
+                  <i class="pi pi-key"></i>
+                </p>
+                <button type="submit" [disabled]="!fromChangePass.valid">
+                  <i class="pi pi-send"></i>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+  
+        <div class="info-absence">
+          <app-dashboard-eleve-absence></app-dashboard-eleve-absence>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

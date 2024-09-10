@@ -61,31 +61,31 @@
     font-weight: 700;
 }
 
-.info{
+.infos{
     padding:10px 20px;
     width: 100%;
 }
-.info > div{
+.infos > div{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.info > div>  h3{
+.infos > div>  h3{
     font-size: 14px;
     text-align: left;
     width: 50%;
     text-align: left;
 }
-.info > div > h3 > span{
+.infos > div > h3 > span{
     color: var(--text-color);
     font-weight: 300;
 }
 
-.info > h3{
+.infos > h3{
     font-size: 14px;
 }
 
-.info > h3 > span{
+.infos > h3 > span{
     color: var(--text-color);
     font-weight: 300;
 }
