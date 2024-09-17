@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard-eleve-menu',
-  templateUrl: './dashboard-eleve-menu.component.html',
-  styleUrls: ['./dashboard-eleve-menu.component.css']
+  selector: 'app-dashboard-prof-menu',
+  templateUrl: './dashboard-prof-menu.component.html',
+  styleUrls: ['./dashboard-prof-menu.component.css']
 })
-export class DashboardEleveMenuComponent implements OnInit {
-  activeLink: string = '/eleve-dashboard';
+export class DashboardProfMenuComponent implements OnInit {
+  activeLink: string = '/eleve-dashboard'; 
 
   ngOnInit(): void {
     

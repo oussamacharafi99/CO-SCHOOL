@@ -1,0 +1,43 @@
+<div class="main">
+    <div class="menu">
+        <i class="pi pi-bars"></i>
+    </div>
+
+    <ul>
+        <li>
+            <a 
+               routerLink="/eleve-dashboard" 
+               (click)="setActiveLink('/eleve-dashboard')" 
+               [ngClass]="{
+                   'active': activeLink === '/eleve-dashboard', 
+                   'match': isFirstLinkActive()
+               }">
+               <i class="pi pi-home"></i>
+            </a>
+        </li>
+        <li>
+            <a 
+               routerLink="/eleve-dashboard/statistics" 
+               (click)="setActiveLink('/eleve-dashboard/statistics')" 
+               [ngClass]="{'active': activeLink === '/eleve-dashboard/statistics'}">
+               <i class="pi pi-chart-pie"></i>
+            </a>
+        </li>
+        <li>
+            <a 
+               routerLink="/eleve-dashboard/result" 
+               (click)="setActiveLink('/eleve-dashboard/result')" 
+               [ngClass]="{'active': activeLink === '/eleve-dashboard/result'}">
+               <i class="pi pi-clipboard"></i>
+            </a>
+        </li>
+        <li>
+            <a 
+               routerLink="/eleve-dashboard/calendar" 
+               (click)="setActiveLink('/eleve-dashboard/calendar')" 
+               [ngClass]="{'active': activeLink === '/eleve-dashboard/calendar'}">
+               <i class="pi pi-calendar"></i>
+            </a>
+        </li>
+    </ul>
+</div>
