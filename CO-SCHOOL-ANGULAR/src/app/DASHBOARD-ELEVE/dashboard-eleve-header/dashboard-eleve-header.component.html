@@ -9,9 +9,12 @@
     </div>
 
     <div class="controles">
+        <a (click)="toggleFullscreen()">
+            <i class="pi pi-window-maximize"></i>
+        </a>
        <a href="#"><i class="pi pi-plus"></i></a>
        <a href="#"><i class="pi pi-bell"></i></a>
-       <app-mode-home></app-mode-home>
+       <app-mode-home id="moon"></app-mode-home>
     </div>
 
     <div class="user-info">
@@ -25,3 +28,16 @@
         </h1>
     </div>
 </header>
+
+
+<script>
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+</script>

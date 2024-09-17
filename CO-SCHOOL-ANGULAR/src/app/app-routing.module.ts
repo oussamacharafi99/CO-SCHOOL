@@ -6,6 +6,9 @@ import { DashboardEleveStatisticsComponent } from './DASHBOARD-ELEVE/dashboard-e
 import { DashboardEleveCalendarExamComponent } from './DASHBOARD-ELEVE/dashboard-eleve-calendar-exam/dashboard-eleve-calendar-exam.component';
 import { DashboardEleveNotesComponent } from './DASHBOARD-ELEVE/dashboard-eleve-notes/dashboard-eleve-notes.component';
 import { DashboardEleveHomeComponent } from './DASHBOARD-ELEVE/dashboard-eleve-home/dashboard-eleve-home.component';
+import { DashboardProfComponent } from './DASHBOARD-PROF/dashboard-prof/dashboard-prof.component';
+import { DashboardProfHomeComponent } from './DASHBOARD-PROF/dashboard-prof-home/dashboard-prof-home.component';
+import { DashboardProfExamenComponent } from './DASHBOARD-PROF/dashboard-prof-examen/dashboard-prof-examen.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -17,6 +20,14 @@ const routes: Routes = [
       { path: 'calendar', component: DashboardEleveCalendarExamComponent },
     
 ]},
+{
+  path: 'prof-dashboard', component: DashboardProfComponent, children: [
+    { path:'',component:DashboardProfHomeComponent},
+    { path:'dash-examens',component:DashboardProfExamenComponent},
+  
+]},
+
+
 ];
 
 @NgModule({

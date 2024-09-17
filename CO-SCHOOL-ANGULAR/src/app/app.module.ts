@@ -29,6 +29,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DashboardProfComponent } from './DASHBOARD-PROF/dashboard-prof/dashboard-prof.component';
+import { DashboardProfMenuComponent } from './DASHBOARD-PROF/dashboard-prof-menu/dashboard-prof-menu.component';
+import { DashboardProfHeaderComponent } from './DASHBOARD-PROF/dashboard-prof-header/dashboard-prof-header.component';
+import { DashboardProfHomeComponent } from './DASHBOARD-PROF/dashboard-prof-home/dashboard-prof-home.component';
+import { DashboardProfExamenComponent } from './DASHBOARD-PROF/dashboard-prof-examen/dashboard-prof-examen.component';
+import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/dashboard-prof-add-examen/dashboard-prof-add-examen.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +55,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     DashboardEleveCalendarExamComponent,
     DashboardEleveStatisticsComponent,
     DashboardEleveHomeComponent,
-    DashboardEleveAbsenceComponent
+    DashboardEleveAbsenceComponent,
+    DashboardProfComponent,
+    DashboardProfMenuComponent,
+    DashboardProfHeaderComponent,
+    DashboardProfHomeComponent,
+    DashboardProfExamenComponent,
+    DashboardProfAddExamenComponent
   ],
   imports: [
     BrowserModule,

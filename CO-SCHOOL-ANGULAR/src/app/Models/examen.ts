@@ -4,9 +4,9 @@ import { Professeur } from "./professeur";
 
 export interface Examen {
   id?: number;
-  examenName: string;
-  examenDate: string;
-  classRoom: string;
+  examen_name: string;
+  examen_date: string;
+  class_room: string;
   matter: string;
   semester: Semester;
   professeur: Professeur;

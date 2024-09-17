@@ -12,9 +12,9 @@ export class examenEleveService {
 
   constructor(private http : HttpClient) { }
 
-  _API_RESULT = "http://localhost:9090/api/examen_eleve/result";
-  _API_RESULT_AVG = "http://localhost:9090/api/examen_eleve/result/total";
-  _API_EXAMEN_DATE = "http://localhost:9090/api/examen_eleve/result/examen+date";
+  _API_RESULT = "http://localhost:9091/api/examen_eleve/result";
+  _API_RESULT_AVG = "http://localhost:9091/api/examen_eleve/result/total";
+  _API_EXAMEN_DATE = "http://localhost:9091/api/examen_eleve/result/examen+date";
 
 
   /****___________  get Semester Result _____________*****/
