@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.controllers;
 
+import com.CO_SCHOOL.dto.InsertExamenDto;
 import com.CO_SCHOOL.models.Examen;
 import com.CO_SCHOOL.services.ExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/examen")
 public class ExamenController {
@@ -15,8 +17,8 @@ public class ExamenController {
     private ExamenService examenService;
 
     @PostMapping("insert")
-    public Examen insertExamen(@RequestBody Examen examen) {
-        return examenService.CreateExaman(examen);
+    public Examen insertExamen(@RequestBody InsertExamenDto insertExamenDto) {
+        return examenService.CreateExaman(insertExamenDto);
     }
 
     @GetMapping("get_all")
@@ -33,4 +35,10 @@ public class ExamenController {
 //    public List<Examen> getExamenEleve(@PathVariable Integer id) {
 //        return examenService.getExamenByEleveId(id);
 //    }
+
+
+    @GetMapping("get+examen+by+prof/{id}")
+    public List<Examen> getExamenByProf(@PathVariable Integer id) {
+        return examenService.getExamenByProfId(id);
+    }
 }
