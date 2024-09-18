@@ -1,6 +1,7 @@
 package com.CO_SCHOOL.controllers;
 
 
+import com.CO_SCHOOL.dto.ClasseNameDto;
 import com.CO_SCHOOL.dto.ClasseProfDto;
 import com.CO_SCHOOL.models.ClasseGroup;
 import com.CO_SCHOOL.services.ClasseGroupService;
@@ -48,5 +49,11 @@ public class ClasseGroupController {
     @GetMapping("profs+class/{id}")
     public List<ClasseProfDto> getProsByClassGroupId(@PathVariable Integer id) {
         return classeGroupService.findAllProfByClassGroupId(id);
+    }
+
+
+    @GetMapping("get+class+by+prof+id/{id}")
+    public List<ClasseNameDto> GetClasseNameByProfId(@PathVariable Integer id) {
+        return classeGroupService.GetClasseNameByProfId(id);
     }
 }

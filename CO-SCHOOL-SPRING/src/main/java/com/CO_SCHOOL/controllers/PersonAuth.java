@@ -1,7 +1,9 @@
 package com.CO_SCHOOL.controllers;
 
 import com.CO_SCHOOL.config.JwtAuth;
+import com.CO_SCHOOL.dto.ChangePasswordDto;
 import com.CO_SCHOOL.dto.JwtDto;
+import com.CO_SCHOOL.models.Eleve;
 import com.CO_SCHOOL.models.Person;
 import com.CO_SCHOOL.repositories.PersonRepo;
 import com.CO_SCHOOL.services.PersonService;
@@ -38,4 +40,10 @@ public class PersonAuth {
         String token = JwtAuth.generateToken(personLogin.getUsername(), roles);
         return new JwtDto(personId , token);
     }
+
+    @PutMapping("change+password/{id}")
+    public String changePassword(@PathVariable int id, @RequestBody ChangePasswordDto changePasswordDto) {
+        return personService.UpdatePassword(id , changePasswordDto);
+    }
+
 }

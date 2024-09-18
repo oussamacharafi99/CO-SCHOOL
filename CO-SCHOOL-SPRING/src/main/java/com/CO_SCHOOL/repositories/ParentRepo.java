@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ParentRepo extends CrudRepository<Parent, Integer> {
+    boolean existsByIdentificationId(String identificationId);
 }
