@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.services;
 
+import com.CO_SCHOOL.dto.ClassPersonDto;
 import com.CO_SCHOOL.dto.ClasseNameDto;
 import com.CO_SCHOOL.dto.ClasseProfDto;
 import com.CO_SCHOOL.exeptions.CoEcoSchoolExepion;
@@ -59,5 +60,20 @@ public class ClasseGroupService {
             String class_name = (String) classes[1];
             return new ClasseNameDto(idc, class_name);
         }).collect(Collectors.toList());
+    }
+
+    public List<ClassPersonDto> getProfEleveByProfId(Integer id) {
+        List<Object[]> eleves = classGroupRepo.getProfEleveByProfId(id);
+        return eleves.stream().map(eleve ->{
+            Integer classeId = (Integer) eleve[0];
+            String classRoomName = (String) eleve[1];
+            String identificationId = (String) eleve[2];
+            String username = (String) eleve[3];
+            String email = (String) eleve[4];
+            String gender = (String) eleve[5];
+            Integer age = (Integer) eleve[6];
+            return new ClassPersonDto(classeId, classRoomName, identificationId, username, email, gender, age);
+        }).collect(Collectors.toList());
+
     }
 }

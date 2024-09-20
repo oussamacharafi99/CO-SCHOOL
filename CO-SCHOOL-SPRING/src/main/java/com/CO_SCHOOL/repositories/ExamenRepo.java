@@ -14,4 +14,5 @@ import java.util.List;
 public interface ExamenRepo extends JpaRepository<Examen, Integer> {
     List<Examen> findAllByProfesseurId(Integer professeurId);
     List<Examen> findAllByProfesseur_Id (Integer professeurId);
+
 }

@@ -66,4 +66,10 @@ public interface ExamenEleveRepo extends JpaRepository<ExamenEleve, Integer> {
             "WHERE exl.eleve_id = :id ",
             nativeQuery = true)
     List<Object[]> getExamenDate(@Param("id") Integer id);
+
+
+
+    @Query(value = "SELECT ex.id, ex.examen_name , ex.matter, ex.examen_date, ex.semester, ex.prof_id FROM examen_eleve el INNER JOIN examen ex ON ex.id = el.examen_id WHERE ex.prof_id =:id AND el.examen_note is null" , nativeQuery = true)
+    List<Object[]> getExamenProfWithoutNote(@Param("id") Integer id);
+
 }
