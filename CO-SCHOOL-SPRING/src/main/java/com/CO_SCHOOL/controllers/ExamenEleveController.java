@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/examen_eleve")
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 public class ExamenEleveController {
     @Autowired
     private ExamenEleveService examenEleveService;
@@ -51,4 +51,9 @@ public class ExamenEleveController {
         return examenEleveService.getExamenDates(id);
     }
 
+
+    @GetMapping("examen+prof+without+note/{id}")
+    public List<ExamenProfDto> getExamenElevesWithoutNote(@PathVariable Integer id) {
+        return examenEleveService.getExamenProfWithoutNote(id);
+    }
 }
