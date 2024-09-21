@@ -31,8 +31,8 @@ public class ClasseGroup {
     @ManyToMany
     @JoinTable(
             name = "classe_professeur",
-            joinColumns = @JoinColumn(name = "classe_id"),
-            inverseJoinColumns = @JoinColumn(name = "professeur_id")
+            joinColumns = @JoinColumn(name = "classe_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "professeur_id", referencedColumnName = "id")
     )
     @JsonIgnore
     private List<Professeur> professeurs;

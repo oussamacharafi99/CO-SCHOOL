@@ -20,13 +20,11 @@ public class ExamenEleve {
 
     @ManyToOne
     @MapsId("eleveId")
-    @JoinColumn(name = "eleve_id")
+    @JoinColumn(name = "eleve_id", referencedColumnName = "id")
     private Eleve eleve;
 
     @ManyToOne
     @MapsId("examenId")
-    @JoinColumn(name = "examen_id")
+    @JoinColumn(name = "examen_id", referencedColumnName = "id")
     private Examen examen;
-
-
 }

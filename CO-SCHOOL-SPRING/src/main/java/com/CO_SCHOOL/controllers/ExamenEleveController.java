@@ -18,10 +18,8 @@ public class ExamenEleveController {
     private ExamenEleveService examenEleveService;
 
     @PostMapping("insert")
-    public ExamenEleve insertEleve(@RequestBody ExamenEleveDto examenEleveDto) {
-        System.out.println("---- > x :  " + examenEleveDto.getExamenId());
-        System.out.println("---- > e :  " + examenEleveDto.getEleveId());
-        return examenEleveService.insertEleve(examenEleveDto);
+    public String insertEleve(@RequestBody ExamenEleveDto examenEleveDto) {
+        return examenEleveService.insertElevesToExamen(examenEleveDto);
     }
 
     @PutMapping("insert_note/{examenId}/{eleveId}")
@@ -55,5 +53,10 @@ public class ExamenEleveController {
     @GetMapping("examen+prof+without+note/{id}")
     public List<ExamenProfDto> getExamenElevesWithoutNote(@PathVariable Integer id) {
         return examenEleveService.getExamenProfWithoutNote(id);
+    }
+
+    @GetMapping("get+eleve+by+examen+id:/{id}")
+    public List<ClassPersonDto> getEleveByExamenId(@PathVariable Integer id) {
+        return examenEleveService.getElevesByExamanId(id);
     }
 }

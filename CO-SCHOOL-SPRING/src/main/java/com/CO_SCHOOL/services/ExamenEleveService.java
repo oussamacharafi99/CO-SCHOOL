@@ -1,9 +1,12 @@
 package com.CO_SCHOOL.services;
 
 import com.CO_SCHOOL.dto.*;
+import com.CO_SCHOOL.enums.Assign;
 import com.CO_SCHOOL.enums.Semester;
 import com.CO_SCHOOL.models.*;
+import com.CO_SCHOOL.repositories.EleveRepo;
 import com.CO_SCHOOL.repositories.ExamenEleveRepo;
+import com.CO_SCHOOL.repositories.ExamenRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,20 +29,44 @@ public class ExamenEleveService {
     @Autowired
     private EleveService eleveService;
 
-    public ExamenEleve insertEleve(ExamenEleveDto examenEleveDto) {
-        Examen examen = examenService.GetExamanById(examenEleveDto.getExamenId());
-        System.out.println("009----x> "+examen.getId());
-        Eleve eleve = eleveService.getEleveById(examenEleveDto.getEleveId());
-        System.out.println("008----e> "+eleve.getId());
+    @Autowired
+    private ExamenRepo examenRepo;
 
-        ExamenEleve examenEleve = new ExamenEleve();
-        ExamenEleveId examenEleveId = new ExamenEleveId(examenEleveDto.getExamenId(), examenEleveDto.getEleveId());
-        examenEleve.setId(examenEleveId);
-        examenEleve.setExamen(examen);
-        examenEleve.setEleve(eleve);
-        examenEleve.setExamen_note(null);
-        return examenEleveRepo.save(examenEleve);
+    public String insertElevesToExamen(ExamenEleveDto examenEleveDto) {
+
+        Examen examen = examenService.GetExamanById(examenEleveDto.getExamenId());
+
+        System.out.println("examen: " + examenEleveDto.getExamenId());
+        System.out.println("classe: " + examenEleveDto.getClasseId());
+
+
+        examen.setAssign(Assign.ASSIGN);
+        System.out.println("009----x> " + examen.getId());
+
+        List<Eleve> eleves = eleveService.GetAllElevesByClasseId(examenEleveDto.getClasseId());
+
+        for (Eleve eleve : eleves) {
+            if (eleve.getId() == null) {
+                System.out.println("Eleve ID is null or missing for: " + eleve);
+                continue;
+            }
+
+            ExamenEleve examenEleve = new ExamenEleve();
+            ExamenEleveId examenEleveId = new ExamenEleveId(examenEleveDto.getExamenId(), eleve.getId());
+            examenEleve.setId(examenEleveId);
+            examenEleve.setExamen(examen);
+            examenEleve.setEleve(eleve);
+            examenEleve.setExamen_note(null);
+
+            examenEleveRepo.save(examenEleve);
+        }
+
+
+//        examenRepo.save(examen);
+
+        return "Les élèves ont été assignés avec succès à l'examen.";
     }
+
 
 
     public String updateEleveNote(ExamenEleveNoteDto examenEleveNoteDto, Integer examenId, Integer eleveId) {
@@ -107,5 +134,20 @@ public class ExamenEleveService {
     }
 
 
+
+    public List<ClassPersonDto> getElevesByExamanId(Integer examanId) {
+        List<Object[]> listEleves = examenEleveRepo.getElevesByExamanId(examanId);
+        return listEleves.stream()
+                .filter(eleve -> eleve[4] == null)
+                .map(eleve -> {
+                    Integer idE = (Integer) eleve[0];
+                    String identificationId = (String) eleve[1];
+                    String username =  (String) eleve[2];
+                    String classRoomName = (String) eleve[3];
+                    Double examenNote = (Double) eleve[4];
+                    return new ClassPersonDto(idE, identificationId, username, classRoomName, examenNote);
+                })
+                .collect(Collectors.toList());
+    }
 }
 

@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.models;
 
+import com.CO_SCHOOL.enums.Assign;
 import com.CO_SCHOOL.enums.Controle;
 import com.CO_SCHOOL.enums.Semester;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,16 +35,18 @@ public class Examen {
     @Enumerated(EnumType.STRING)
     private Semester semester;
 
+    @Enumerated(EnumType.STRING)
+    private Assign assign;
+
     @ManyToOne
-    @JoinColumn(name = "prof_id")
+    @JoinColumn(name = "prof_id", referencedColumnName = "id")
     private Professeur professeur;
 
     @ManyToOne
-    @JoinColumn(name = "class_group_id")
+    @JoinColumn(name = "class_group_id", referencedColumnName = "id")
     private ClasseGroup classGroup;
 
     @OneToMany(mappedBy = "examen")
     @JsonIgnore
     private List<ExamenEleve> examenEleves;
-
 }

@@ -69,7 +69,11 @@ public interface ExamenEleveRepo extends JpaRepository<ExamenEleve, Integer> {
 
 
 
-    @Query(value = "SELECT ex.id, ex.examen_name , ex.matter, ex.examen_date, ex.semester, ex.prof_id FROM examen_eleve el INNER JOIN examen ex ON ex.id = el.examen_id WHERE ex.prof_id =:id AND el.examen_note is null" , nativeQuery = true)
+    @Query(value = "SELECT ex.id, ex.examen_name , ex.matter, ex.examen_date, ex.semester, ex.prof_id FROM examen_eleve el INNER JOIN examen ex ON ex.id = el.examen_id WHERE ex.prof_id =:id AND el.examen_note is null GROUP BY matter" , nativeQuery = true)
     List<Object[]> getExamenProfWithoutNote(@Param("id") Integer id);
+
+
+    @Query(value = "SELECT el.id, el.identification_id, el.username , cg.class_room_name , exl.examen_note FROM examen_eleve exl INNER JOIN examen ex ON ex.id = exl.examen_id INNER JOIN person el ON el.id = eleve_id INNER JOIN classe_group cg ON cg.id = el.class_group_id WHERE examen_id =:id" , nativeQuery = true)
+    List<Object[]> getElevesByExamanId(@Param("id") Integer id);
 
 }
