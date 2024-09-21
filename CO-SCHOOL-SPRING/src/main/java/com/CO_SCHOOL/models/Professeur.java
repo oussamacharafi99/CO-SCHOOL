@@ -2,8 +2,7 @@ package com.CO_SCHOOL.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ public class Professeur extends Person {
     @OneToMany(mappedBy = "professeur")
     @JsonIgnore
     private List<Examen> examens;
-
 
     @ManyToMany(mappedBy = "professeurs")
     @JsonIgnore

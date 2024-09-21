@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.controllers;
 
+import com.CO_SCHOOL.dto.ExamenNameDto;
 import com.CO_SCHOOL.dto.InsertExamenDto;
 import com.CO_SCHOOL.models.Examen;
 import com.CO_SCHOOL.services.ExamenService;
@@ -18,6 +19,7 @@ public class ExamenController {
 
     @PostMapping("insert")
     public Examen insertExamen(@RequestBody InsertExamenDto insertExamenDto) {
+        System.out.println("04004040-----"  + insertExamenDto.getProfId());
         return examenService.CreateExaman(insertExamenDto);
     }
 
@@ -35,6 +37,11 @@ public class ExamenController {
 //    public List<Examen> getExamenEleve(@PathVariable Integer id) {
 //        return examenService.getExamenByEleveId(id);
 //    }
+
+    @GetMapping("get+examen+inassign")
+    public List<ExamenNameDto> getExamenInassign() {
+        return examenService.getExamenNotAssign();
+    }
 
 
     @GetMapping("get+examen+by+prof/{id}")

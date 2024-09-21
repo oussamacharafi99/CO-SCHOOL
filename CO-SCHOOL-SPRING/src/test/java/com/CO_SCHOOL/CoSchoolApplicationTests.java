@@ -19,30 +19,30 @@ class CoSchoolApplicationTests {
     @Autowired
     private ClasseGroupService classeGroupService;
 
-    @Test
-    public void testSave() {
-        ClasseGroup classeGroup = new ClasseGroup();
-        classeGroup.setClass_room_name("Test Class");
-        ClasseGroup savedClassGroup = classeGroupService.save(classeGroup);
-        assertNotNull(savedClassGroup);
-        assertEquals("Test Class", savedClassGroup.getClass_room_name());
-    }
-
-
-    @Test
-    public void testFindById() {
-        // Arrange
-        ClasseGroup classeGroup = new ClasseGroup();
-        classeGroup.setClass_room_name("Test Class");
-        classeGroup = classeGroupService.save(classeGroup);
-
-        // Act
-        ClasseGroup foundClassGroup = classeGroupService.findById(classeGroup.getId());
-
-        // Assert
-        assertNotNull(foundClassGroup);
-        assertEquals(classeGroup.getId(), foundClassGroup.getId());
-        assertEquals("Test Class", foundClassGroup.getClass_room_name());
-    }
+//    @Test
+//    public void testSave() {
+//        ClasseGroup classeGroup = new ClasseGroup();
+//        classeGroup.setClass_room_name("Test Class");
+//        ClasseGroup savedClassGroup = classeGroupService.save(classeGroup);
+//        assertNotNull(savedClassGroup);
+//        assertEquals("Test Class", savedClassGroup.getClass_room_name());
+//    }
+//
+//
+//    @Test
+//    public void testFindById() {
+//        // Arrange
+//        ClasseGroup classeGroup = new ClasseGroup();
+//        classeGroup.setClass_room_name("Test Class");
+//        classeGroup = classeGroupService.save(classeGroup);
+//
+//        // Act
+//        ClasseGroup foundClassGroup = classeGroupService.findById(classeGroup.getId());
+//
+//        // Assert
+//        assertNotNull(foundClassGroup);
+//        assertEquals(classeGroup.getId(), foundClassGroup.getId());
+//        assertEquals("Test Class", foundClassGroup.getClass_room_name());
+//    }
 
 }

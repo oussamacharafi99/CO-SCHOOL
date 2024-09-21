@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -74,5 +75,9 @@ public class EleveService {
 //        eleveRepo.save(eleve1);
 //        return "The password updated successfully";
 //    }
+
+    public List<Eleve> GetAllElevesByClasseId(Integer id) {
+        return eleveRepo.findEleveByClasseGroupId(id);
+    }
 
 }

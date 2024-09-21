@@ -10,6 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExamenEleveDto {
-    private Integer eleveId;
     private Integer examenId;
+    private Integer classeId;
 }
