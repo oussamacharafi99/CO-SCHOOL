@@ -62,8 +62,8 @@ public class ExamenService {
         return examenRepo.findAllByProfesseurId(profId);
     }
 
-    public List<ExamenNameDto> getExamenNotAssign(){
-        List<Object[]> examens = examenRepo.getExamenNotAssign();
+    public List<ExamenNameDto> getExamenNotAssign(Integer profId){
+        List<Object[]> examens = examenRepo.getExamenNotAssign(profId);
         return examens.stream().map(examen ->{
             Integer examenId = (Integer)examen[0];
             String examenName = (String)examen[1];
