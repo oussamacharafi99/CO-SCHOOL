@@ -1,0 +1,35 @@
+<h1>Correction pour l'examen</h1>
+<div class="cont">
+  <table mat-table [dataSource]="listEleves" class="mat-elevation-z8">
+
+    <!-- Identification Column -->
+    <ng-container matColumnDef="identificationId">
+      <th mat-header-cell  id="th" *matHeaderCellDef>Identification</th>
+      <td mat-cell *matCellDef="let eleve"> {{ eleve.identificationId }} </td>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell  id="th" *matHeaderCellDef>Nom et Prénom</th>
+      <td mat-cell *matCellDef="let eleve"> {{ eleve.username }} </td>
+    </ng-container>
+
+    <!-- Class Room Name Column -->
+    <ng-container matColumnDef="classRoomName">
+      <th mat-header-cell  id="th" *matHeaderCellDef>Nom de Classe</th>
+      <td mat-cell *matCellDef="let eleve"> {{ eleve.classRoomName }} </td>
+    </ng-container>
+
+    <!-- Correction Column -->
+    <ng-container matColumnDef="correction">
+      <th mat-header-cell  id="th" *matHeaderCellDef><i class="pi pi-file-edit"></i></th>
+      <td mat-cell *matCellDef="let eleve">
+        <button (click) ="print(eleve.id)"><i class="pi pi-sync"></i></button>
+      </td>
+    </ng-container>
+
+    <!-- Table Header and Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

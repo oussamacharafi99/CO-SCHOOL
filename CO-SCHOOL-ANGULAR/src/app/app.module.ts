@@ -35,6 +35,14 @@ import { DashboardProfHeaderComponent } from './DASHBOARD-PROF/dashboard-prof-he
 import { DashboardProfHomeComponent } from './DASHBOARD-PROF/dashboard-prof-home/dashboard-prof-home.component';
 import { DashboardProfExamenComponent } from './DASHBOARD-PROF/dashboard-prof-examen/dashboard-prof-examen.component';
 import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/dashboard-prof-add-examen/dashboard-prof-add-examen.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { DashboardProfNormalExamensComponent } from './DASHBOARD-PROF/dashboard-prof-normal-examens/dashboard-prof-normal-examens.component';
+import { DashboardProfExamensNotesComponent } from './DASHBOARD-PROF/dashboard-prof-examens-notes/dashboard-prof-examens-notes.component';
+import { DashboardProfElevesComponent } from './DASHBOARD-PROF/dashboard-prof-eleves/dashboard-prof-eleves.component';
+import { DashboardProfCarteEleveComponent } from './DASHBOARD-PROF/dashboard-prof-carte-eleve/dashboard-prof-carte-eleve.component';
+import { DashboardProfInsertElevesToExamenComponent } from './DASHBOARD-PROF/dashboard-prof-insert-eleves-to-examen/dashboard-prof-insert-eleves-to-examen.component';
+import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +69,13 @@ import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/dashboard-prof
     DashboardProfHeaderComponent,
     DashboardProfHomeComponent,
     DashboardProfExamenComponent,
-    DashboardProfAddExamenComponent
+    DashboardProfAddExamenComponent,
+    DashboardProfNormalExamensComponent,
+    DashboardProfExamensNotesComponent,
+    DashboardProfElevesComponent,
+    DashboardProfCarteEleveComponent,
+    DashboardProfInsertElevesToExamenComponent,
+    DashboardAdminExamCorrectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +88,9 @@ import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/dashboard-prof
     MatPaginatorModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BrowserAnimationsModule, 
+    MatTableModule,
   ],
   providers: [
     // {

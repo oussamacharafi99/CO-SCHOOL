@@ -27,7 +27,7 @@ export class DashboardProfAddExamenComponent implements OnInit {
       classGroupId: ['', [Validators.required]],
       matter: ['', [Validators.required]],
       semester: ['', [Validators.required]],
-      profId: 26,
+      profId: 25,
     });
   }
 
@@ -36,8 +36,19 @@ export class DashboardProfAddExamenComponent implements OnInit {
       const newExamen: insertExamenDto = this.formExamen.value;
 
       this.service.insertExamen(newExamen).subscribe(data => {
-        console.log('Examen ajouté avec succès :', data);
+        alert('Examen ajouté avec succès ');  
       });
+
     }
+    this.formExamen = this.fb.group({
+      examenName: ['', [Validators.required]],
+      examenDate: ['', [Validators.required]],
+      classGroupId: ['', [Validators.required]],
+      matter: ['', [Validators.required]],
+      semester: ['', [Validators.required]],
+      profId:'',
+    });
   }
+
+  
 }

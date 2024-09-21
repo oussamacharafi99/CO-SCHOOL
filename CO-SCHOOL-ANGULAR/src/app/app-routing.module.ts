@@ -9,6 +9,8 @@ import { DashboardEleveHomeComponent } from './DASHBOARD-ELEVE/dashboard-eleve-h
 import { DashboardProfComponent } from './DASHBOARD-PROF/dashboard-prof/dashboard-prof.component';
 import { DashboardProfHomeComponent } from './DASHBOARD-PROF/dashboard-prof-home/dashboard-prof-home.component';
 import { DashboardProfExamenComponent } from './DASHBOARD-PROF/dashboard-prof-examen/dashboard-prof-examen.component';
+import { DashboardProfExamensNotesComponent } from './DASHBOARD-PROF/dashboard-prof-examens-notes/dashboard-prof-examens-notes.component';
+import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -19,13 +21,16 @@ const routes: Routes = [
       { path: 'result', component: DashboardEleveNotesComponent },
       { path: 'calendar', component: DashboardEleveCalendarExamComponent },
     
-]},
-{
-  path: 'prof-dashboard', component: DashboardProfComponent, children: [
-    { path:'',component:DashboardProfHomeComponent},
-    { path:'dash-examens',component:DashboardProfExamenComponent},
-  
-]},
+  ]},
+  {
+    path:'prof-dashboard', component: DashboardProfComponent, children: [
+      { path:'',component:DashboardProfHomeComponent},
+      { path:'dash-examens',component:DashboardProfExamenComponent , children : [
+        {path:'' , component: DashboardProfExamensNotesComponent},
+        {path:'correction/:id' , component : DashboardAdminExamCorrectionComponent}
+      ]},
+  ]},
+
 
 
 ];

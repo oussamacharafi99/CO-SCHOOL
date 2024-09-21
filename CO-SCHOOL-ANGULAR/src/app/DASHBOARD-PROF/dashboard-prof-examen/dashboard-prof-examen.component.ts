@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Examen } from 'src/app/Models/examen';
+import { ExmaneService } from 'src/app/Services/examen.service';
 
 @Component({
   selector: 'app-dashboard-prof-examen',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-prof-examen.component.css']
 })
 export class DashboardProfExamenComponent {
-
 }
+
+

@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Assign Controle a vous Eleves</h1>
+<form [formGroup]="FormExamenEleves" (ngSubmit)="submit()">
+
+    <div class="form-group">
+        <label for="examenId">Select Examen </label>
+        <select id="examenId" formControlName="examenId" class="form-control">
+          <option value="" disabled>Select Examen</option>
+          <option *ngFor="let examen of ListExamens" [value]="examen.examenId">{{examen.matter}}</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="classeId">Select Classe </label>
+        <select id="classeId" formControlName="classeId" class="form-control">
+          <option value="" disabled>Select Classe</option>
+          <option *ngFor="let classe of ListClasse" [value]="classe.id">{{classe.class_name}}</option>
+        </select>
+    </div>
+    <br>
+
+    <div class="form-group">
+    <button type="submit">Submit</button>
+    </div>
+</form>
+</div>
+  
