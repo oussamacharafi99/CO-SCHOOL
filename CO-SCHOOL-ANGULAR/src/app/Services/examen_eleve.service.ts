@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { ResultDto } from '../Models/ResultDto';
 import { AvgNote } from '../Models/AvgNote';
 import { ExamenDateDto } from '../Models/dto/ExamenDateDto';
+import { ExamenEleveDto } from '../Models/dto/ExamenEleveDto';
+import { ClassPersonDto } from '../Models/dto/ClassPersonDto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,11 @@ export class examenEleveService {
 
   constructor(private http : HttpClient) { }
 
-  _API_RESULT = "http://localhost:9091/api/examen_eleve/result";
-  _API_RESULT_AVG = "http://localhost:9091/api/examen_eleve/result/total";
-  _API_EXAMEN_DATE = "http://localhost:9091/api/examen_eleve/result/examen+date";
-
+  private _API_RESULT = "http://localhost:9091/api/examen_eleve/result";
+  private _API_RESULT_AVG = "http://localhost:9091/api/examen_eleve/result/total";
+  private _API_EXAMEN_DATE = "http://localhost:9091/api/examen_eleve/result/examen+date";
+  private _API_INSERT_EXAMEN_TO_ELEVES = "http://localhost:9091/api/examen_eleve/insert";
+  private _API_GET_ELEVES_BY_EXAMEN_ID = "http://localhost:9091/api/examen_eleve/get+eleve+by+examen+id:";
 
   /****___________  get Semester Result _____________*****/
   eleve_result(id : number , semester : string , year : number):Observable<ResultDto[]>{
@@ -33,7 +36,12 @@ export class examenEleveService {
   }
 
 
+  insertElevesToExamen(examenEleveDto : ExamenEleveDto):Observable<ExamenEleveDto>{
+      return this.http.post<ExamenEleveDto>(this._API_INSERT_EXAMEN_TO_ELEVES, examenEleveDto);
+  }
 
-
+  getElevesByExamenId(id : number ):Observable<ClassPersonDto[]>{
+    return this.http.get<ClassPersonDto[]>(this._API_GET_ELEVES_BY_EXAMEN_ID + "/" + id)
+  }
 
 }

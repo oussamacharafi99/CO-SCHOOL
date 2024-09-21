@@ -3,5 +3,41 @@
 }
 .main-wrapper{
     width: 100%;
-    padding: 20px;    
+    padding: 20px;
+}
+.main-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.add-examen{
+    width: 39%;
+}
+.tab-examen{
+    width: 60%;
+    background: var(--background-color);
+    margin-left: 10px;
+    padding: 20px;
+    max-height: 305px;
+    border-radius: 12px;
+}
+.main-center-general{
+    width: 100%;
+}
+.main-center{
+    width: 100%;
+    background: var(--background-color);
+    padding: 20px;
+    max-height: 400px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+.main-center2{
+    width: 100%;
+    background: var(--background-color);
+    padding: 20px;
+    height: 400px;
+    max-height: 400px;
+    border-radius: 12px;
+    margin-top: 20px;
 }
