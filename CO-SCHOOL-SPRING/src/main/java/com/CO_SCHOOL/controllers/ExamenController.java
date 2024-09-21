@@ -38,9 +38,9 @@ public class ExamenController {
 //        return examenService.getExamenByEleveId(id);
 //    }
 
-    @GetMapping("get+examen+inassign")
-    public List<ExamenNameDto> getExamenInassign() {
-        return examenService.getExamenNotAssign();
+    @GetMapping("get+examen+inassign/{id}")
+    public List<ExamenNameDto> getExamenInassign(@PathVariable Integer id) {
+        return examenService.getExamenNotAssign(id);
     }
 
 

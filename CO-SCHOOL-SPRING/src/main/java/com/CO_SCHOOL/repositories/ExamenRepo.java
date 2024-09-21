@@ -17,6 +17,6 @@ public interface ExamenRepo extends JpaRepository<Examen, Integer> {
     List<Examen> findAllByProfesseurId(Integer professeurId);
     List<Examen> findAllByProfesseur_Id (Integer professeurId);
 
-    @Query(value = "SELECT ex.id, ex.examen_name , ex.matter  FROM examen ex WHERE ex.assign = 'INASSIGN'" , nativeQuery = true)
-    List<Object[]> getExamenNotAssign();
+    @Query(value = "SELECT ex.id, ex.examen_name , ex.matter  FROM examen ex WHERE ex.assign = 'INASSIGN' AND ex.prof_id =:id " , nativeQuery = true)
+    List<Object[]> getExamenNotAssign(@Param("id") Integer ic);
 }
