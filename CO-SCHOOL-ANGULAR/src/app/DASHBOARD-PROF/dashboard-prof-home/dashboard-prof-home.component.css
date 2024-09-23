@@ -21,16 +21,33 @@
     max-height: 305px;
     border-radius: 12px;
 }
+
 .main-center-general{
     width: 100%;
 }
-.main-center{
+.main-exmanes{
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.main-center{
+    width: 62%;
     background: var(--background-color);
     padding: 20px;
+    height: 300px;
     max-height: 400px;
     border-radius: 12px;
     margin-top: 20px;
+}
+.main-centerX{
+    width: 37%;
+    background: var(--background-color);
+    padding: 20px;
+    height: 300px;
+    max-height: 400px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 .main-center2{
     width: 100%;

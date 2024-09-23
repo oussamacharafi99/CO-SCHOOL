@@ -18,7 +18,7 @@ export class DashboardProfAddExamenComponent implements OnInit {
 
   ngOnInit(): void {
     this.classeService.getClassesNameOfProf(25).subscribe(data => {
-      this.ListClasseRooms = data;
+    this.ListClasseRooms = data;
     });
 
     this.formExamen = this.fb.group({

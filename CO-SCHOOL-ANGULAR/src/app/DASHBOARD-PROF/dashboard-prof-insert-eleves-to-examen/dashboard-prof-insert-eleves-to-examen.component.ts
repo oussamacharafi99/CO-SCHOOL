@@ -12,27 +12,27 @@ import { examenEleveService } from 'src/app/Services/examen_eleve.service';
   templateUrl: './dashboard-prof-insert-eleves-to-examen.component.html',
   styleUrls: ['./dashboard-prof-insert-eleves-to-examen.component.css']
 })
-export class DashboardProfInsertElevesToExamenComponent implements OnInit{
+export class DashboardProfInsertElevesToExamenComponent implements OnInit {
     ListClasse !: ClasseNameDto[];
     ListExamens !: ExamenNameDto[];
     FormExamenEleves !: FormGroup;
+    showAlert: boolean = false; 
 
-    constructor(private fb : FormBuilder , private classeService: classeGroupService , private exService : examenEleveService , private service : ExmaneService){}
+    constructor(private fb : FormBuilder, private classeService: classeGroupService, private exService : examenEleveService, private service : ExmaneService) {}
+
     ngOnInit(): void {
       this.classeService.getClassesNameOfProf(25).subscribe(data => {
         this.ListClasse = data;
       });
 
-      this.service.getAllExamenInassign().subscribe(data =>{
+      this.service.getAllExamenInassign(25).subscribe(data => {
         this.ListExamens = data;
-      })
+      });
 
       this.FormExamenEleves = this.fb.group({
-        examenId :  ['', [Validators.required]],
-        classeId :  ['', [Validators.required]],
-      })
-
-    
+        examenId : ['', [Validators.required]],
+        classeId : ['', [Validators.required]],
+      });
     }
 
     submit() {
@@ -44,11 +44,14 @@ export class DashboardProfInsertElevesToExamenComponent implements OnInit{
     
         this.exService.insertElevesToExamen(newExamenEleveDto).subscribe(
           data => {
-            console.log('Students successfully added to the exam!', data);
+            alert("Élèves ajoutés à l'examen avec succès" + data);
           }
         );
-      } else {
-        console.log('Form is invalid');
       }
+      this.FormExamenEleves = this.fb.group({
+        examenId : ['', [Validators.required]],
+        classeId : ['', [Validators.required]],
+      });
+      this.showAlert = true; 
     }
 }

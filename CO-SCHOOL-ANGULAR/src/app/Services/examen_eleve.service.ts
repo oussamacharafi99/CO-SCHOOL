@@ -6,6 +6,8 @@ import { AvgNote } from '../Models/AvgNote';
 import { ExamenDateDto } from '../Models/dto/ExamenDateDto';
 import { ExamenEleveDto } from '../Models/dto/ExamenEleveDto';
 import { ClassPersonDto } from '../Models/dto/ClassPersonDto';
+import { ExamenEleveNoteDto } from '../Models/dto/ExamenEleveNoteDto';
+import { ex } from '@fullcalendar/core/internal-common';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class examenEleveService {
   constructor(private http : HttpClient) { }
 
   private _API_RESULT = "http://localhost:9091/api/examen_eleve/result";
+  private _API_INSERT_NOTE = "http://localhost:9091/api/examen_eleve/insert_note";
   private _API_RESULT_AVG = "http://localhost:9091/api/examen_eleve/result/total";
   private _API_EXAMEN_DATE = "http://localhost:9091/api/examen_eleve/result/examen+date";
   private _API_INSERT_EXAMEN_TO_ELEVES = "http://localhost:9091/api/examen_eleve/insert";
@@ -42,6 +45,10 @@ export class examenEleveService {
 
   getElevesByExamenId(id : number ):Observable<ClassPersonDto[]>{
     return this.http.get<ClassPersonDto[]>(this._API_GET_ELEVES_BY_EXAMEN_ID + "/" + id)
+  }
+
+  insertNote(examId :number , eleveId : number , note :  ExamenEleveNoteDto):Observable<ExamenEleveNoteDto>{
+    return this.http.put<ExamenEleveNoteDto>(this._API_INSERT_NOTE + "/" + examId + "/" + eleveId , note );
   }
 
 }
