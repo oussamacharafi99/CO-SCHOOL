@@ -55,6 +55,11 @@ public class ExamenEleveController {
         return examenEleveService.getExamenProfWithoutNote(id);
     }
 
+    @GetMapping("examen+prof+encoure+correction/{id}")
+    public List<ExamenProfDto> getExamenElevesEncoureCorriction(@PathVariable Integer id) {
+        return examenEleveService.getExamenProfEncoureCorection(id);
+    }
+
     @GetMapping("get+eleve+by+examen+id:/{id}")
     public List<ClassPersonDto> getEleveByExamenId(@PathVariable Integer id) {
         return examenEleveService.getElevesByExamanId(id);

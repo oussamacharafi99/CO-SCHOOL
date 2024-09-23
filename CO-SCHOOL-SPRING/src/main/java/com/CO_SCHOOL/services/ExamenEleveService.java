@@ -133,6 +133,22 @@ public class ExamenEleveService {
         }).collect(Collectors.toList());
     }
 
+    @Transactional
+    public List<ExamenProfDto> getExamenProfEncoureCorection(Integer id) {
+        List<Object[]> ListExamensProfDto = examenEleveRepo.getExamenProfEncoureCorrection(id);
+        return ListExamensProfDto.stream().map(examens -> {
+            Integer idE = (Integer) examens[0];
+            String exmanName = (String) examens[1];
+            String matter = (String) examens[2];
+            java.sql.Date sqlDate = (java.sql.Date) examens[3];
+            LocalDate examen_date = sqlDate.toLocalDate();
+            String semesterStr = (String) examens[4];
+            Semester semester = Semester.valueOf(semesterStr);
+            Integer ProfId = (Integer) examens[5];
+            return new ExamenProfDto(idE, exmanName, matter, examen_date, semester, ProfId);
+        }).collect(Collectors.toList());
+    }
+
 
 
     public List<ClassPersonDto> getElevesByExamanId(Integer examanId) {
