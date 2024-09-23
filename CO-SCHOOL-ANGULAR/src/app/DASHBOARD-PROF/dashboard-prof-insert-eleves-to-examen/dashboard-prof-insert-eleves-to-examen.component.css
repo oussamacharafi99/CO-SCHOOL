@@ -39,3 +39,14 @@ label{
     background: var(--hover-bg);
     color: var(--hover-color);
 }
+
+#alert{
+    position: absolute;
+    top: 20px;
+    left: 35%;
+    right: 35%;
+    width: 30%;
+}
+strong{
+    color: var(--text-color) !important;
+}

@@ -43,6 +43,8 @@ import { DashboardProfElevesComponent } from './DASHBOARD-PROF/dashboard-prof-el
 import { DashboardProfCarteEleveComponent } from './DASHBOARD-PROF/dashboard-prof-carte-eleve/dashboard-prof-carte-eleve.component';
 import { DashboardProfInsertElevesToExamenComponent } from './DASHBOARD-PROF/dashboard-prof-insert-eleves-to-examen/dashboard-prof-insert-eleves-to-examen.component';
 import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
+import { DashboardProfUpdateExamenComponent } from './DASHBOARD-PROF/dashboard-prof-update-examen/dashboard-prof-update-examen.component';
+import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-encoure-correction/dashboard-admin-encoure-correction.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboar
     DashboardProfCarteEleveComponent,
     DashboardProfInsertElevesToExamenComponent,
     DashboardAdminExamCorrectionComponent,
+    DashboardProfUpdateExamenComponent,
+    DashboardAdminEncoureCorrectionComponent,
   ],
   imports: [
     BrowserModule,

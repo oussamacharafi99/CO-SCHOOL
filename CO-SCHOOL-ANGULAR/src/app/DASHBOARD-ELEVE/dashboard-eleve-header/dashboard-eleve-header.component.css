@@ -107,3 +107,61 @@ header{
     font-size: 14px;
     color: var(--color-primary);
 }
+
+/* Media Queries */
+
+/* For Large Screens */
+@media only screen and (max-width: 1200px) {
+    .search {
+        width: 40%;
+    }
+    .controles > a {
+        margin: 0 15px 0 0;
+    }
+}
+
+/* For Medium Screens */
+@media only screen and (max-width: 992px) {
+    .search {
+        width: 50%;
+    }
+    .controles > a {
+        margin: 0 10px 0 0;
+    }
+    .user-info {
+        padding: 0 5px;
+    }
+}
+
+/* For Small Screens */
+@media only screen and (max-width: 768px) {
+    .search {
+        width: 60%;
+    }
+    .controles > a {
+        margin: 0 5px 0 0;
+    }
+    .user-info {
+        padding: 0;
+    }
+    .profile-img {
+        width: 30px;
+        height: 30px;
+    }
+    .user-info > h1 {
+        font-size: 14px;
+    }
+}
+
+/* For Extra Small Screens */
+@media only screen and (max-width: 576px) {
+    .search {
+        width: 80%;
+    }
+    .controles > a {
+        margin: 0;
+    }
+    .user-info {
+        display: none;
+    }
+}
