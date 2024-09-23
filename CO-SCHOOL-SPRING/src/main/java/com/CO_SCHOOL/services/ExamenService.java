@@ -3,6 +3,7 @@ package com.CO_SCHOOL.services;
 import com.CO_SCHOOL.dto.ExamenNameDto;
 import com.CO_SCHOOL.dto.InsertExamenDto;
 import com.CO_SCHOOL.enums.Assign;
+import com.CO_SCHOOL.exeptions.CoEcoSchoolExepion;
 import com.CO_SCHOOL.models.ClasseGroup;
 import com.CO_SCHOOL.models.Eleve;
 import com.CO_SCHOOL.models.Examen;
@@ -48,6 +49,23 @@ public class ExamenService {
         return examenRepo.save(examen);
     }
 
+    public Examen UpdateExaman(Integer id, InsertExamenDto insertExamenDto) {
+        System.out.println("id class : " + insertExamenDto.getClassGroupId());
+        System.out.println("id prof : " + insertExamenDto.getProfId());
+
+        Examen examen = examenRepo.findById(id).orElseThrow(() -> new CoEcoSchoolExepion("Examen non trouvé"));
+        Professeur professeur = profRepo.findById(insertExamenDto.getProfId()).orElseThrow(() -> new CoEcoSchoolExepion("Professeur non trouvé"));
+        ClasseGroup classeGroup = classGroupRepo.findById(insertExamenDto.getClassGroupId()).orElseThrow(() -> new CoEcoSchoolExepion("ClassGroup non trouvé"));
+        examen.setProfesseur(professeur);
+        examen.setExamen_name(insertExamenDto.getExamenName());
+        examen.setExamen_date(insertExamenDto.getExamenDate());
+        examen.setClassGroup(classeGroup);
+        examen.setMatter(insertExamenDto.getMatter());
+        examen.setSemester(insertExamenDto.getSemester());
+        examen.setAssign(Assign.ASSIGN);
+        return examenRepo.save(examen);
+    }
+
     public Examen GetExamanById(int id) {
         return examenRepo.findById(id).orElseThrow(()-> new RuntimeException("No examen found with id: " + id));
     }
@@ -55,7 +73,6 @@ public class ExamenService {
     public List<Examen> getAllExamen() {
         return examenRepo.findAll();
     }
-
 
 
     public List<Examen> getExamenByProfId(Integer profId) {

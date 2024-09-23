@@ -41,9 +41,11 @@ public class ConfigSecurity {
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")
                                 .requestMatchers("api/examen/get+examen+by+prof/**").permitAll() // prof
                                 .requestMatchers("api/examen/get+examen+inassign/**").permitAll() // prof
+                                .requestMatchers("api/examen/update+examen/**").permitAll() // prof
                                 .requestMatchers("api/examen/**").permitAll()
                                 .requestMatchers("api/examen_eleve/result/total/**","api/examen_eleve/result/**","api/examen_eleve/result/examen+date/**").permitAll()
-                                .requestMatchers("api/examen_eleve/examen+prof+without+note/**").permitAll()
+                                .requestMatchers("api/examen_eleve/examen+prof+without+note/**").permitAll() // prof admin
+                                .requestMatchers("api/examen_eleve/examen+prof+encoure+correction/**").permitAll() // prof admin
                                 .requestMatchers("api/examen_eleve/**").permitAll() //prof
                                 .requestMatchers("api/classeGroup/Prof_eleves/**").permitAll() //prof // admin
                                 .requestMatchers("api/classeGroup/profs+class/**","api/classeGroup/get+class+by+prof+id/**").permitAll()
