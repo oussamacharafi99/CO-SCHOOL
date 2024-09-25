@@ -3,6 +3,7 @@ import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ExamenDateDto } from 'src/app/Models/dto/ExamenDateDto';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { examenEleveService } from 'src/app/Services/examen_eleve.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
   examensDates!: ExamenDateDto[];
   status!: string;
   currentDate!: string;
+  personId !: number;
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -29,9 +31,9 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
   constructor(private service: examenEleveService) { }
 
   ngOnInit(): void {
+    this.getIdPersonFromJwt();
     this.service.getExamenDates(3).subscribe(data => {
       this.examensDates = data;
-
       const events = this.examensDates.map(exam => ({
         title: `${exam.examen_name} \n- ${exam.matter}`,
         date: exam.examen_date,
@@ -71,6 +73,17 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
       alert(`Exam: ${clickedEvent.matter} --  ${clickedEvent.examen_name} \nDate: ${clickedEvent.examen_date}`);
     } else {
       alert('No exam on this date.');
+    }
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
 }

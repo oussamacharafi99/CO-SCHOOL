@@ -17,6 +17,7 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
   ListClasseRooms!: ClasseNameDto[];
   ExamRecuper!: Examen;
   idEx!: number;
+  classeName !: string;
 
   constructor(
     private fb: FormBuilder,
@@ -36,10 +37,10 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
       profId: ''
     });
 
-    // Get the examen ID from route params
+    
     this.idEx = +this.route.snapshot.paramMap.get('id')!;
 
-    // Fetch the examen by ID and patch the form values
+    
     this.service.getExamenById(this.idEx).subscribe((data) => {
       this.ExamRecuper = data;
       this.formExamen.patchValue({
@@ -50,9 +51,10 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
         semester: this.ExamRecuper.semester,
         profId: this.ExamRecuper.professeur.id
       });
+      this.update()
     });
 
-    // Fetch the list of classes
+    
     this.classeService.getClassesNameOfProf(25).subscribe((data) => {
       this.ListClasseRooms = data;
     });

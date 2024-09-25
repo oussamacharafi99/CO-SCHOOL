@@ -13,6 +13,8 @@ import { DashboardProfExamensNotesComponent } from './DASHBOARD-PROF/dashboard-p
 import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
 import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/dashboard-prof-add-examen/dashboard-prof-add-examen.component';
 import { DashboardProfUpdateExamenComponent } from './DASHBOARD-PROF/dashboard-prof-update-examen/dashboard-prof-update-examen.component';
+import { DashboardAdminEleveExamenComponent } from './DASHBOARD-PROF/dashboard-admin-eleve-examen/dashboard-admin-eleve-examen.component';
+import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-encoure-correction/dashboard-admin-encoure-correction.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -27,8 +29,9 @@ const routes: Routes = [
   {
     path:'prof-dashboard', component: DashboardProfComponent, children: [
       { path:'',component:DashboardProfHomeComponent , children : [
-        {path: '', component: DashboardProfAddExamenComponent},
+        {path:'', component: DashboardProfAddExamenComponent},
         {path: 'update+examen/:id', component: DashboardProfUpdateExamenComponent},
+        {path:'correction/:id' , component: DashboardAdminEleveExamenComponent}
       ]},
       { path:'dash-examens',component:DashboardProfExamenComponent , children : [
         {path:'' , component: DashboardProfExamensNotesComponent},

@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { DateClickArg } from '@fullcalendar/interaction';
 import { AbsenceService } from 'src/app/Services/absence.service';
 import { Absence } from 'src/app/Models/absence';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 
 @Component({
   selector: 'app-dashboard-eleve-absence',
@@ -13,6 +14,8 @@ import { Absence } from 'src/app/Models/absence';
 })
 export class DashboardEleveAbsenceComponent implements OnInit {
   ListAbsence: Absence[] = [];
+  personId !: number;
+
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     weekends: true,
@@ -29,6 +32,7 @@ export class DashboardEleveAbsenceComponent implements OnInit {
   constructor(private service: AbsenceService) {}
 
   ngOnInit() {
+    this.getIdPersonFromJwt();
     this.service.getAbsenceEleve(3).subscribe(data => {
       this.ListAbsence = data;
       const events = this.ListAbsence.map(absence => ({
@@ -52,5 +56,16 @@ export class DashboardEleveAbsenceComponent implements OnInit {
 
   handleDateClick(dateClickInfo: DateClickArg) {
     alert('Date clicked: ' + dateClickInfo.dateStr);
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
   }
 }

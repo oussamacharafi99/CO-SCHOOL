@@ -1,4 +1,4 @@
 export interface JwtDto{
-  Person_id : number
+  person_id : number
   token : string
 }
