@@ -6,10 +6,10 @@
     <ul>
         <li>
             <a 
-               routerLink="/eleve-dashboard" 
-               (click)="setActiveLink('/eleve-dashboard')" 
+               routerLink="/prof-dashboard" 
+               (click)="setActiveLink('/prof-dashboard')" 
                [ngClass]="{
-                   'active': activeLink === '/eleve-dashboard', 
+                   'active': activeLink === '/prof-dashboard', 
                    'match': isFirstLinkActive()
                }">
                <i class="pi pi-home"></i>
@@ -17,25 +17,25 @@
         </li>
         <li>
             <a 
-               routerLink="/eleve-dashboard/statistics" 
-               (click)="setActiveLink('/eleve-dashboard/statistics')" 
-               [ngClass]="{'active': activeLink === '/eleve-dashboard/statistics'}">
+               routerLink="/prof-dashboard/statistics" 
+               (click)="setActiveLink('/prof-dashboard/statistics')" 
+               [ngClass]="{'active': activeLink === '/prof-dashboard/statistics'}">
                <i class="pi pi-chart-pie"></i>
             </a>
         </li>
         <li>
             <a 
-               routerLink="/eleve-dashboard/result" 
-               (click)="setActiveLink('/eleve-dashboard/result')" 
-               [ngClass]="{'active': activeLink === '/eleve-dashboard/result'}">
+               routerLink="/prof-dashboard/dash-examens" 
+               (click)="setActiveLink('/prof-dashboard/dash-examens')" 
+               [ngClass]="{'active': activeLink === '/prof-dashboard/dash-examens'}">
                <i class="pi pi-clipboard"></i>
             </a>
         </li>
         <li>
             <a 
-               routerLink="/eleve-dashboard/calendar" 
-               (click)="setActiveLink('/eleve-dashboard/calendar')" 
-               [ngClass]="{'active': activeLink === '/eleve-dashboard/calendar'}">
+               routerLink="/prof-dashboard/calendar" 
+               (click)="setActiveLink('/prof-dashboard/calendar')" 
+               [ngClass]="{'active': activeLink === '/prof-dashboard/calendar'}">
                <i class="pi pi-calendar"></i>
             </a>
         </li>

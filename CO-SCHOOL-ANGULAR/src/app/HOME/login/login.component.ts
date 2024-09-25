@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Role } from '../../Models/enums/enum';
 import { jwtDecode } from 'jwt-decode';
 import { AuthServiceService } from '../../Services/auth-service.service';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit{
   formLogin!: FormGroup;
   errorMessage: string = '';
   isLoading: boolean = false;
+  personId !: number;
 
   constructor(
     private fb: FormBuilder,
@@ -48,14 +50,14 @@ export class LoginComponent implements OnInit{
 
           if (
             decodedToken.roles &&
-            decodedToken.roles.includes(Role[Role.ROLE_ADMIN])
+            decodedToken.roles.includes(Role[Role.ROLE_PROF])
           ) {
-            this.router.navigateByUrl('dashboard');
+            this.router.navigateByUrl('prof-dashboard');
           } else if (
             decodedToken.roles &&
             decodedToken.roles.includes(Role[Role.ROLE_ELEVE])
           ) {
-            this.router.navigateByUrl('userDash');
+            this.router.navigateByUrl('eleve-dashboard');
           } else if (
             decodedToken.roles &&
             decodedToken.roles.includes(Role[Role.ROLE_PARENT])
@@ -67,12 +69,6 @@ export class LoginComponent implements OnInit{
           }
           this.isLoading = false;
         },
-        (error) => {
-          this.isLoading = false;
-          alert('Username or password is incorrect. Please try again.');
-          this.errorMessage = 'Username or password is incorrect.';
-          console.log('Login error:', error);
-        }
       );
     } else {
       this.errorMessage = 'All fields are required.';

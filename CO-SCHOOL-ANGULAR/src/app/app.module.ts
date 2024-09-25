@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './HOME/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { InterceptorAuth } from './Services/interceptor.service';
+import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
 import { AboutComponent } from './HOME/about/about.component';
@@ -45,6 +45,7 @@ import { DashboardProfInsertElevesToExamenComponent } from './DASHBOARD-PROF/das
 import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
 import { DashboardProfUpdateExamenComponent } from './DASHBOARD-PROF/dashboard-prof-update-examen/dashboard-prof-update-examen.component';
 import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-encoure-correction/dashboard-admin-encoure-correction.component';
+import { DashboardAdminEleveExamenComponent } from './DASHBOARD-PROF/dashboard-admin-eleve-examen/dashboard-admin-eleve-examen.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/dashb
     DashboardAdminExamCorrectionComponent,
     DashboardProfUpdateExamenComponent,
     DashboardAdminEncoureCorrectionComponent,
+    DashboardAdminEleveExamenComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,11 +99,11 @@ import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/dashb
     MatTableModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: InterceptorAuth,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorAuth,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

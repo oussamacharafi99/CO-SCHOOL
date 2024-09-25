@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChangePasswordDto } from 'src/app/Models/dto/ChangePasswordDto';
 import { ClasseProfDto } from 'src/app/Models/dto/ClasseProfDto';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { Eleve } from 'src/app/Models/eleve';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import { classeGroupService } from 'src/app/Services/classe-group.service';
@@ -19,6 +20,7 @@ export class DashboardEleveHomeComponent implements OnInit {
   fromChangePass!: FormGroup;
   isFlowVisible = true;
   check :boolean = false;
+  personId !: number;
 
   constructor(
     private service: classeGroupService,
@@ -27,6 +29,7 @@ export class DashboardEleveHomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getIdPersonFromJwt();
     this.service.getProfClasseGroup(1).subscribe(data => {
       this.listProfOfClasse = data;
       if (data.length > 0) {
@@ -64,6 +67,15 @@ export class DashboardEleveHomeComponent implements OnInit {
     }
   }
   
-  
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
+  }
   
 }

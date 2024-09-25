@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-prof-menu.component.css']
 })
 export class DashboardProfMenuComponent implements OnInit {
-  activeLink: string = '/eleve-dashboard'; 
+  activeLink: string = '/prof-dashboard'; 
 
   ngOnInit(): void {
     
@@ -17,6 +17,6 @@ export class DashboardProfMenuComponent implements OnInit {
   }
 
   isFirstLinkActive(): boolean {
-    return this.activeLink === '/eleve-dashboard'; 
+    return this.activeLink === '/prof-dashboard'; 
   }
 }

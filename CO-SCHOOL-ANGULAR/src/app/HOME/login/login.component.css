@@ -106,6 +106,7 @@
 .content1 > p{
   font-size: 14px;
   font-weight: 200;
+  color: var(--text-color);
 }
  form{
   width: 100%;

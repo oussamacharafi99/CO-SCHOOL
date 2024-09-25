@@ -7,6 +7,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Semester } from 'src/app/Models/enums/enum';
 import { AvgNote } from 'src/app/Models/AvgNote';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 
 @Component({
   selector: 'app-dashboard-eleve-notes',
@@ -22,6 +23,7 @@ export class DashboardEleveNotesComponent implements OnInit {
   totaleResult !:number;
   semester !:string;
   avgNote !: number;
+  personId !: number;
 
   year: number[] = [];
   info: string[] = [];
@@ -29,6 +31,8 @@ export class DashboardEleveNotesComponent implements OnInit {
   constructor(private service: examenEleveService, private fb: FormBuilder, private renderer: Renderer2) {}
 
   ngOnInit(): void {
+    this.getIdPersonFromJwt();
+
     const currentYear = new Date().getFullYear();
     for (let year = 2024; year <= currentYear; year++) {
       this.year.push(year);
@@ -90,6 +94,17 @@ export class DashboardEleveNotesComponent implements OnInit {
       pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
       pdf.save('resPdf.pdf');
     });
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
   }
   
   // downloadImage() {

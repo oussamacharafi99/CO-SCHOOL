@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Chart, { ChartConfiguration } from 'chart.js/auto';
 import { getRelativePosition } from 'chart.js/helpers';
 import { ResultDto } from 'src/app/Models/ResultDto';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { SearchResultDto } from 'src/app/Models/dto/SearchResultDto';
 import { examenEleveService } from 'src/app/Services/examen_eleve.service';
 
@@ -21,10 +22,13 @@ export class DashboardEleveStatisticsComponent implements OnInit {
   listResult!: ResultDto[];
   year: number[] = [];
   avgNote!: number;
+  personId !: number;
 
   constructor(private service: examenEleveService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.getIdPersonFromJwt();
+
     const currentYear = new Date().getFullYear();
     for (let year = 2024; year <= currentYear; year++) {
       this.year.push(year);
@@ -132,6 +136,17 @@ export class DashboardEleveStatisticsComponent implements OnInit {
           console.log("Average Note: " + this.avgNote);
         });
       });
+    }
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
 }
