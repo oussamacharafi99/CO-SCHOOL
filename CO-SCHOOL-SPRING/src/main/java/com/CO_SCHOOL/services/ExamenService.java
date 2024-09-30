@@ -89,6 +89,15 @@ public class ExamenService {
         }).collect(Collectors.toList());
     }
 
+    public List<Examen> getExamenInAssignByProfId(Integer id){
+        return examenRepo.getExamenInAssignByProfId(id);
+    }
+
+
+    public String deleteExamen(Integer id){
+        examenRepo.deleteById(id);
+        return "The Examen Deleted !";
+    }
 
 //    public List<Examen> getExamenByEleveId(Integer id) {
 //        return examenRepo.findByIdEleve(id);

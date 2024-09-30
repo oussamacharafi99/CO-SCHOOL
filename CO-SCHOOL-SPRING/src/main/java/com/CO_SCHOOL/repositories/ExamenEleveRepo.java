@@ -89,4 +89,7 @@ public interface ExamenEleveRepo extends JpaRepository<ExamenEleve, Integer> {
             ")\n" +
             "GROUP BY ex.id;" , nativeQuery = true)
     List<Object[]> getExamenProfEncoureCorrection(@Param("id") Integer id);
+
+    @Query(value = "SELECT ex.id, ex.examen_name, ex.matter, ex.examen_date, ex.semester, ex.prof_id FROM examen_eleve el INNER JOIN examen ex ON ex.id = el.examen_id WHERE ex.prof_id =:id AND NOT EXISTS ( SELECT 1 FROM examen_eleve el2 WHERE el2.examen_id = ex.id AND el2.examen_note IS NULL ) GROUP BY ex.id",nativeQuery = true)
+    List<Object[]> getExamenProfCorrectionTerminer(@Param("id") Integer id);
 }
