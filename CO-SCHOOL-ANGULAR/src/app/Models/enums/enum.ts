@@ -18,3 +18,7 @@ export enum Controle{
     ACTIVITES_INTEGREES
     
 }
+export enum Assign{
+    ASSIGN,
+    INASSIGN
+}

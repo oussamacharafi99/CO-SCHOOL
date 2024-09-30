@@ -22,6 +22,7 @@ export class examenEleveService {
   private _API_EXAMEN_DATE = "http://localhost:9091/api/examen_eleve/result/examen+date";
   private _API_INSERT_EXAMEN_TO_ELEVES = "http://localhost:9091/api/examen_eleve/insert";
   private _API_GET_ELEVES_BY_EXAMEN_ID = "http://localhost:9091/api/examen_eleve/get+eleve+by+examen+id:";
+  private _API_GET_ELEVES_BY_EXAMEN_ID_FOR_UPDATE_NOTES = "http://localhost:9091/api/examen_eleve/get+eleve+for+update+by+id";
 
   /****___________  get Semester Result _____________*****/
   eleve_result(id : number , semester : string , year : number):Observable<ResultDto[]>{
@@ -49,6 +50,10 @@ export class examenEleveService {
 
   insertNote(examId :number , eleveId : number , note :  ExamenEleveNoteDto):Observable<ExamenEleveNoteDto>{
     return this.http.put<ExamenEleveNoteDto>(this._API_INSERT_NOTE + "/" + examId + "/" + eleveId , note );
+  }
+
+  getElevesByExamenIdForUpdateNotes(id : number ):Observable<ClassPersonDto[]>{
+    return this.http.get<ClassPersonDto[]>(this._API_GET_ELEVES_BY_EXAMEN_ID_FOR_UPDATE_NOTES + "/" + id)
   }
 
 }
