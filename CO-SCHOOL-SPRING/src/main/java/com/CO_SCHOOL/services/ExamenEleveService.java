@@ -223,7 +223,8 @@ public class ExamenEleveService {
                     String username =  (String) eleve[2];
                     String classRoomName = (String) eleve[3];
                     Double examenNote = (Double) eleve[4];
-                    return new ClassPersonDto(idE, identificationId, username, classRoomName, examenNote);
+                    String gender = (String) eleve [5];
+                    return new ClassPersonDto(idE, identificationId, username, classRoomName, examenNote,gender);
                 })
                 .collect(Collectors.toList());
     }

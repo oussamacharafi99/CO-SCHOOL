@@ -25,6 +25,14 @@ public class ClassPersonDto {
                 this.classRoomName = classRoomName;
                 this.examenNote = examenNote;
         }
+        public ClassPersonDto(Integer id , String identificationId, String username, String classRoomName , Double examenNote, String gender) {
+                this.id = id;
+                this.identificationId = identificationId;
+                this.username = username;
+                this.classRoomName = classRoomName;
+                this.examenNote = examenNote;
+                this.gender = gender;
+        }
 
         public ClassPersonDto(Integer classeId, String classRoomName, String identificationId, String username, String email, String gender, Integer age) {
                 this.classeId = classeId;

@@ -6,4 +6,5 @@ export interface ClassPersonDto {
      email : string;
      gender : string;
      age : number;
+     examenNote : number;
 }

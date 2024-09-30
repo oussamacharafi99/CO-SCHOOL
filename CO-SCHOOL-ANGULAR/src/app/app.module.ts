@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './HOME/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InterceptorAuth } from './Services/interceptor.service';
+// import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
 import { AboutComponent } from './HOME/about/about.component';
@@ -32,20 +32,24 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DashboardProfComponent } from './DASHBOARD-PROF/dashboard-prof/dashboard-prof.component';
 import { DashboardProfMenuComponent } from './DASHBOARD-PROF/dashboard-prof-menu/dashboard-prof-menu.component';
 import { DashboardProfHeaderComponent } from './DASHBOARD-PROF/dashboard-prof-header/dashboard-prof-header.component';
-import { DashboardProfHomeComponent } from './DASHBOARD-PROF/dashboard-prof-home/dashboard-prof-home.component';
-import { DashboardProfExamenComponent } from './DASHBOARD-PROF/dashboard-prof-examen/dashboard-prof-examen.component';
-import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/dashboard-prof-add-examen/dashboard-prof-add-examen.component';
+import { DashboardProfExamenComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-prof-examen/dashboard-prof-examen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
-import { DashboardProfNormalExamensComponent } from './DASHBOARD-PROF/dashboard-prof-normal-examens/dashboard-prof-normal-examens.component';
-import { DashboardProfExamensNotesComponent } from './DASHBOARD-PROF/dashboard-prof-examens-notes/dashboard-prof-examens-notes.component';
-import { DashboardProfElevesComponent } from './DASHBOARD-PROF/dashboard-prof-eleves/dashboard-prof-eleves.component';
+import { DashboardProfNormalExamensComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-prof-normal-examens/dashboard-prof-normal-examens.component';
+import { DashboardProfExamensNotesComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-prof-examens-notes/dashboard-prof-examens-notes.component';
+import { DashboardProfElevesComponent } from './DASHBOARD-PROF/Home/dashboard-prof-eleves/dashboard-prof-eleves.component';
 import { DashboardProfCarteEleveComponent } from './DASHBOARD-PROF/dashboard-prof-carte-eleve/dashboard-prof-carte-eleve.component';
-import { DashboardProfInsertElevesToExamenComponent } from './DASHBOARD-PROF/dashboard-prof-insert-eleves-to-examen/dashboard-prof-insert-eleves-to-examen.component';
-import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
-import { DashboardProfUpdateExamenComponent } from './DASHBOARD-PROF/dashboard-prof-update-examen/dashboard-prof-update-examen.component';
-import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/dashboard-admin-encoure-correction/dashboard-admin-encoure-correction.component';
-import { DashboardAdminEleveExamenComponent } from './DASHBOARD-PROF/dashboard-admin-eleve-examen/dashboard-admin-eleve-examen.component';
+import { DashboardProfInsertElevesToExamenComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-prof-insert-eleves-to-examen/dashboard-prof-insert-eleves-to-examen.component';
+import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
+import { DashboardAdminEncoureCorrectionComponent } from './DASHBOARD-PROF/Home/dashboard-admin-encoure-correction/dashboard-admin-encoure-correction.component';
+import { DashboardAdminEleveExamenComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-admin-eleve-examen/dashboard-admin-eleve-examen.component';
+import { DashboardProfHomeComponent } from './DASHBOARD-PROF/Home/dashboard-prof-home/dashboard-prof-home.component';
+import { DashboardProfAddExamenComponent } from './DASHBOARD-PROF/Home/dashboard-prof-add-examen/dashboard-prof-add-examen.component';
+import { DashboardProfUpdateExamenComponent } from './DASHBOARD-PROF/Home/dashboard-prof-update-examen/dashboard-prof-update-examen.component';
+import { DashboardExamNotAssignComponent } from './DASHBOARD-PROF/Home/dashboard-exam-not-assign/dashboard-exam-not-assign.component';
+import { DashboardProfGestionComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-gestion/dashboard-prof-gestion.component';
+import { DashboardProfExamenTermineComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-examen-termine/dashboard-prof-examen-termine.component';
+import { DashboardProfNoteEleveExamComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-note-eleve-exam/dashboard-prof-note-eleve-exam.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +86,10 @@ import { DashboardAdminEleveExamenComponent } from './DASHBOARD-PROF/dashboard-a
     DashboardProfUpdateExamenComponent,
     DashboardAdminEncoureCorrectionComponent,
     DashboardAdminEleveExamenComponent,
+    DashboardExamNotAssignComponent,
+    DashboardProfGestionComponent,
+    DashboardProfExamenTermineComponent,
+    DashboardProfNoteEleveExamComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,11 +107,11 @@ import { DashboardAdminEleveExamenComponent } from './DASHBOARD-PROF/dashboard-a
     MatTableModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorAuth,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: InterceptorAuth,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

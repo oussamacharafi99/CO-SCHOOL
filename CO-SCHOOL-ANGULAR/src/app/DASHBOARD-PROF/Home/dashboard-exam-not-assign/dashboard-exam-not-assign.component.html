@@ -1,0 +1,59 @@
+<h1>Tous les examens ne sont pas assignés</h1>
+<div class="cont">
+    <table mat-table [dataSource]="ListExamens" class="mat-elevation-z8">
+                    
+                
+        <ng-container matColumnDef="examen_name">
+          <th mat-header-cell id="th" *matHeaderCellDef> Matière </th>
+          <td mat-cell *matCellDef="let examen"> {{ examen.matter }} </td>
+        </ng-container>
+        
+      
+        <ng-container matColumnDef="matter">
+          <th mat-header-cell id="th" *matHeaderCellDef>Nom de contrôle </th>
+          <td mat-cell *matCellDef="let examen"> {{ examen.examen_name }} </td>
+        </ng-container>
+        
+       
+        <ng-container matColumnDef="semester">
+          <th mat-header-cell id="th" *matHeaderCellDef> Semester de contrôle </th>
+          <td mat-cell *matCellDef="let examen"> {{ examen.semester }} </td>
+        </ng-container>
+        
+       
+        <ng-container matColumnDef="examen_date">
+          <th mat-header-cell id="th" *matHeaderCellDef> Date de contrôle </th>
+          <td mat-cell *matCellDef="let examen"> {{ examen.examen_date }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Delete">
+            <th mat-header-cell id="th" *matHeaderCellDef><i class="pi pi-delete-left"></i></th>
+            <td mat-cell *matCellDef="let examen"> 
+                <button (click)="popup(examen.id , examen.matter )"><i class="pi pi-times"></i></button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Update">
+          <th mat-header-cell id="th" *matHeaderCellDef> <i class="pi pi-file-edit"></i></th>
+          <td mat-cell *matCellDef="let examen"> 
+            <ng-container *ngIf="examen.assign !== 'ASSIGN'">
+              <a [routerLink]="['update-examen/', examen.id]"><i class="pi pi-sync"></i></a>
+            </ng-container>
+          </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+
+<div class="alert alert-dark alert-dismissible fade show" id="alert" role="alert" *ngIf="showAlert == false">
+  <button type="button" class="btn-close btn-text btn-primary custom-button" data-bs-dismiss="alert"
+        aria-label="Close" (click)="showAlert = true"><i class="pi pi-times-circle"></i></button>
+  <strong>Voulez-vous supprimer ?</strong><p><em>ce examen : </em>{{ metter }}</p><br>
+  <div class="btns">
+    <button class="btn delete" (click)="delete()">Supprimer</button>
+    <button class="btn cancel" (click)="showAlert = true">Annuler</button> 
+  </div>
+</div>
+
