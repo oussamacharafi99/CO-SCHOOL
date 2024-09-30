@@ -1,0 +1,23 @@
+services:
+  co-school:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9091:9091"
+    depends_on:
+      - co-school-db
+    networks:
+      - co-school-network
+  co-school-db:
+    image: "mysql:latest"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=co_school
+    ports:
+      - "3306:3306"
+    networks:
+      - co-school-network
+networks:
+  co-school-network:
+    driver: bridge

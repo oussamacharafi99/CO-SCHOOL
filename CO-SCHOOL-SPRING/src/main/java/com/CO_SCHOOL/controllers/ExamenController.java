@@ -60,4 +60,15 @@ public class ExamenController {
         return examenService.UpdateExaman(id, insertExamenDto);
     }
 
+    @GetMapping("get+examen+inassign+by+prof+id/{id}")
+    public List<Examen> getExamenInassignByProf(@PathVariable Integer id) {
+        return examenService.getExamenInAssignByProfId(id);
+    }
+
+
+    @DeleteMapping("delete/{id}")
+    public String deleteExamen(@PathVariable int id) {
+        return examenService.deleteExamen(id);
+    }
+
 }

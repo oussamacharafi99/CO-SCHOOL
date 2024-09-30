@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -133,28 +134,89 @@ public class ExamenEleveService {
         }).collect(Collectors.toList());
     }
 
-    @Transactional
-    public List<ExamenProfDto> getExamenProfEncoureCorection(Integer id) {
-        List<Object[]> ListExamensProfDto = examenEleveRepo.getExamenProfEncoureCorrection(id);
-        return ListExamensProfDto.stream().map(examens -> {
-            Integer idE = (Integer) examens[0];
-            String exmanName = (String) examens[1];
-            String matter = (String) examens[2];
-            java.sql.Date sqlDate = (java.sql.Date) examens[3];
-            LocalDate examen_date = sqlDate.toLocalDate();
-            String semesterStr = (String) examens[4];
-            Semester semester = Semester.valueOf(semesterStr);
-            Integer ProfId = (Integer) examens[5];
-            return new ExamenProfDto(idE, exmanName, matter, examen_date, semester, ProfId);
-        }).collect(Collectors.toList());
+
+    private ExamenProfDto mapExamen(Object[] examens) {
+        Integer idE = (Integer) examens[0];
+        String examName = (String) examens[1];
+        String matter = (String) examens[2];
+        java.sql.Date sqlDate = (java.sql.Date) examens[3];
+        LocalDate examen_date = sqlDate.toLocalDate();
+        String semesterStr = (String) examens[4];
+        Semester semester = Semester.valueOf(semesterStr);
+        Integer profId = (Integer) examens[5];
+        return new ExamenProfDto(idE, examName, matter, examen_date, semester, profId);
     }
 
 
+    @Transactional(readOnly = true)
+    public List<ExamenProfDto> getExamenProfEncoureCorection(Integer id) {
+        List<Object[]> examensProfList = examenEleveRepo.getExamenProfEncoureCorrection(id);
+        return examensProfList.stream()
+                .map(this::mapExamen)
+                .collect(Collectors.toList());
+    }
 
-    public List<ClassPersonDto> getElevesByExamanId(Integer examanId) {
+
+    @Transactional(readOnly = true)
+    public List<ExamenProfDto> getExamenProfCorrectionTerminee(Integer id) {
+        List<Object[]> examensProfList = examenEleveRepo.getExamenProfCorrectionTerminer(id);
+        return examensProfList.stream()
+                .map(this::mapExamen)
+                .collect(Collectors.toList());
+    }
+
+//    @Transactional
+//    public List<ExamenProfDto> getExamenProfEncoureCorection(Integer id) {
+//        List<Object[]> ListExamensProfDto = examenEleveRepo.getExamenProfEncoureCorrection(id);
+//        return ListExamensProfDto.stream().map(examens -> {
+//            Integer idE = (Integer) examens[0];
+//            String exmanName = (String) examens[1];
+//            String matter = (String) examens[2];
+//            java.sql.Date sqlDate = (java.sql.Date) examens[3];
+//            LocalDate examen_date = sqlDate.toLocalDate();
+//            String semesterStr = (String) examens[4];
+//            Semester semester = Semester.valueOf(semesterStr);
+//            Integer ProfId = (Integer) examens[5];
+//            return new ExamenProfDto(idE, exmanName, matter, examen_date, semester, ProfId);
+//        }).collect(Collectors.toList());
+//    }
+//
+//    @Transactional
+//    public List<ExamenProfDto> getExamenProfCorrectionTerminer(Integer id) {
+//        List<Object[]> ListExamensProfDto = examenEleveRepo.getExamenProfCorrectionTerminer(id);
+//        return ListExamensProfDto.stream().map(examens -> {
+//            Integer idE = (Integer) examens[0];
+//            String exmanName = (String) examens[1];
+//            String matter = (String) examens[2];
+//            java.sql.Date sqlDate = (java.sql.Date) examens[3];
+//            LocalDate examen_date = sqlDate.toLocalDate();
+//            String semesterStr = (String) examens[4];
+//            Semester semester = Semester.valueOf(semesterStr);
+//            Integer ProfId = (Integer) examens[5];
+//            return new ExamenProfDto(idE, exmanName, matter, examen_date, semester, ProfId);
+//        }).collect(Collectors.toList());
+//    }
+
+
+
+    public List<ClassPersonDto> getElevesByExamenId(Integer examanId) {
         List<Object[]> listEleves = examenEleveRepo.getElevesByExamanId(examanId);
         return listEleves.stream()
                 .filter(eleve -> eleve[4] == null)
+                .map(eleve -> {
+                    Integer idE = (Integer) eleve[0];
+                    String identificationId = (String) eleve[1];
+                    String username =  (String) eleve[2];
+                    String classRoomName = (String) eleve[3];
+                    Double examenNote = (Double) eleve[4];
+                    return new ClassPersonDto(idE, identificationId, username, classRoomName, examenNote);
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<ClassPersonDto> getElevesByExamenIdForUpdateNotes(Integer examanId) {
+        List<Object[]> listEleves = examenEleveRepo.getElevesByExamanId(examanId);
+        return listEleves.stream()
                 .map(eleve -> {
                     Integer idE = (Integer) eleve[0];
                     String identificationId = (String) eleve[1];

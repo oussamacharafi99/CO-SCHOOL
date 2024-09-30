@@ -60,8 +60,18 @@ public class ExamenEleveController {
         return examenEleveService.getExamenProfEncoureCorection(id);
     }
 
+    @GetMapping("examen+prof+correction+terminer/{id}")
+    public List<ExamenProfDto> getExamenProfCorrectionTerminee(@PathVariable Integer id) {
+        return examenEleveService.getExamenProfCorrectionTerminee(id);
+    }
+
     @GetMapping("get+eleve+by+examen+id:/{id}")
     public List<ClassPersonDto> getEleveByExamenId(@PathVariable Integer id) {
-        return examenEleveService.getElevesByExamanId(id);
+        return examenEleveService.getElevesByExamenId(id);
+    }
+
+    @GetMapping("get+eleve+for+update+by+id/{id}")
+    public List<ClassPersonDto> getElevesByExamenIdForUpdateNotes(@PathVariable Integer id) {
+        return examenEleveService.getElevesByExamenIdForUpdateNotes(id);
     }
 }
