@@ -74,4 +74,9 @@ public class ExamenEleveController {
     public List<ClassPersonDto> getElevesByExamenIdForUpdateNotes(@PathVariable Integer id) {
         return examenEleveService.getElevesByExamenIdForUpdateNotes(id);
     }
+
+    @GetMapping("get+exams+by+eleve+prof/{ide}/{idp}")
+    public List<ExamenDateDto> getExamenEleveByEleveIdAndProfId(@PathVariable Integer ide, @PathVariable Integer idp) {
+        return examenEleveService.getExamenEleveByEleveIdAndProfId(ide, idp);
+    }
 }

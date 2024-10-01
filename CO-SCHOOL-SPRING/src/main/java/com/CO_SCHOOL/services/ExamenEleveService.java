@@ -228,5 +228,19 @@ public class ExamenEleveService {
                 })
                 .collect(Collectors.toList());
     }
+
+   public List<ExamenDateDto> getExamenEleveByEleveIdAndProfId(Integer eleveId, Integer profId) {
+        List<Object[]> listExams = examenEleveRepo.getExamenEleveByProfIdAndEleveId(eleveId , profId);
+        return listExams.stream().map(exam ->{
+            String matter = (String) exam[0];
+            Double examenNote = (Double) exam[1];
+            String semesterStr = (String) exam[2];
+            Semester semester = Semester.valueOf(semesterStr);
+            String examName = (String) exam[3];
+            java.sql.Date sqlDate = (java.sql.Date) exam[4];
+            LocalDate examen_date = sqlDate.toLocalDate();
+            return  new ExamenDateDto(matter , examenNote , semester , examName , examen_date);
+        }).collect(Collectors.toList());
+    }
 }
 
