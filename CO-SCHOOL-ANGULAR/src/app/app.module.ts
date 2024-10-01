@@ -50,6 +50,7 @@ import { DashboardExamNotAssignComponent } from './DASHBOARD-PROF/Home/dashboard
 import { DashboardProfGestionComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-gestion/dashboard-prof-gestion.component';
 import { DashboardProfExamenTermineComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-examen-termine/dashboard-prof-examen-termine.component';
 import { DashboardProfNoteEleveExamComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-note-eleve-exam/dashboard-prof-note-eleve-exam.component';
+import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-eleves/dashboard-prof-eleves-home/dashboard-prof-eleves-home.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { DashboardProfNoteEleveExamComponent } from './DASHBOARD-PROF/Gestion-de
     DashboardProfGestionComponent,
     DashboardProfExamenTermineComponent,
     DashboardProfNoteEleveExamComponent,
+    DashboardProfElevesHomeComponent,
   ],
   imports: [
     BrowserModule,
