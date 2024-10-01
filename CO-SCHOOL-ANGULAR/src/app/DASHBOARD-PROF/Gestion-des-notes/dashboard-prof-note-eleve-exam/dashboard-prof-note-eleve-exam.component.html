@@ -32,7 +32,7 @@
 
 </div> -->
 
-<div class="main">
+<!-- <div class="main">
     <div class="head">
         <div class="icon">
             <img src="../../../../assets/icons/vecteezy_white-clipboard-task-management-todo-check-list-efficient_8879451.png" alt="">
@@ -72,4 +72,43 @@
             placeholder="Saiser La Note" (input)="validateNote($event)">
         <button class="btn btn-dark">Ajouter</button>
     </form>
+</div> -->
+
+
+<div class="main">
+    <div class="head">
+        <div class="icon">
+            <img src="../../../../assets/icons/vecteezy_white-clipboard-task-management-todo-check-list-efficient_8879451.png" alt="">
+        </div>
+        <div class="content">
+            <p>Matière : <span>{{ newExamen.matter }}</span></p>
+            <p>Date de Contrôle : <span>{{ newExamen.examen_date }}</span></p>
+        </div>
+    </div>
+
+    <div class="eleves" *ngIf="listEleves && listEleves.length > 0; else noElevesMessage">
+        <div class="eleve" *ngFor="let eleve of listEleves">
+            <div class="img">
+                <img *ngIf="eleve.gender == 'F'" src="../../../../assets/icons/girl.png">
+                <img *ngIf="eleve.gender == 'M'" src="../../../../assets/icons/boy.png">
+            </div>
+
+            <div class="info">
+                <h2>{{eleve.username}}</h2>
+                <p>Identification : <span>{{eleve.identificationId}}</span></p>
+                <p>Moyenne : <span>{{eleve.examenNote}}</span></p>
+            </div>
+
+            <div class="controls">
+                <button (click)="print(eleve.classeId, eleve.username)">
+                    <i class="pi pi-file-edit"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message si la liste est vide -->
+    <ng-template #noElevesMessage>
+        <p class="alert alert-warning">Aucun élève n'est disponible pour ce contrôle. Cliquez sur un bouton pour obtenir la liste des élèves.</p>
+    </ng-template>
 </div>
