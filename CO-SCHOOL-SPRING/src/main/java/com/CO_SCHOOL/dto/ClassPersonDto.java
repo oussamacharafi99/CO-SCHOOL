@@ -34,7 +34,8 @@ public class ClassPersonDto {
                 this.gender = gender;
         }
 
-        public ClassPersonDto(Integer classeId, String classRoomName, String identificationId, String username, String email, String gender, Integer age) {
+        public ClassPersonDto(Integer id, Integer classeId, String classRoomName, String identificationId, String username, String email, String gender, Integer age) {
+                this.id = id;
                 this.classeId = classeId;
                 this.classRoomName = classRoomName;
                 this.identificationId = identificationId;
