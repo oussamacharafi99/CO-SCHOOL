@@ -1,0 +1,207 @@
+.main{
+    width: 100%;
+}
+.main-wrapper{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+/* .eleves{
+    width: 40%;
+    height: 100%;
+    background: red;
+    border-radius: 12px;
+    padding: 10px;
+} */
+.eleves{
+    width: 30%;
+    height: 610px;
+    max-height: 100%;
+    padding: 10px;
+    background: var(--background-color);
+    border-radius: 15px;
+}
+.eleves > h3{
+    font-size: 20px;
+    padding: 10px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.eleves-group{
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 5px;
+}
+.eleve{
+    padding: 10px;
+    background: var(--primary-color);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    margin-bottom: 5px;
+}
+.eleve > .img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: rgb(0, 0, 0);
+}
+.img > img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+.info{
+    width: 80%;
+    padding: 0 20px;
+}
+.info > h2{
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+.info > p{
+    font-size: 12px;
+    margin-bottom: 0px;
+    font-style: italic;
+}
+.info > p > span{
+    background: var(--hover-bg);
+    color: var(--hover-color);
+    font-weight: 400;
+}
+
+button {
+    /* border: 1px solid var(--color-primary); */
+    padding: 5px;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: .5s;
+}
+
+button:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.137);
+}
+.eleve-info-exam{
+    width: 69%;
+    min-height: 440px;
+    height: 100%;
+    background: var(--background-color);
+    border-radius: 12px;
+    padding: 10px;
+}
+.eleve-info-exam > h3{
+    font-size: 20px;
+    padding: 10px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.eleve-info-content{
+    background: var(--primary-color);
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+}
+.img-eleve{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: rgb(0, 0, 0);
+    margin: 0 auto;
+}
+.img-eleve > img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+.info-eleve > h2{
+    font-size: 20px;
+}
+.info-e{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.info-e > p {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.info-e > p > span{
+    color: var(--text-color);
+    font-weight: 400;
+}
+.eleve-exames-info-content{
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid  var(--text-color);
+    position: relative;
+    border-radius: 12px;
+}
+.eleve-exames-info-content > h2{
+    font-size: 16px;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--background-color);
+}
+/* table{
+    padding: 10px;
+}
+thead {
+    background: var(--color-primary);
+}
+thead > tr > th{
+    padding-left: 10px;
+}
+tbody > tr > td{
+    padding-left: 10px;
+} */
+
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.custom-table thead {
+    background-color: var(--background-color);
+    font-weight: bold;
+}
+
+.custom-table th, 
+.custom-table td {
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+}
+
+.custom-table th {
+    color: var(--tb-color);
+}
+
+.custom-table tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.custom-table tbody tr:hover {
+    background-color: var(--tb-color);
+    color: var(--tb-color-hover);
+}

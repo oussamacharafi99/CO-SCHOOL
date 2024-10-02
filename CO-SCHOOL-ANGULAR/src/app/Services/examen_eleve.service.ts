@@ -8,6 +8,7 @@ import { ExamenEleveDto } from '../Models/dto/ExamenEleveDto';
 import { ClassPersonDto } from '../Models/dto/ClassPersonDto';
 import { ExamenEleveNoteDto } from '../Models/dto/ExamenEleveNoteDto';
 import { ex } from '@fullcalendar/core/internal-common';
+import { Eleve } from '../Models/eleve';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class examenEleveService {
   private _API_INSERT_EXAMEN_TO_ELEVES = "http://localhost:9091/api/examen_eleve/insert";
   private _API_GET_ELEVES_BY_EXAMEN_ID = "http://localhost:9091/api/examen_eleve/get+eleve+by+examen+id:";
   private _API_GET_ELEVES_BY_EXAMEN_ID_FOR_UPDATE_NOTES = "http://localhost:9091/api/examen_eleve/get+eleve+for+update+by+id";
+  private  _API_GET_EXAM_ELEVE_BY_ELEVEID_AND_PROFID = "http://localhost:9091/api/examen_eleve/get+exams+by+eleve+prof"
 
   /****___________  get Semester Result _____________*****/
   eleve_result(id : number , semester : string , year : number):Observable<ResultDto[]>{
@@ -54,6 +56,11 @@ export class examenEleveService {
 
   getElevesByExamenIdForUpdateNotes(id : number ):Observable<ClassPersonDto[]>{
     return this.http.get<ClassPersonDto[]>(this._API_GET_ELEVES_BY_EXAMEN_ID_FOR_UPDATE_NOTES + "/" + id)
+  }
+
+     /*-----------------------pour obtenir les informations de l'eleve par id et prof-------------------------*/
+  getExamEleveByIdEleveAndProfId(idE : number , idP : number):Observable<ExamenDateDto[]>{
+      return this.http.get<ExamenDateDto[]>(this._API_GET_EXAM_ELEVE_BY_ELEVEID_AND_PROFID + "/" + idE + "/" + idP)
   }
 
 }

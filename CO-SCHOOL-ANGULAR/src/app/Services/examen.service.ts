@@ -5,6 +5,7 @@ import { Examen } from '../Models/examen';
 import { insertExamenDto } from '../Models/dto/InsertExamenDto';
 import { ExamenProfDto } from '../Models/dto/ExamenProfDto';
 import { ExamenNameDto } from '../Models/dto/ExamenNameDto';
+import { Eleve } from '../Models/eleve';
 
 
 @Injectable({
@@ -25,6 +26,7 @@ export class ExamenService {
    private  _API_GET_EXAMENS_WITHOUT_NOTE = "http://localhost:9091/api/examen_eleve/examen+prof+without+note"
    private  _API_GET_EXAMENS_ENCOURE_CORRECTION = "http://localhost:9091/api/examen_eleve/examen+prof+encoure+correction"
    private  _API_GET_EXAMENS_CORRECTION_TERMINER = "http://localhost:9091/api/examen_eleve/examen+prof+correction+terminer"
+   private  _API_GET_ELEVES_BY_ELEVEID_AND_PROFID = "http://localhost:9091/api/examen_eleve/get+exams+by+eleve+prof"
    
 
     insertExamen(examen : insertExamenDto):Observable<insertExamenDto>{

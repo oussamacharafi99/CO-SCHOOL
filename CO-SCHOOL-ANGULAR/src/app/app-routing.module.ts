@@ -17,6 +17,7 @@ import { DashboardProfExamensNotesComponent } from './DASHBOARD-PROF/Gestion-des
 import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-admin-exam-correction/dashboard-admin-exam-correction.component';
 import { DashboardProfGestionComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-gestion/dashboard-prof-gestion.component';
 import { DashboardProfNoteEleveExamComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-note-eleve-exam/dashboard-prof-note-eleve-exam.component';
+import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-eleves/dashboard-prof-eleves-home/dashboard-prof-eleves-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -54,7 +55,8 @@ const routes: Routes = [
       {
         path: 'dash-gestion',
         component: DashboardProfGestionComponent,
-      }
+      },
+      {path:'info-eleves', component: DashboardProfElevesHomeComponent}
     ]
   }
   ,

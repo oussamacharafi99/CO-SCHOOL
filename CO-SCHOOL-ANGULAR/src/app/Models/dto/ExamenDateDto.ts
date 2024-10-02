@@ -3,4 +3,5 @@ export interface ExamenDateDto{
     matter : string;
     examen_date : string;
     examen_note : number;
+    semester : string;
 }
