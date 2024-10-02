@@ -21,10 +21,12 @@ export class AuthServiceService {
       return this.http.post<JwtDto>(this._API_LOGIN ,person )
   }
 
+  /*-----------------------pour change le  mot de passe-------------------------*/
   changePassword(id : number , passwordDto : ChangePasswordDto):Observable<ChangePasswordDto>{
     return this.http.put<ChangePasswordDto>(this._API_CHANGE_PASSWORD + "/" + id , passwordDto)
   }
 
+  /*-----------------------pour obtenir les informations de l'eleve-------------------------*/
   getEleveById(id : number):Observable<Eleve>{
     return this.http.get<Eleve>(this._API_GET_ELEVE + "/" + id)
   }

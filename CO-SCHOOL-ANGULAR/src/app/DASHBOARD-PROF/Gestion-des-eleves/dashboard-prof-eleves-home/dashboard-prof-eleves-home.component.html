@@ -1,1 +1,71 @@
-<p>dashboard-prof-eleves-home works!</p>
+<div class="main">
+    <div class="main-wrapper">
+      <div class="eleves" *ngIf="ListEleves && ListEleves.length > 0">
+        <h3>Vous Eleves</h3>
+        <div class="eleves-group">
+          <div class="eleve" *ngFor="let eleves of ListEleves">
+            <div class="img">
+              <img *ngIf="eleves.gender === 'F'" src="../../../../assets/icons/girl.png">
+              <img *ngIf="eleves.gender === 'M'" src="../../../../assets/icons/boy.png">
+            </div>
+  
+            <div class="info">
+              <h2>{{eleves.username}}</h2>
+              <p>Identification : <span>{{eleves.identificationId}}</span></p>
+            </div>
+  
+            <div class="controls">
+              <button (click)="getEleveAndExam(eleves.id)">
+                <i class="pi pi-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="eleve-info-exam" *ngIf="eleve">
+        <h3>Informations de l'élève avec ses examens</h3>
+        <div class="eleve-info-content">
+          <div class="img-eleve">
+            <img *ngIf="eleve.gender === 'F'" src="../../../../assets/icons/girl.png">
+            <img *ngIf="eleve.gender === 'M'" src="../../../../assets/icons/boy.png">
+          </div>
+  
+          <div class="info-eleve">
+            <h2>{{eleve.username}}</h2>
+            <div class="info-e">
+              <p>Id : &nbsp;<span>{{eleve.identificationId}},&nbsp;</span></p>
+              <p>Email :&nbsp;<span>{{eleve.email}},&nbsp;</span></p>
+              <p>Age :&nbsp;<span>{{eleve.age}},&nbsp;</span></p>
+              <p>Genre :&nbsp;<span>{{eleve.gender}}&nbsp;</span></p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="eleve-exames-info-content">
+          <h2>Informations des Contrôles</h2>
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Matière</th>
+                <th>Date d'examen</th>
+                <th>Nom de l'examen</th>
+                <th>Semestre</th>
+                <th>Note d'examen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let exam of exames">
+                <td>{{exam.matter}}</td>
+                <td>{{exam.examen_date}}</td>
+                <td>{{exam.examen_name}}</td>
+                <td>{{exam.semester}}</td>
+                <td>{{ exam.examen_note !== null && exam.examen_note !== undefined ? exam.examen_note : 'Chargement... !' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,4 +1,5 @@
 export interface ClassPersonDto {
+     id : number
      classeId : number;
      classRoomName : string;
      identificationId : string;

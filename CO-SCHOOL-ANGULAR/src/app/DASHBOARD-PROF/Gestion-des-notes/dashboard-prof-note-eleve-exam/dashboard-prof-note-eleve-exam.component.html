@@ -63,16 +63,7 @@
     </div>
 
 </div>
-<div class="alert alert-dark alert-dismissible fade show" id="alert" role="alert" *ngIf="showAlert == false">
-    <button type="button" class="btn-close btn-text btn-primary custom-button" data-bs-dismiss="alert"
-        aria-label="Close" (click)="showAlert = true"><i class="pi pi-times-circle"></i></button>
-    <strong>Saiser </strong><i> La note de Controle! de l'eleve </i><a> {{eleveName}}</a><br><br>
-    <form [formGroup]="formCorrection" (ngSubmit)="insertCorrection()">
-        <input type="number" formControlName="note" [min]="0" [max]="20" step="0.01" class="form-control"
-            placeholder="Saiser La Note" (input)="validateNote($event)">
-        <button class="btn btn-dark">Ajouter</button>
-    </form>
-</div> -->
+ -->
 
 
 <div class="main">
@@ -111,4 +102,14 @@
     <ng-template #noElevesMessage>
         <p class="alert alert-warning">Aucun élève n'est disponible pour ce contrôle. Cliquez sur un bouton pour obtenir la liste des élèves.</p>
     </ng-template>
+</div>
+<div class="alert alert-dark alert-dismissible fade show" id="alert" role="alert" *ngIf="showAlert == false">
+    <button type="button" class="btn-close btn-text btn-primary custom-button" data-bs-dismiss="alert"
+        aria-label="Close" (click)="showAlert = true"><i class="pi pi-times-circle"></i></button>
+    <strong>Saiser </strong><i> La note de Controle! de l'eleve </i><a> {{eleveName}}</a><br><br>
+    <form [formGroup]="formCorrection" (ngSubmit)="insertCorrection()">
+        <input type="number" formControlName="note" [min]="0" [max]="20" step="0.01" class="form-control"
+            placeholder="Saiser La Note" (input)="validateNote($event)">
+        <button class="btn btn-dark">Ajouter</button>
+    </form>
 </div>
