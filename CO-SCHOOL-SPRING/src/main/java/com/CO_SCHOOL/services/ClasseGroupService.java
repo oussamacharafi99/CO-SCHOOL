@@ -65,14 +65,15 @@ public class ClasseGroupService {
     public List<ClassPersonDto> getProfEleveByProfId(Integer id) {
         List<Object[]> eleves = classGroupRepo.getProfEleveByProfId(id);
         return eleves.stream().map(eleve ->{
-            Integer classeId = (Integer) eleve[0];
-            String classRoomName = (String) eleve[1];
-            String identificationId = (String) eleve[2];
-            String username = (String) eleve[3];
-            String email = (String) eleve[4];
-            String gender = (String) eleve[5];
-            Integer age = (Integer) eleve[6];
-            return new ClassPersonDto(classeId, classRoomName, identificationId, username, email, gender, age);
+            Integer idP = (Integer)eleve[0];
+            Integer classeId = (Integer) eleve[1];
+            String classRoomName = (String) eleve[2];
+            String identificationId = (String) eleve[3];
+            String username = (String) eleve[4];
+            String email = (String) eleve[5];
+            String gender = (String) eleve[6];
+            Integer age = (Integer) eleve[7];
+            return new ClassPersonDto(idP, classeId, classRoomName, identificationId, username, email, gender, age);
         }).collect(Collectors.toList());
 
     }
