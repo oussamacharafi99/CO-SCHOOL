@@ -21,6 +21,7 @@ public class ClasseGroupService {
     private ClassGroupRepo classGroupRepo;
 
     public ClasseGroup save(ClasseGroup classGroup) {
+        classGroup.setSchool_name("CO-SCHOOL");
         return classGroupRepo.save(classGroup);
     }
 

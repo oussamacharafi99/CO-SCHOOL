@@ -2,6 +2,7 @@ package com.CO_SCHOOL.repositories;
 
 import com.CO_SCHOOL.dto.ClasseProfDto;
 import com.CO_SCHOOL.models.ClasseGroup;
+import com.CO_SCHOOL.models.Professeur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
