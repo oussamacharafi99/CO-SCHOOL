@@ -3,7 +3,7 @@ import { Professeur } from "./professeur";
 
 export interface ClasseGroup {
     id: number;
-    classRoomName: string;
+    class_room_name: string;
     schoolName: string;
     eleves: Eleve[];
     professeurs: Professeur[];

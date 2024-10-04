@@ -1,52 +1,52 @@
-.container{
+.container {
     padding: 20px;
     background: var(--background-color);
     border-radius: 15px;
 }
-.container > h1{
+
+.container>h1 {
     font-size: 20px;
     padding: 10px;
     color: var(--color-primary);
     font-weight: 700;
 }
-form{
-    display: flex;
+
+form {
+    width: 100%;
+    /* display: flex;
     align-items: start;
     justify-content: left;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
 }
-.group{
-    width: 49%;
-}
-#group{
+
+.group {
     width: 100%;
     display: flex;
-    align-items: end;
-    justify-content: space-between;
 }
-#group > .form-group{
+
+.form-group {
     width: 49%;
-}
-.form-group{
     margin-right: 5px;
 }
-#form-group{
-    width: 70%;
-}
-.form-group > input , select {
+
+.form-group>input,
+select {
     width: 100%;
     background: var(--primary-color);
     color: var(--text-color);
 }
-.form-group > input::placeholder{
+
+.form-group>input::placeholder {
     color: var(--color-border);
 }
-label{
+
+label {
     font-size: 16px;
     font-weight: 500;
     padding: 5px;
 }
-button{
+
+.form-group>button {
     padding: 7px 10px;
     border-radius: 5px;
     border: 1px solid var(--hover-bg);
@@ -56,8 +56,11 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+
 }
-button:hover{
-    background: var(--hover-bg);
-    color: var(--hover-color);
+
+#frg {
+    display: flex;
+    align-items: end;
 }

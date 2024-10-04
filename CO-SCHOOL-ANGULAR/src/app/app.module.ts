@@ -31,7 +31,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DashboardProfComponent } from './DASHBOARD-PROF/dashboard-prof/dashboard-prof.component';
 import { DashboardProfMenuComponent } from './DASHBOARD-PROF/dashboard-prof-menu/dashboard-prof-menu.component';
-import { DashboardProfHeaderComponent } from './DASHBOARD-PROF/dashboard-prof-header/dashboard-prof-header.component';
 import { DashboardProfExamenComponent } from './DASHBOARD-PROF/Gestion-des-exames/dashboard-prof-examen/dashboard-prof-examen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -51,6 +50,20 @@ import { DashboardProfGestionComponent } from './DASHBOARD-PROF/Gestion-des-note
 import { DashboardProfExamenTermineComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-examen-termine/dashboard-prof-examen-termine.component';
 import { DashboardProfNoteEleveExamComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-note-eleve-exam/dashboard-prof-note-eleve-exam.component';
 import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-eleves/dashboard-prof-eleves-home/dashboard-prof-eleves-home.component';
+import { DashAdminMenuComponent } from './DASHBOARD-ADMIN/dash-admin-menu/dash-admin-menu.component';
+import { DashAdminHeaderComponent } from './DASHBOARD-ADMIN/dash-admin-header/dash-admin-header.component';
+import { DashboardAdminComponent } from './DASHBOARD-ADMIN/dashboard-admin/dashboard-admin.component';
+import { DashAdminAddProfComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-add-prof/dash-admin-add-prof.component';
+import { DashAdminAddEleveComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-add-eleve/dash-admin-add-eleve.component';
+import { DashAdminGetProfsComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-get-profs/dash-admin-get-profs.component';
+import { DashAdminGestionProfHomeComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-gestion-prof-home/dash-admin-gestion-prof-home.component';
+import { DashAdminGestionEleveHomeComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-gestion-eleve-home/dash-admin-gestion-eleve-home.component';
+import { DashAdminGetElevesComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-get-eleves/dash-admin-get-eleves.component';
+import { DashAdminMenuResponsiveComponent } from './DASHBOARD-ADMIN/dash-admin-menu-responsive/dash-admin-menu-responsive.component';
+import { DashAdminAddClassRoomComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-add-class-room/dash-admin-add-class-room.component';
+import { DashAdminClassRoomHomeComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-class-room-home/dash-admin-class-room-home.component';
+import { DashAdminClassRoomAssignClassRoomComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-class-room-assign-class-room/dash-admin-class-room-assign-class-room.component';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +87,6 @@ import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-e
     DashboardEleveAbsenceComponent,
     DashboardProfComponent,
     DashboardProfMenuComponent,
-    DashboardProfHeaderComponent,
     DashboardProfHomeComponent,
     DashboardProfExamenComponent,
     DashboardProfAddExamenComponent,
@@ -92,6 +104,19 @@ import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-e
     DashboardProfExamenTermineComponent,
     DashboardProfNoteEleveExamComponent,
     DashboardProfElevesHomeComponent,
+    DashAdminMenuComponent,
+    DashAdminHeaderComponent,
+    DashboardAdminComponent,
+    DashAdminAddProfComponent,
+    DashAdminAddEleveComponent,
+    DashAdminGetProfsComponent,
+    DashAdminGestionProfHomeComponent,
+    DashAdminGestionEleveHomeComponent,
+    DashAdminGetElevesComponent,
+    DashAdminMenuResponsiveComponent,
+    DashAdminAddClassRoomComponent,
+    DashAdminClassRoomHomeComponent,
+    DashAdminClassRoomAssignClassRoomComponent,
   ],
   imports: [
     BrowserModule,

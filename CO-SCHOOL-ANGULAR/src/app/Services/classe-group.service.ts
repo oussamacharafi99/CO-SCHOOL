@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ClasseProfDto } from '../Models/dto/ClasseProfDto';
 import { ClasseNameDto } from '../Models/dto/ClasseNameDto';
 import { ClassPersonDto } from '../Models/dto/ClassPersonDto';
+import { ClasseGroup } from '../Models/ClasseGroup';
 
 
 
@@ -17,6 +18,7 @@ export class classeGroupService {
   private _API_PROF_CLASSE = "http://localhost:9091/api/classeGroup/profs+class";
   private _API_CLASSE_BY_PROF_ID = "http://localhost:9091/api/classeGroup/get+class+by+prof+id";
   private _API_ELEVES_BY_PROF_ID = "http://localhost:9091/api/classeGroup/Prof_eleves";
+  private _API_GET_ALL_CLASSEGROUP = "http://localhost:9091/api/classeGroup/get+all";
 
 
   /****___________  get Profs  Classe _____________*****/
@@ -30,6 +32,11 @@ export class classeGroupService {
 
   getElevesByProfId(id : number):Observable<ClassPersonDto[]>{
     return this.http.get<ClassPersonDto[]>(this._API_ELEVES_BY_PROF_ID + "/" +id)
+  }
+
+  /****___________  get all Classes _____________*****/
+  getAllClasseGroup():Observable<ClasseGroup[]>{
+    return this.http.get<ClasseGroup[]>(this._API_GET_ALL_CLASSEGROUP)
   }
 
 }
