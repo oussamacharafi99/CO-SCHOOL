@@ -18,6 +18,9 @@ import { DashboardAdminExamCorrectionComponent } from './DASHBOARD-PROF/Gestion-
 import { DashboardProfGestionComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-gestion/dashboard-prof-gestion.component';
 import { DashboardProfNoteEleveExamComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-note-eleve-exam/dashboard-prof-note-eleve-exam.component';
 import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-eleves/dashboard-prof-eleves-home/dashboard-prof-eleves-home.component';
+import { DashboardAdminComponent } from './DASHBOARD-ADMIN/dashboard-admin/dashboard-admin.component';
+import { DashAdminGestionEleveHomeComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-gestion-eleve-home/dash-admin-gestion-eleve-home.component';
+import { DashAdminGestionProfHomeComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-gestion-prof-home/dash-admin-gestion-prof-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -58,8 +61,12 @@ const routes: Routes = [
       },
       {path:'info-eleves', component: DashboardProfElevesHomeComponent}
     ]
-  }
-  ,
+  },
+  {
+    path: 'admin-dashboard', component: DashboardAdminComponent, children: [
+      { path:'',component:DashAdminGestionEleveHomeComponent},
+      { path:'gestion-profs',component:DashAdminGestionProfHomeComponent},
+  ]},
 
 
 

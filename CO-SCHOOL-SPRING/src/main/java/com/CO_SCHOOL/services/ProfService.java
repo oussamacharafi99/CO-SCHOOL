@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -61,6 +62,14 @@ public class ProfService {
         }
 
         return sb.toString();
+    }
+
+    public List<Professeur> getAllProfesseurs() {
+        return profRepo.getAllProfesseurs();
+    }
+
+    public List<Professeur> getAllProfsByClasseRoomName(Integer id){
+        return profRepo.getAllProfsByClasseRoomName(id);
     }
 
 }

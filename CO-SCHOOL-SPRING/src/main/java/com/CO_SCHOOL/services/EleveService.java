@@ -3,6 +3,7 @@ package com.CO_SCHOOL.services;
 import com.CO_SCHOOL.enums.Role;
 import com.CO_SCHOOL.exeptions.CoEcoSchoolExepion;
 import com.CO_SCHOOL.models.Eleve;
+import com.CO_SCHOOL.models.Professeur;
 import com.CO_SCHOOL.repositories.EleveRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -80,4 +81,10 @@ public class EleveService {
         return eleveRepo.findEleveByClasseGroupId(id);
     }
 
+    public List<Eleve> getAllEleves() {
+        return eleveRepo.getAllEleve();
+    }
+    public List<Eleve> getAllElevesByClassGroupId(Integer id) {
+        return eleveRepo.findEleveByClasseGroupId(id);
+    }
 }

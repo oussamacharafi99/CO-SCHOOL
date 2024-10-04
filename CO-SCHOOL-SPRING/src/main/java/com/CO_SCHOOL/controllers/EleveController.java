@@ -2,14 +2,17 @@ package com.CO_SCHOOL.controllers;
 
 
 import com.CO_SCHOOL.models.Eleve;
+import com.CO_SCHOOL.models.Professeur;
 import com.CO_SCHOOL.services.EleveService;
 import com.CO_SCHOOL.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/eleve")
-@CrossOrigin("*")
 public class EleveController {
 
     @Autowired
@@ -26,6 +29,18 @@ public class EleveController {
     public Eleve getEleveById(@PathVariable("id") Integer id) {
         return eleveService.getEleveByIdentity(id);
     }
+
+    @GetMapping("get+all")
+    public List<Eleve> getAllEleves() {
+        return eleveService.getAllEleves();
+    }
+
+    @GetMapping("get+all/{id}")
+    public List<Eleve> getAllElevesByClassGroupId(@PathVariable("id") Integer classGroupId) {
+        return eleveService.getAllElevesByClassGroupId(classGroupId);
+    }
+
+
 
 //    @PutMapping("change+password/{id}")
 //    public String changePassword(@PathVariable int id, @RequestBody Eleve eleve) {

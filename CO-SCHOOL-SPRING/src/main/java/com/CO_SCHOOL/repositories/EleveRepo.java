@@ -1,6 +1,7 @@
 package com.CO_SCHOOL.repositories;
 
 import com.CO_SCHOOL.models.Eleve;
+import com.CO_SCHOOL.models.Professeur;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -23,4 +24,9 @@ public interface EleveRepo extends CrudRepository<Eleve, Integer> {
 
     List<Eleve> findEleveByClasseGroupId(int classGroupId);
 
+    @Query(value = "SELECT * FROM person WHERE dtype ='ELEVE'" ,nativeQuery = true)
+    List<Eleve> getAllEleve();
+
+    @Query(value = "SELECT e FROM Eleve e WHERE e.classeGroup.id =:id")
+    List<Eleve> getAllEleveByClasseGroup(@Param("id") Integer id);
 }

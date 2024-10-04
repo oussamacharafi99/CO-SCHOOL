@@ -46,3 +46,18 @@ label{
     font-weight: 500;
     padding: 5px;
 }
+button{
+    padding: 7px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--hover-bg);
+    background: var(--background-color);
+    color: var(--text-color);
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button:hover{
+    background: var(--hover-bg);
+    color: var(--hover-color);
+}

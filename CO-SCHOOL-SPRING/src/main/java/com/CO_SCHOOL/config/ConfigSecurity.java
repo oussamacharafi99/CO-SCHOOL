@@ -38,7 +38,9 @@ public class ConfigSecurity {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
                                 .requestMatchers("api/auth/change+password/**", "api/eleve/get+eleve+by+id/**").permitAll()
-                                .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")
+                                .requestMatchers("api/eleve/get+all","api/eleve/get+all/**").permitAll()//admin
+                                .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").permitAll()//admin
+                                .requestMatchers("api/prof/get+all","api/prof/get+all+class+room/**").permitAll()//admin
                                 .requestMatchers("api/examen/get+examen+by+prof/**").permitAll() // prof
                                 .requestMatchers("api/examen/get+examen+inassign/**" , "api/examen/get+examen+inassign+by+prof+id/**").permitAll() // prof
                                 .requestMatchers("api/examen/update+examen/**").permitAll() // prof
@@ -51,11 +53,13 @@ public class ConfigSecurity {
                                 
                                 .requestMatchers("api/classeGroup/Prof_eleves/**").permitAll() //prof // admin
                                 .requestMatchers("api/classeGroup/profs+class/**","api/classeGroup/get+class+by+prof+id/**").permitAll()
-                                .requestMatchers("api/classeGroup/save").hasRole("ADMIN")
-                                .requestMatchers("api/classeGroup/**").hasRole("ADMIN")
+                                .requestMatchers("api/classeGroup/save" ,"api/classeGroup/get+all").permitAll()//admin
+                                .requestMatchers("api/classeGroup/**").permitAll()//admin
 //                              .requestMatchers("api/absence/get+all+by:/**").hasRole("ELEVE")
                                 .requestMatchers("api/absence/get+all+by:/**").permitAll()
-                                .requestMatchers("api/absence/**").hasRole("PROF")
+                                .requestMatchers("api/absence/**").permitAll()//prof
+
+                                .requestMatchers("api/classe+prof/assign").permitAll() //admin
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);

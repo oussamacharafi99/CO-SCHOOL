@@ -16,7 +16,7 @@ public class Professeur extends Person {
     @JsonIgnore
     private List<Examen> examens;
 
-    @ManyToMany(mappedBy = "professeurs")
+    @OneToMany(mappedBy = "prof")
     @JsonIgnore
-    private List<ClasseGroup> classeGroups;
+    private List<ClasseProf> classeProfs;
 }
