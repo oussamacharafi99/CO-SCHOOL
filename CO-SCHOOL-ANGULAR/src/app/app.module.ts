@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './HOME/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { InterceptorAuth } from './Services/interceptor.service';
+import { InterceptorAuth } from './Services/interceptor.service';
 import { HomeMainComponent } from './HOME/home-main/home-main.component';
 import { HeaderMainComponent } from './HOME/header-main/header-main.component';
 import { AboutComponent } from './HOME/about/about.component';
@@ -63,6 +63,13 @@ import { DashAdminMenuResponsiveComponent } from './DASHBOARD-ADMIN/dash-admin-m
 import { DashAdminAddClassRoomComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-add-class-room/dash-admin-add-class-room.component';
 import { DashAdminClassRoomHomeComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-class-room-home/dash-admin-class-room-home.component';
 import { DashAdminClassRoomAssignClassRoomComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-class-room-assign-class-room/dash-admin-class-room-assign-class-room.component';
+import { DashAdminGetClassRoomsComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-get-class-rooms/dash-admin-get-class-rooms.component';
+import { DashAdminInsertAbsenceComponent } from './DASHBOARD-ADMIN/gestion-des-absences/dash-admin-insert-absence/dash-admin-insert-absence.component';
+import { DashAdminAbsenceHomeComponent } from './DASHBOARD-ADMIN/gestion-des-absences/dash-admin-absence-home/dash-admin-absence-home.component';
+import { DashAdminGetAbsencesComponent } from './DASHBOARD-ADMIN/gestion-des-absences/dash-admin-get-absences/dash-admin-get-absences.component';
+import { DashEleveMenuResponsiveComponent } from './DASHBOARD-ELEVE/dash-eleve-menu-responsive/dash-eleve-menu-responsive.component';
+import { DashAdminExamsHomeComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-exams-home/dash-admin-exams-home.component';
+import { DashAdminAddExamsToProfComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-add-exams-to-prof/dash-admin-add-exams-to-prof.component';
 
 
 @NgModule({
@@ -117,6 +124,13 @@ import { DashAdminClassRoomAssignClassRoomComponent } from './DASHBOARD-ADMIN/ge
     DashAdminAddClassRoomComponent,
     DashAdminClassRoomHomeComponent,
     DashAdminClassRoomAssignClassRoomComponent,
+    DashAdminGetClassRoomsComponent,
+    DashAdminInsertAbsenceComponent,
+    DashAdminAbsenceHomeComponent,
+    DashAdminGetAbsencesComponent,
+    DashEleveMenuResponsiveComponent,
+    DashAdminExamsHomeComponent,
+    DashAdminAddExamsToProfComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,11 +148,11 @@ import { DashAdminClassRoomAssignClassRoomComponent } from './DASHBOARD-ADMIN/ge
     MatTableModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: InterceptorAuth,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorAuth,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

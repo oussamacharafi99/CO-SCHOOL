@@ -30,14 +30,14 @@ public class PersonAuth {
     @PostMapping("login")
     public JwtDto login(@RequestBody Person personLogin) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(personLogin.getUsername(), personLogin.getPassword())
+                new UsernamePasswordAuthenticationToken(personLogin.getUsername().toUpperCase(), personLogin.getPassword())
         );
-        Person person = personService.findByUsername(personLogin.getUsername());
+        Person person = personService.findByUsername(personLogin.getUsername().toUpperCase());
         Set<String> roles = person.getRoles().stream()
                 .map(role -> role.name())
                 .collect(Collectors.toSet());
         Integer personId = person.getId();
-        String token = JwtAuth.generateToken(personLogin.getUsername(), roles);
+        String token = JwtAuth.generateToken(personLogin.getUsername().toUpperCase(), roles);
         return new JwtDto(personId , token);
     }
 

@@ -60,9 +60,9 @@ export class LoginComponent implements OnInit{
             this.router.navigateByUrl('eleve-dashboard');
           } else if (
             decodedToken.roles &&
-            decodedToken.roles.includes(Role[Role.ROLE_PARENT])
+            decodedToken.roles.includes(Role[Role.ROLE_ADMIN])
           ) {
-            this.router.navigateByUrl('technicianDash');
+            this.router.navigateByUrl('admin-dashboard');
           } else {
             alert('Unauthorized role, please try again!');
             this.router.navigateByUrl('');

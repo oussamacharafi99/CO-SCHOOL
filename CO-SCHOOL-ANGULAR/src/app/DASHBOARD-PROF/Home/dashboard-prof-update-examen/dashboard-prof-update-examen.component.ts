@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ClasseNameDto } from 'src/app/Models/dto/ClasseNameDto';
 import { insertExamenDto } from 'src/app/Models/dto/InsertExamenDto';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { Examen } from 'src/app/Models/examen';
 import { classeGroupService } from 'src/app/Services/classe-group.service';
 import { ExamenService } from 'src/app/Services/examen.service';
@@ -18,6 +19,7 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
   ExamRecuper!: Examen;
   idEx!: number;
   classeName!: string;
+  personId !: number;
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +29,7 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getIdPersonFromJwt();
     
     this.formExamen = this.fb.group({
       examenName: ['', [Validators.required]],
@@ -34,7 +37,7 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
       classGroupId: ['', [Validators.required]],
       matter: ['', [Validators.required]],
       semester: ['', [Validators.required]],
-      profId: ''
+      profId: this.personId
     });
 
     
@@ -55,7 +58,7 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
       });
 
       
-      this.classeService.getClassesNameOfProf(25).subscribe((data) => {
+      this.classeService.getClassesNameOfProf(this.personId).subscribe((data) => {
         this.ListClasseRooms = data;
       });
     });
@@ -67,6 +70,17 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
       this.service.updateExamen(this.idEx, newExamen).subscribe(() => {
         alert('Examen modifié avec succès');
       });
+    }
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
     }
   }
 }

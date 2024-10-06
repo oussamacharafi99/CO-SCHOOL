@@ -32,7 +32,6 @@ export class DashAdminGetProfsComponent implements OnInit {
     this.classeGroupService.getAllClasseGroup().subscribe((data) => {
       this.ListClasseGroup = data;
     });
-
     
     this.profService.getAllProfs().subscribe((data) => {
       this.ListProfs = data;

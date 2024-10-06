@@ -33,7 +33,7 @@ export class DashboardEleveAbsenceComponent implements OnInit {
 
   ngOnInit() {
     this.getIdPersonFromJwt();
-    this.service.getAbsenceEleve(3).subscribe(data => {
+    this.service.getAbsenceEleve(this.personId).subscribe(data => {
       this.ListAbsence = data;
       const events = this.ListAbsence.map(absence => ({
         title: absence.motif + " |---| " +absence.time ,

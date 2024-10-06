@@ -1,0 +1,29 @@
+<h1>Les Classe De L'ecole</h1>
+<div class="cont">
+    <table mat-table [dataSource]="ListClasseGroup" matSort class="mat-elevation-z8">
+
+
+        
+        <ng-container matColumnDef="id">
+            <th mat-header-cell id="th" *matHeaderCellDef> ID  </th>
+            <td mat-cell *matCellDef="let classe"> {{ classe.id }} </td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="class-room">
+            <th mat-header-cell id="th" *matHeaderCellDef mat-sort-header> Nom de classe </th>
+            <td mat-cell *matCellDef="let classe"> {{ classe.class_room_name }} </td>
+        </ng-container>
+
+       
+        <ng-container matColumnDef="school_name">
+            <th mat-header-cell id="th" *matHeaderCellDef mat-sort-header> Ecole </th>
+            <td mat-cell *matCellDef="let classe"> {{ classe.school_name }} </td>
+        </ng-container>
+
+    
+        <!-- Header and Row Declarations -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

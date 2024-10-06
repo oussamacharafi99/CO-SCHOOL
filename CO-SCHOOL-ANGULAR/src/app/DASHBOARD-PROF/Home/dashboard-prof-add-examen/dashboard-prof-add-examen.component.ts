@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClasseNameDto } from 'src/app/Models/dto/ClasseNameDto';
 import { insertExamenDto } from 'src/app/Models/dto/InsertExamenDto';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { classeGroupService } from 'src/app/Services/classe-group.service';
 import { ExamenService } from 'src/app/Services/examen.service';
 
@@ -13,11 +14,13 @@ import { ExamenService } from 'src/app/Services/examen.service';
 export class DashboardProfAddExamenComponent implements OnInit {
   formExamen!: FormGroup;
   ListClasseRooms!: ClasseNameDto[];
+  personId !: number;
 
   constructor(private fb: FormBuilder, private service: ExamenService, private classeService: classeGroupService) {}
 
   ngOnInit(): void {
-    this.classeService.getClassesNameOfProf(25).subscribe(data => {
+    this.getIdPersonFromJwt();
+    this.classeService.getClassesNameOfProf(this.personId).subscribe(data => {
     this.ListClasseRooms = data;
     });
 
@@ -27,7 +30,7 @@ export class DashboardProfAddExamenComponent implements OnInit {
       classGroupId: ['', [Validators.required]],
       matter: ['', [Validators.required]],
       semester: ['', [Validators.required]],
-      profId: 25,
+      profId: this.personId,
     });
   }
 
@@ -50,5 +53,15 @@ export class DashboardProfAddExamenComponent implements OnInit {
     });
   }
 
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
+  }
   
 }

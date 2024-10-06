@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassPersonDto } from 'src/app/Models/dto/ClassPersonDto';
 import { ExamenDateDto } from 'src/app/Models/dto/ExamenDateDto';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { Eleve } from 'src/app/Models/eleve';
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import { classeGroupService } from 'src/app/Services/classe-group.service';
@@ -15,7 +16,7 @@ export class DashboardProfElevesHomeComponent implements OnInit {
   ListEleves!: ClassPersonDto[];
   eleve!: Eleve;
   exames!: ExamenDateDto[];
-  profId = 25;
+  personId !: number;
 
   constructor(
     private service: classeGroupService,
@@ -24,9 +25,10 @@ export class DashboardProfElevesHomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.service.getElevesByProfId(this.profId).subscribe(
+    this.getIdPersonFromJwt();
+    this.service.getElevesByProfId(this.personId).subscribe(
       data => {
-        console.log('Liste des élèves:', data); // Vérifiez les données ici
+        console.log('Liste des élèves:', data); 
         this.ListEleves = data;
       },
       error => {
@@ -47,7 +49,7 @@ export class DashboardProfElevesHomeComponent implements OnInit {
       }
     );
 
-    this.exElService.getExamEleveByIdEleveAndProfId(idE, this.profId).subscribe(
+    this.exElService.getExamEleveByIdEleveAndProfId(idE, this.personId).subscribe(
       exam => {
         this.exames = exam;
         console.log('Examens de l\'élève:', exam);
@@ -56,5 +58,16 @@ export class DashboardProfElevesHomeComponent implements OnInit {
         console.error('Erreur lors de la récupération des examens', error);
       }
     );
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
   }
 }

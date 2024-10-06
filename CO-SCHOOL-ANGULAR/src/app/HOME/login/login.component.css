@@ -272,7 +272,7 @@ form > button{
   }
 
   .content1 > p {
-    display: none;
+    display: none !important;
   }
 
   .icon-input {

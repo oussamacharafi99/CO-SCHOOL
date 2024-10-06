@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-eleve-menu',
@@ -6,17 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-eleve-menu.component.css']
 })
 export class DashboardEleveMenuComponent implements OnInit {
-  activeLink: string = '/eleve-dashboard';
+  activeLink: string = '';
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateActiveLink(this.router.url);
+      }
+    });
+
+    
+    this.updateActiveLink(this.router.url);
   }
 
   setActiveLink(link: string): void {
     this.activeLink = link;
   }
 
-  isFirstLinkActive(): boolean {
-    return this.activeLink === '/eleve-dashboard'; 
+  updateActiveLink(url: string): void {
+    this.activeLink = url;
+  }
+
+  
+  isLinkActive(link: string): boolean {
+    return this.activeLink === link;
   }
 }

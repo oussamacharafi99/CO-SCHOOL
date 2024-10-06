@@ -11,27 +11,43 @@
     display: flex;
     align-items: start;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .add-prof{
     width: 34%;
 }
-.prof{
+.assign-prof-classe{
     width: 65%;
+    margin-left: 10px;
+}
+.classes{
+    width: 40%;
     background: var(--background-color);
     padding: 20px;
-    height: 350px;
+    height: 300px;
     max-height: 400px;
     border-radius: 12px;
+    margin-top: 10px;
 }
-/* @media only screen and (max-width: 800px) {
+.profs{
+    width: 59%;
+    background: var(--background-color);
+    padding: 20px;
+    height: 300px;
+    max-height: 400px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+@media only screen and (max-width: 800px) {
     .add-prof{
         width: 100%;
     }
-    .prof{
+    .assign-prof-classe , .classes{
         width: 100%;
         margin-top: 10px;
+        margin-left: 0px;
     }
     .first-section{
         display: block;
     }
-} */
+}
