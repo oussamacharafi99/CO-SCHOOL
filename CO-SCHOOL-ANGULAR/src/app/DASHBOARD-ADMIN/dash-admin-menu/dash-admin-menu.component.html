@@ -46,6 +46,18 @@
            <p [ngClass]="{'active-p': isLinkActive('/admin-dashboard/absence')}">absence</p>
         </a>
       </li>
+
+      <li>
+        <a 
+           routerLink="/admin-dashboard/exam" 
+           (click)="setActiveLink('/admin-dashboard/exam')" 
+           [ngClass]="{
+             'active': isLinkActive('/admin-dashboard/exam')
+           }">
+           <i class="pi pi-calendar"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/admin-dashboard/exam')}">Exmes</p>
+        </a>
+      </li>
     </ul>
   </div>
   

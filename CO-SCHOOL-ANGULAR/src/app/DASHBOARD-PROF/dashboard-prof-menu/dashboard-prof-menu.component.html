@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
     <div class="menu">
         <i class="pi pi-bars"></i>
     </div>
@@ -40,4 +40,53 @@
             </a>
         </li>
     </ul>
-</div>
+</div> -->
+
+
+<div class="main">
+    <div class="menu"></div>
+  
+    <ul>
+      <li>
+        <a 
+           routerLink="/prof-dashboard" 
+           (click)="setActiveLink('/prof-dashboard')" 
+           [ngClass]="{
+             'active': isLinkActive('/prof-dashboard')
+           }">
+           <i class="pi pi-home"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/prof-dashboard')}">Home</p>
+        </a>
+      </li>
+    <li>
+        <a routerLink="/prof-dashboard/dash-gestion" (click)="setActiveLink('/prof-dashboard/dash-gestion')"
+            [ngClass]="{'active': isLinkActive('/prof-dashboard/dash-gestion')}">
+            <i class="pi pi-chart-pie"></i>
+            <p [ngClass]="{'active-p': isLinkActive('/prof-dashboard/dash-gestion')}">Gestion</p>
+        </a>
+    </li>
+      <li>
+        <a 
+           routerLink="/prof-dashboard/dash-examens" 
+           (click)="setActiveLink('/prof-dashboard/dash-examens')" 
+           [ngClass]="{
+             'active': isLinkActive('/prof-dashboard/dash-examens')
+           }">
+           <i class="pi pi-clipboard"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/prof-dashboard/dash-examens')}">Exames</p>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/prof-dashboard/info-eleves" 
+           (click)="setActiveLink('/prof-dashboard/info-eleves')" 
+           [ngClass]="{
+             'active': isLinkActive('/prof-dashboard/info-eleves')
+           }">
+           <i class="pi pi-calendar"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/prof-dashboard/info-eleves')}">eleves info</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  

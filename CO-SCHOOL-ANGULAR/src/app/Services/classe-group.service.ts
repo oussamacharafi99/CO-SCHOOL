@@ -21,6 +21,7 @@ export class classeGroupService {
   private _API_GET_ALL_CLASSEGROUP = "http://localhost:9091/api/classeGroup/get+all";
   private _API_ADD_CLASSEGROUP = "http://localhost:9091/api/classeGroup/save"
   private _API_ASSIGN_CLASSEGROUP_TO_PROF = "http://localhost:9091/api/classe+prof/assign"
+  private _API_GET_ALL_CLASSE_BY_PROF_ID = "http://localhost:9091/api/classeGroup/get+classe+by+prof+id"
 
 
   /****___________  get Profs  Classe _____________*****/
@@ -47,6 +48,10 @@ export class classeGroupService {
 
   assignClasseToProf(classProf : ClasseProfDto):Observable<string>{
       return this.http.post<string>(this._API_ASSIGN_CLASSEGROUP_TO_PROF ,classProf )
+  }
+
+  getAllClasseGroupByProfId(id : number):Observable<ClasseNameDto[]>{
+    return this.http.get<ClasseNameDto[]>(this._API_GET_ALL_CLASSE_BY_PROF_ID + "/" +id)
   }
 
 
