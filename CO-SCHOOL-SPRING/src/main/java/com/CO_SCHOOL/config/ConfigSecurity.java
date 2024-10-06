@@ -53,7 +53,7 @@ public class ConfigSecurity {
                                 
                                 .requestMatchers("api/classeGroup/Prof_eleves/**").permitAll() //prof // admin
                                 .requestMatchers("api/classeGroup/profs+class/**","api/classeGroup/get+class+by+prof+id/**").permitAll()
-                                .requestMatchers("api/classeGroup/save" ,"api/classeGroup/get+all").permitAll()//admin
+                                .requestMatchers("api/classeGroup/save" ,"api/classeGroup/get+all", "api/classeGroup/get+classe+by+prof+id/**").permitAll()//admin
                                 .requestMatchers("api/classeGroup/**").permitAll()//admin
 //                              .requestMatchers("api/absence/get+all+by:/**").hasRole("ELEVE")
                                 .requestMatchers("api/absence/get+all+by:/**", "api/absence/insert").permitAll() // prof admin

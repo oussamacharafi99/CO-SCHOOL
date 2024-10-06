@@ -62,4 +62,9 @@ public class ClasseGroupController {
     public List<ClassPersonDto> getProfEleves(@PathVariable Integer id){
         return classeGroupService.getProfEleveByProfId(id);
     }
+
+    @GetMapping("get+classe+by+prof+id/{id}")
+    public List<ClasseNameDto> getClasseNameByProfId(@PathVariable Integer id){
+        return classeGroupService.getProfEleveNameByProfId(id);
+    }
 }
