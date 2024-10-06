@@ -21,6 +21,8 @@ import { DashboardProfElevesHomeComponent } from './DASHBOARD-PROF/Gestion-des-e
 import { DashboardAdminComponent } from './DASHBOARD-ADMIN/dashboard-admin/dashboard-admin.component';
 import { DashAdminGestionEleveHomeComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-gestion-eleve-home/dash-admin-gestion-eleve-home.component';
 import { DashAdminGestionProfHomeComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-gestion-prof-home/dash-admin-gestion-prof-home.component';
+import { DashAdminClassRoomHomeComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-class-room-home/dash-admin-class-room-home.component';
+import { DashAdminAbsenceHomeComponent } from './DASHBOARD-ADMIN/gestion-des-absences/dash-admin-absence-home/dash-admin-absence-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -66,6 +68,8 @@ const routes: Routes = [
     path: 'admin-dashboard', component: DashboardAdminComponent, children: [
       { path:'',component:DashAdminGestionEleveHomeComponent},
       { path:'gestion-profs',component:DashAdminGestionProfHomeComponent},
+      {path : 'classe' , component : DashAdminClassRoomHomeComponent},
+      {path:'absence', component:DashAdminAbsenceHomeComponent}
   ]},
 
 

@@ -38,6 +38,7 @@ li > a {
     border-radius: 100%;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.089);
     transition: .5s;
+    position: relative;
 }
 
 li > a:hover {
@@ -54,4 +55,29 @@ li > a.active {
 li:first-of-type > a.match {
     background: var(--hover-bg);
     color: var(--hover-color);
+}
+
+/* Paragraphe caché par défaut avec transition */
+li > a > p {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    padding: 5px;
+    position: absolute;
+    font-size: 10px;
+    background: var(--hover-bg);
+    color: var(--hover-color);
+    left: 80%;
+    top: 15px;
+    border-radius: 12px;
+}
+
+li > a > p.active-p {
+    opacity: 1;
+    visibility: visible;
+}
+
+li > a:hover > p {
+    opacity: 1;
+    visibility: visible;
 }

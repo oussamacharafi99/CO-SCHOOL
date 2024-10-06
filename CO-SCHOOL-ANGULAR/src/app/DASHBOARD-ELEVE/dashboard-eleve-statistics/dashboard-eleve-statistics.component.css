@@ -66,3 +66,19 @@
     justify-content: center;
     border-left: 1px solid var(--color-border);
 }
+
+/* ---------------------------------------------- */
+
+@media only screen and (max-width: 800px) {
+    .chart-section{
+        display: block;
+    }
+    .chart-container{
+        width: 100%;
+    }
+    #chart2{
+        border-left:none;
+        border-top: 1px solid var(--color-border);
+        margin-top: 10px;
+    }
+}

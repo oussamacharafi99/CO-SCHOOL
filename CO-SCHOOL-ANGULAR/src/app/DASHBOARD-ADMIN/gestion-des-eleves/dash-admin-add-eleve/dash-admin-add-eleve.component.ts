@@ -48,7 +48,7 @@ export class DashAdminAddEleveComponent implements OnInit{
         classeGroup: {
           id: this.FormEleve.value.classeId,
           class_room_name: '',
-          schoolName: '',
+          school_name: '',
           eleves: [],
           professeurs: []
         }

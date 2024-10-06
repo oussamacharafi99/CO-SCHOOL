@@ -165,3 +165,16 @@ header{
         display: none;
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .search {
+        width: 80%;
+        display: none;
+    }
+    .controles > a {
+        margin: 0;
+    }
+    .user-info {
+        display: none;
+    }
+}

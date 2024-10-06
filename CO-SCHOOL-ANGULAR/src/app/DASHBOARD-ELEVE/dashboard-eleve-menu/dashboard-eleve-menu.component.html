@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
     <div class="menu">
         <i class="pi pi-bars"></i>
     </div>
@@ -40,4 +40,57 @@
             </a>
         </li>
     </ul>
-</div>
+</div> -->
+
+
+<div class="main">
+    <div class="menu"></div>
+  
+    <ul>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard" 
+           (click)="setActiveLink('/eleve-dashboard')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard')
+           }">
+           <i class="pi pi-home"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/eleve-dashboard')}">Home</p>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard/statistics" 
+           (click)="setActiveLink('/eleve-dashboard/statistics')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard/statistics')
+           }">
+           <i class="pi pi-chart-pie"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/eleve-dashboard/statistics')}">statistics</p>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard/result" 
+           (click)="setActiveLink('/eleve-dashboard/result')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard/result')
+           }">
+           <i class="pi pi-clipboard"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/eleve-dashboard/result')}">result</p>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard/calendar" 
+           (click)="setActiveLink('/eleve-dashboard/calendar')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard/calendar')
+           }">
+           <i class="pi pi-calendar"></i>
+           <p [ngClass]="{'active-p': isLinkActive('/eleve-dashboard/calendar')}">Calendar</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  

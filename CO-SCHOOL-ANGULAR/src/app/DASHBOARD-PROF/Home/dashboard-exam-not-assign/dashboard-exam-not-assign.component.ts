@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { Examen } from 'src/app/Models/examen';
 import { ExamenService } from 'src/app/Services/examen.service';
 
@@ -13,18 +14,18 @@ export class DashboardExamNotAssignComponent  implements OnInit {
   showAlert: boolean = true; 
   examenId !: number;
   metter !: string;
-  prof_id !:number;
+  personId !: number;
 
 
   constructor(private service: ExamenService) {}
 
   ngOnInit(): void {
-    this.prof_id = 25;
+    this.getIdPersonFromJwt();
     this.getExamens();
   }
 
   getExamens(): void {
-    this.service.getAllExamenInassignByProfId(this.prof_id).subscribe(data => {
+    this.service.getAllExamenInassignByProfId(this.personId).subscribe(data => {
       this.ListExamens = data;
       console.log(data[0]?.examen_name);
     });
@@ -40,6 +41,17 @@ export class DashboardExamNotAssignComponent  implements OnInit {
     this.service.deleteExamen(this.examenId).subscribe()
     this.getExamens();
     this.showAlert = true;
+  }
+
+  getIdPersonFromJwt(){
+    const storedJwtData = localStorage.getItem('jwtData');
+    if (storedJwtData) {
+      const jwtData : JwtDto = JSON.parse(storedJwtData);
+      console.log('JWT Data:', jwtData.person_id);
+      this.personId = jwtData.person_id;
+    } else {
+      console.log('Aucun JWT trouvé dans le localStorage');
+    }
   }
   
 }
