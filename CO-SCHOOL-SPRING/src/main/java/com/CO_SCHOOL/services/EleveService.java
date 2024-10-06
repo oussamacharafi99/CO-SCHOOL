@@ -1,5 +1,6 @@
 package com.CO_SCHOOL.services;
 
+import com.CO_SCHOOL.dto.EleveAbsenceDto;
 import com.CO_SCHOOL.enums.Role;
 import com.CO_SCHOOL.exeptions.CoEcoSchoolExepion;
 import com.CO_SCHOOL.models.Eleve;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -31,9 +34,10 @@ public class EleveService {
     public String insertEleve(Eleve eleve) {
         eleve.setPassword(passwordEncoder.encode(eleve.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(Role.ROLE_PROF);
+        roles.add(Role.ROLE_ELEVE);
         eleve.setRoles(roles);
-
+        String username = eleve.getUsername();
+        eleve.setUsername(username.toLowerCase().trim());
         eleve.setIdentificationId(generateUniqueIdentificationId());
 
         eleveRepo.save(eleve);
@@ -87,4 +91,36 @@ public class EleveService {
     public List<Eleve> getAllElevesByClassGroupId(Integer id) {
         return eleveRepo.findEleveByClasseGroupId(id);
     }
+
+//
+//    public List<EleveAbsenceDto> getEleveAbsenceById(Integer id) {
+//        return eleveRepo.getEleveAbsenceById(id);
+//    }
+
+    public List<EleveAbsenceDto> getEleveAbsenceById(Integer id) {
+        List<Object[]> listEleves = eleveRepo.getEleveAbsenceById(id);
+        return mapToEleveAbsenceDtoList(listEleves);
+    }
+
+    public List<EleveAbsenceDto> getEleveAbsence() {
+        List<Object[]> listElevesSansId = eleveRepo.getEleveAbsence();
+        return mapToEleveAbsenceDtoList(listElevesSansId);
+    }
+
+    // Helper method to map Object[] to List<EleveAbsenceDto>
+    private List<EleveAbsenceDto> mapToEleveAbsenceDtoList(List<Object[]> listEleves) {
+        return listEleves.stream().map(eleve -> {
+            Integer idEleve = (Integer) eleve[0];
+            String identificationId = eleve[1].toString();
+            String username = eleve[2].toString();
+            String email = eleve[3].toString();
+            String gender = eleve[4].toString();
+            Integer age = (Integer) eleve[5];
+            Long totalAbsences = ((Number) eleve[6]).longValue();
+
+            return new EleveAbsenceDto(idEleve, identificationId, username, email, gender, age, totalAbsences);
+        }).collect(Collectors.toList());
+    }
+
+
 }

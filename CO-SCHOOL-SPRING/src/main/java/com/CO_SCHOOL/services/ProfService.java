@@ -71,5 +71,4 @@ public class ProfService {
     public List<Professeur> getAllProfsByClasseRoomName(Integer id){
         return profRepo.getAllProfsByClasseRoomName(id);
     }
-
 }

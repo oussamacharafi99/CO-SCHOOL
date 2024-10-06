@@ -38,7 +38,7 @@ public class ConfigSecurity {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
                                 .requestMatchers("api/auth/change+password/**", "api/eleve/get+eleve+by+id/**").permitAll()
-                                .requestMatchers("api/eleve/get+all","api/eleve/get+all/**").permitAll()//admin
+                                .requestMatchers("api/eleve/get+all","api/eleve/get+all/**", "api/eleve/get+absences+eleve+by+classe+id/**", "api/eleve/get+absences+eleves").permitAll()//admin
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").permitAll()//admin
                                 .requestMatchers("api/prof/get+all","api/prof/get+all+class+room/**").permitAll()//admin
                                 .requestMatchers("api/examen/get+examen+by+prof/**").permitAll() // prof
@@ -56,7 +56,7 @@ public class ConfigSecurity {
                                 .requestMatchers("api/classeGroup/save" ,"api/classeGroup/get+all").permitAll()//admin
                                 .requestMatchers("api/classeGroup/**").permitAll()//admin
 //                              .requestMatchers("api/absence/get+all+by:/**").hasRole("ELEVE")
-                                .requestMatchers("api/absence/get+all+by:/**").permitAll()
+                                .requestMatchers("api/absence/get+all+by:/**", "api/absence/insert").permitAll() // prof admin
                                 .requestMatchers("api/absence/**").permitAll()//prof
 
                                 .requestMatchers("api/classe+prof/assign").permitAll() //admin
