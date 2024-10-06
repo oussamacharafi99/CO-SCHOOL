@@ -76,6 +76,14 @@ public class ClasseGroupService {
             Integer age = (Integer) eleve[7];
             return new ClassPersonDto(idP, classeId, classRoomName, identificationId, username, email, gender, age);
         }).collect(Collectors.toList());
+    }
 
+    public List<ClasseNameDto> getProfEleveNameByProfId(Integer id) {
+        List<Object[]> ListClasse = classGroupRepo.getAllClasseGroupNameByProfId(id);
+        return ListClasse.stream().map(classe ->{
+            Integer idC = (Integer) classe[0];
+            String classRoomName = (String) classe[1];
+            return new ClasseNameDto(idC, classRoomName);
+        }).collect(Collectors.toList());
     }
 }
