@@ -1,4 +1,20 @@
-<h1>Tous les examens non assignés</h1>
+<div class="head">
+    <h1>Professeurs</h1>
+    <form [formGroup]="FromSearch" (ngSubmit)="search()">
+        <div class="form-group">
+
+            <select id="profId" formControlName="profId" class="form-control">
+                <option value="" disabled>Rechercher par Prof</option>
+                <option *ngFor="let prof of ListProfs" [value]="prof.id">{{prof.username}}</option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="FromSearch.invalid"><i class="pi pi-search"></i></button>
+            <button (click)="realod()" class="btn btn-primary"><i class="pi pi-replay"></i></button>
+        </div>
+    </form>
+</div>
 <div class="cont">
     <table mat-table [dataSource]="ListExamens" class="mat-elevation-z8">
                     
@@ -26,10 +42,10 @@
           <td mat-cell *matCellDef="let examen"> {{ examen.examen_date }} </td>
         </ng-container>
 
-        <ng-container matColumnDef="Delete">
+        <ng-container matColumnDef="Delete" >
             <th mat-header-cell id="th" *matHeaderCellDef><i class="pi pi-delete-left"></i></th>
             <td mat-cell *matCellDef="let examen"> 
-                <button (click)="popup(examen.id , examen.matter )"><i class="pi pi-times"></i></button>
+                <button *ngIf="examen.assign !== 'ASSIGN'"><i class="pi pi-times"></i></button>
             </td>
         </ng-container>
 
@@ -37,7 +53,7 @@
           <th mat-header-cell id="th" *matHeaderCellDef> <i class="pi pi-file-edit"></i></th>
           <td mat-cell *matCellDef="let examen"> 
             <ng-container *ngIf="examen.assign !== 'ASSIGN'">
-              <a [routerLink]="['update-examen/', examen.id]"><i class="pi pi-sync"></i></a>
+              <a [routerLink]="['update+examen/', examen.id]"><i class="pi pi-sync"></i></a>
             </ng-container>
           </td>
         </ng-container>
@@ -45,15 +61,5 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-</div>
-
-<div class="alert alert-dark alert-dismissible fade show" id="alert" role="alert" *ngIf="showAlert == false">
-  <button type="button" class="btn-close btn-text btn-primary custom-button" data-bs-dismiss="alert"
-        aria-label="Close" (click)="showAlert = true"><i class="pi pi-times-circle"></i></button>
-  <strong>Voulez-vous supprimer ?</strong><p><em>ce examen : </em>{{ metter }}</p><br>
-  <div class="btns">
-    <button class="btn delete" (click)="delete()">Supprimer</button>
-    <button class="btn cancel" (click)="showAlert = true">Annuler</button> 
-  </div>
 </div>
 

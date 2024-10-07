@@ -15,11 +15,11 @@
 .add-prof{
     width: 39%;
 }
-.prof{
+.exam{
     width: 60%;
     background: var(--background-color);
     padding: 20px;
-    height: 350px;
+    height: 375px;
     max-height: 400px;
     border-radius: 12px;
 }
@@ -27,7 +27,7 @@
     .add-prof{
         width: 100%;
     }
-    .prof{
+    .exam{
         width: 100%;
         margin-top: 10px;
     }

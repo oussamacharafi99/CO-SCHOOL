@@ -23,22 +23,33 @@ import { DashAdminGestionEleveHomeComponent } from './DASHBOARD-ADMIN/gestion-de
 import { DashAdminGestionProfHomeComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-gestion-prof-home/dash-admin-gestion-prof-home.component';
 import { DashAdminClassRoomHomeComponent } from './DASHBOARD-ADMIN/gestion-des-classrooms/dash-admin-class-room-home/dash-admin-class-room-home.component';
 import { DashAdminAbsenceHomeComponent } from './DASHBOARD-ADMIN/gestion-des-absences/dash-admin-absence-home/dash-admin-absence-home.component';
+import { AuthGuard } from './Services/Guard/Guards/auth.guard';
+import { Role } from './Models/enums/enum';
+import { ErrorMainComponent } from './HOME/error-main/error-main.component';
+import { DashboardProfExamenTermineComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-examen-termine/dashboard-prof-examen-termine.component';
+import { DashAdminExamsHomeComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-exams-home/dash-admin-exams-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
-
+  
   {
-    path: 'eleve-dashboard', component: DashboardComponent, children: [
-      { path:'',component:DashboardEleveHomeComponent},
+    path: 'eleve-dashboard', 
+    component: DashboardComponent, 
+    canActivate: [AuthGuard], // Utilisation du guard ici
+    data: { role: Role.ROLE_ELEVE }, // Rôle requis pour accéder à cette route
+    children: [
+      { path: '', component: DashboardEleveHomeComponent },
       { path: 'statistics', component: DashboardEleveStatisticsComponent },
       { path: 'result', component: DashboardEleveNotesComponent },
       { path: 'calendar', component: DashboardEleveCalendarExamComponent },
-    
-  ]},
+    ]
+  },
 
   {
     path: 'prof-dashboard',
     component: DashboardProfComponent,
+    canActivate: [AuthGuard],
+    data: { role: Role.ROLE_PROF }, 
     children: [
       {
         path: '',
@@ -61,20 +72,27 @@ const routes: Routes = [
         path: 'dash-gestion',
         component: DashboardProfGestionComponent,
       },
-      {path:'info-eleves', component: DashboardProfElevesHomeComponent}
+      { path: 'info-eleves', component: DashboardProfElevesHomeComponent }
     ]
   },
+
   {
-    path: 'admin-dashboard', component: DashboardAdminComponent, children: [
-      { path:'',component:DashAdminGestionEleveHomeComponent},
-      { path:'gestion-profs',component:DashAdminGestionProfHomeComponent},
-      {path : 'classe' , component : DashAdminClassRoomHomeComponent},
-      {path:'absence', component:DashAdminAbsenceHomeComponent}
-  ]},
-
-
-
+    path: 'admin-dashboard', 
+    component: DashboardAdminComponent, 
+    canActivate: [AuthGuard],
+    data: { role: Role.ROLE_ADMIN }, 
+    children: [
+      { path: '', component: DashAdminGestionEleveHomeComponent },
+      { path: 'gestion-profs', component: DashAdminGestionProfHomeComponent },
+      { path: 'classe', component: DashAdminClassRoomHomeComponent },
+      { path: 'absence', component: DashAdminAbsenceHomeComponent },
+      { path: 'exam', component: DashAdminExamsHomeComponent }
+    ]
+  },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path:'error' , component : ErrorMainComponent}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

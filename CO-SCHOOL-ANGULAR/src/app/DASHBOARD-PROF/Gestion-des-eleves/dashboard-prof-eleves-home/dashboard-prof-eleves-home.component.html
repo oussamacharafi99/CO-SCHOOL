@@ -23,6 +23,13 @@
         </div>
       </div>
   
+      <div *ngIf="!eleve" class="message-vide">
+        <h3>Aucune information sur l'élève n'est disponible pour le moment.</h3>
+
+        <div class="img-default">
+        </div>
+      </div>
+      
       <div class="eleve-info-exam" *ngIf="eleve">
         <h3>Informations de l'élève avec ses examens</h3>
         <div class="eleve-info-content">
@@ -30,7 +37,7 @@
             <img *ngIf="eleve.gender === 'F'" src="../../../../assets/icons/girl.png">
             <img *ngIf="eleve.gender === 'M'" src="../../../../assets/icons/boy.png">
           </div>
-  
+      
           <div class="info-eleve">
             <h2>{{eleve.username}}</h2>
             <div class="info-e">
@@ -41,7 +48,7 @@
             </div>
           </div>
         </div>
-  
+      
         <div class="eleve-exames-info-content">
           <h2>Informations des Contrôles</h2>
           <table class="custom-table">
@@ -66,6 +73,7 @@
           </table>
         </div>
       </div>
+      
     </div>
   </div>
   

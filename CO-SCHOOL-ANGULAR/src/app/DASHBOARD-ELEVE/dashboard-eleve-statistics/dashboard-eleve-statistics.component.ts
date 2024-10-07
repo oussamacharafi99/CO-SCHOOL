@@ -104,7 +104,7 @@ export class DashboardEleveStatisticsComponent implements OnInit {
   searching() {
     if (this.formSearch.valid) {
       const newSearch: SearchResultDto = {
-        eleve_id: 3,
+        eleve_id: this.personId,
         semester: this.formSearch.value.semester,
         year: this.formSearch.value.year
       };

@@ -44,3 +44,23 @@
     border-radius: 12px;
     margin-top: 20px;
 }
+
+@media only screen and (max-width: 800px) {
+    .main-top{
+        width: 100%;
+        display: block;
+    }
+    .add-examen{
+        width: 100%;
+        height: 300px;
+    }
+    .tab-examen{
+        width: 100%;
+        background: var(--background-color);
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+    .main-center2{
+        width: 100%;
+    }
+}

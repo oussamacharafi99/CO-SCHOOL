@@ -58,3 +58,26 @@
     border-radius: 12px;
     margin-top: 20px;
 }
+@media only screen and (max-width: 800px) {
+    .main-wrapper{
+        display: block;
+    }
+    
+    .tab-examen{
+        width: 100%;
+        background: var(--background-color);
+        margin-right: 0px;
+        padding: 20px;
+        height: 305px;
+        max-height: 500px;
+        border-radius: 12px;
+    }
+    
+    .main-eleves{
+        width: 100%;
+        height: 430px;
+        max-height: 500px;
+        margin-top: 20px;
+    }
+    
+}

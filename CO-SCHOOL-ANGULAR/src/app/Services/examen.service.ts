@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Examen } from '../Models/examen';
 import { insertExamenDto } from '../Models/dto/InsertExamenDto';
 import { ExamenProfDto } from '../Models/dto/ExamenProfDto';
@@ -28,9 +28,19 @@ export class ExamenService {
    private  _API_GET_EXAMENS_CORRECTION_TERMINER = "http://localhost:9091/api/examen_eleve/examen+prof+correction+terminer"
    private  _API_GET_ELEVES_BY_ELEVEID_AND_PROFID = "http://localhost:9091/api/examen_eleve/get+exams+by+eleve+prof"
    
+   private examenSubject = new Subject<void>();
+   emitExamenChange() {
+    this.examenSubject.next();
+   }
+   getExamenChanges(): Observable<void> {
+    return this.examenSubject.asObservable();
+   }
+
 
     insertExamen(examen : insertExamenDto):Observable<insertExamenDto>{
-        return this.http.post<insertExamenDto>(this._API_INSERT_EXAMEN , examen);
+        return this.http.post<insertExamenDto>(this._API_INSERT_EXAMEN , examen).pipe(
+          tap(() => this.emitExamenChange())
+        )
     }
 
     getAllExamens():Observable<Examen[]>{
@@ -62,11 +72,15 @@ export class ExamenService {
     }
 
     updateExamen(id : number, examen : insertExamenDto):Observable<insertExamenDto>{
-      return this.http.put<insertExamenDto>(this._API_UPDATE_EXAMEN + "/" +id , examen);
+      return this.http.put<insertExamenDto>(this._API_UPDATE_EXAMEN + "/" +id , examen).pipe(
+        tap(() => this.emitExamenChange())
+      )
     }
 
     deleteExamen(id : number){
-      return this.http.delete(this._API_DELETE_EXAMEN + "/" +id);
+      return this.http.delete(this._API_DELETE_EXAMEN + "/" +id).pipe(
+        tap(() => this.emitExamenChange())
+      )
     }
 
     getAllExamenCorrectionTerminer(id : number):Observable<ExamenProfDto[]>{

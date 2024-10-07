@@ -31,6 +31,8 @@ export class DashboardProfNoteEleveExamComponent implements OnInit {
     private ExSuService : ExamSubjectService
   ) { }
 
+        
+
   ngOnInit(): void {
     // this.idEx = +this.route.snapshot.paramMap.get('id')!;
     this.ExSuService.examSelected$.subscribe(exId =>{

@@ -70,6 +70,11 @@ import { DashAdminGetAbsencesComponent } from './DASHBOARD-ADMIN/gestion-des-abs
 import { DashEleveMenuResponsiveComponent } from './DASHBOARD-ELEVE/dash-eleve-menu-responsive/dash-eleve-menu-responsive.component';
 import { DashAdminExamsHomeComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-exams-home/dash-admin-exams-home.component';
 import { DashAdminAddExamsToProfComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-add-exams-to-prof/dash-admin-add-exams-to-prof.component';
+import { DashProfMenuResponsiveComponent } from './DASHBOARD-PROF/dash-prof-menu-responsive/dash-prof-menu-responsive.component';
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from './Services/Guard/Guards/auth.guard';
+import { SectionLoginComponent } from './HOME/section-login/section-login.component';
+import { DashAdminGetExamsComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-get-exams/dash-admin-get-exams.component';
 
 
 @NgModule({
@@ -131,6 +136,9 @@ import { DashAdminAddExamsToProfComponent } from './DASHBOARD-ADMIN/gestion-des-
     DashEleveMenuResponsiveComponent,
     DashAdminExamsHomeComponent,
     DashAdminAddExamsToProfComponent,
+    DashProfMenuResponsiveComponent,
+    SectionLoginComponent,
+    DashAdminGetExamsComponent,
   ],
   imports: [
     BrowserModule,
@@ -149,7 +157,7 @@ import { DashAdminAddExamsToProfComponent } from './DASHBOARD-ADMIN/gestion-des-
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
+      provide: [AuthGuard, HTTP_INTERCEPTORS],
       useClass: InterceptorAuth,
       multi: true
     }

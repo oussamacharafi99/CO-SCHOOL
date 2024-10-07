@@ -31,6 +31,7 @@
     --tb-color:#6c757d;
     --tb-color-hover:#d8e0e7;
     --logo:url("./assets/images/black.png");
+    --case-default :url("./assets/images/cas1.png");
   }
   ::-webkit-scrollbar {
     width: 3px;
@@ -38,7 +39,7 @@
   }
 
 ::-webkit-scrollbar-track {
-    background: #ffffff; 
+    background: var(--color-border); 
   }
 
 ::-webkit-scrollbar-thumb {
@@ -62,6 +63,7 @@
     --tb-color:#d8e0e7;
     --tb-color-hover:#393f43;
     --logo:url("./assets/images/white.png");
+    --case-default :url("./assets/images/cas2.png");
   }
   
   body {
