@@ -16,7 +16,14 @@ export class DashboardAdminEncoureCorrectionComponent  implements OnInit {
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
-      this.service.getAllExamenSEncourCorrByProf(this.personId).subscribe(data =>{
+    this.getAllEnCoureDeCorriction()
+    this.service.getExamenChanges().subscribe(()=>{
+      this.getAllEnCoureDeCorriction()
+    })
+  }
+
+  getAllEnCoureDeCorriction(){
+    this.service.getAllExamenSEncourCorrByProf(this.personId).subscribe(data =>{
         this.ListExamensWithoutNotes = data;
       })
   }

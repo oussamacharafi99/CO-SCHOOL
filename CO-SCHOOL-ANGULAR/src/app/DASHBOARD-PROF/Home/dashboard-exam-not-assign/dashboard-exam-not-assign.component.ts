@@ -22,6 +22,10 @@ export class DashboardExamNotAssignComponent  implements OnInit {
   ngOnInit(): void {
     this.getIdPersonFromJwt();
     this.getExamens();
+    this.service.getExamenChanges().subscribe(()=>{
+      this.getExamens();
+    })
+    
   }
 
   getExamens(): void {

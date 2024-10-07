@@ -32,7 +32,7 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
-    this.service.getExamenDates(3).subscribe(data => {
+    this.service.getExamenDates(this.personId).subscribe(data => {
       this.examensDates = data;
       const events = this.examensDates.map(exam => ({
         title: `${exam.examen_name} \n- ${exam.matter}`,

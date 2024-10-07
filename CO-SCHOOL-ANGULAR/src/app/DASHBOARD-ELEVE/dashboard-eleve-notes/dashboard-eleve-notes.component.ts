@@ -24,7 +24,6 @@ export class DashboardEleveNotesComponent implements OnInit {
   semester !:string;
   avgNote !: number;
   personId !: number;
-
   year: number[] = [];
   info: string[] = [];
 

@@ -37,7 +37,7 @@ export class DashboardEleveHomeComponent implements OnInit {
       }
     });
 
-    this.serviceauth.getEleveById(3).subscribe(data => {
+    this.serviceauth.getEleveById(this.personId).subscribe(data => {
       this.eleveInfo = data;
       this.fromChangePass = this.fb.group({
         password: [
@@ -61,7 +61,7 @@ export class DashboardEleveHomeComponent implements OnInit {
         password: this.fromChangePass.get('password')?.value
       };
   
-      this.serviceauth.changePassword(3, newEleve).subscribe();
+      this.serviceauth.changePassword(this.personId, newEleve).subscribe();
       this.fromChangePass.reset();
       alert('Password changed successfully');
     }

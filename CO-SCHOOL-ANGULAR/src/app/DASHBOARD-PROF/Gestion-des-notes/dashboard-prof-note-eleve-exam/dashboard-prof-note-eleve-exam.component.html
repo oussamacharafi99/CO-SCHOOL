@@ -66,7 +66,7 @@
  -->
 
 
-<div class="main">
+ <div class="main">
     <div class="head">
         <div class="icon">
             <img src="../../../../assets/icons/vecteezy_white-clipboard-task-management-todo-check-list-efficient_8879451.png" alt="">
@@ -77,11 +77,17 @@
         </div>
     </div>
 
+    <!-- If the list is empty, display "ok" message -->
+    <div class="eleve-vide" *ngIf="listEleves?.length === 0">
+        <h2>ok</h2>
+    </div>
+
+    <!-- If the list has students, display them -->
     <div class="eleves" *ngIf="listEleves && listEleves.length > 0; else noElevesMessage">
         <div class="eleve" *ngFor="let eleve of listEleves">
             <div class="img">
-                <img *ngIf="eleve.gender == 'F'" src="../../../../assets/icons/girl.png">
-                <img *ngIf="eleve.gender == 'M'" src="../../../../assets/icons/boy.png">
+                <img *ngIf="eleve.gender === 'F'" src="../../../../assets/icons/girl.png">
+                <img *ngIf="eleve.gender === 'M'" src="../../../../assets/icons/boy.png">
             </div>
 
             <div class="info">
@@ -98,11 +104,13 @@
         </div>
     </div>
 
-    <!-- Message si la liste est vide -->
+    <!-- Fallback message when there are no students -->
     <ng-template #noElevesMessage>
-        <p class="alert alert-warning">Aucun élève n'est disponible pour ce contrôle. Cliquez sur un bouton pour obtenir la liste des élèves.</p>
+        <p>Aucun élève à afficher.</p>
     </ng-template>
 </div>
+
+
 <div class="alert alert-dark alert-dismissible fade show" id="alert" role="alert" *ngIf="showAlert == false">
     <button type="button" class="btn-close btn-text btn-primary custom-button" data-bs-dismiss="alert"
         aria-label="Close" (click)="showAlert = true"><i class="pi pi-times-circle"></i></button>

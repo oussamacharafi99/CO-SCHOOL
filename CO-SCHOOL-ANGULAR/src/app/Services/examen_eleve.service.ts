@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { ResultDto } from '../Models/ResultDto';
 import { AvgNote } from '../Models/AvgNote';
 import { ExamenDateDto } from '../Models/dto/ExamenDateDto';
@@ -25,6 +25,16 @@ export class examenEleveService {
   private _API_GET_ELEVES_BY_EXAMEN_ID = "http://localhost:9091/api/examen_eleve/get+eleve+by+examen+id:";
   private _API_GET_ELEVES_BY_EXAMEN_ID_FOR_UPDATE_NOTES = "http://localhost:9091/api/examen_eleve/get+eleve+for+update+by+id";
   private  _API_GET_EXAM_ELEVE_BY_ELEVEID_AND_PROFID = "http://localhost:9091/api/examen_eleve/get+exams+by+eleve+prof"
+  
+  private examenEleveSubject = new Subject<void>();
+
+   emitExamenEleveChange() {
+    this.examenEleveSubject.next();
+   }
+   getExamenEleveChanges(): Observable<void> {
+    return this.examenEleveSubject.asObservable();
+   }
+
 
   /****___________  get Semester Result _____________*****/
   eleve_result(id : number , semester : string , year : number):Observable<ResultDto[]>{
@@ -43,7 +53,9 @@ export class examenEleveService {
 
 
   insertElevesToExamen(examenEleveDto : ExamenEleveDto):Observable<ExamenEleveDto>{
-      return this.http.post<ExamenEleveDto>(this._API_INSERT_EXAMEN_TO_ELEVES, examenEleveDto);
+      return this.http.post<ExamenEleveDto>(this._API_INSERT_EXAMEN_TO_ELEVES, examenEleveDto).pipe(
+        tap(() => this.emitExamenEleveChange())
+      )
   }
 
   getElevesByExamenId(id : number ):Observable<ClassPersonDto[]>{
@@ -51,7 +63,9 @@ export class examenEleveService {
   }
 
   insertNote(examId :number , eleveId : number , note :  ExamenEleveNoteDto):Observable<ExamenEleveNoteDto>{
-    return this.http.put<ExamenEleveNoteDto>(this._API_INSERT_NOTE + "/" + examId + "/" + eleveId , note );
+    return this.http.put<ExamenEleveNoteDto>(this._API_INSERT_NOTE + "/" + examId + "/" + eleveId , note ).pipe(
+      tap(() => this.emitExamenEleveChange())
+    )
   }
 
   getElevesByExamenIdForUpdateNotes(id : number ):Observable<ClassPersonDto[]>{

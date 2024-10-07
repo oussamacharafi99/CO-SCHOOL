@@ -69,3 +69,8 @@ label{
 #choice{
     width: 100%;
 }
+input:disabled, select:disabled {
+    cursor: not-allowed;
+    background-color: #e9ecef; /* Optional: To give it a disabled look */
+    color: #6c757d; /* Optional: A muted text color */
+}
