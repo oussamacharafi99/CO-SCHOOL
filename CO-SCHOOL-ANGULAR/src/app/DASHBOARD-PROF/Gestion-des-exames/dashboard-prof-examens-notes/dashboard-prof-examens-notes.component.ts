@@ -3,6 +3,7 @@ import { ExamenProfDto } from 'src/app/Models/dto/ExamenProfDto';
 import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { Examen } from 'src/app/Models/examen';
 import { ExamenService } from 'src/app/Services/examen.service';
+import { examenEleveService } from 'src/app/Services/examen_eleve.service';
 
 @Component({
   selector: 'app-dashboard-prof-examens-notes',
@@ -10,15 +11,23 @@ import { ExamenService } from 'src/app/Services/examen.service';
   styleUrls: ['./dashboard-prof-examens-notes.component.css']
 })
 export class DashboardProfExamensNotesComponent  implements OnInit {
-  constructor(private service : ExamenService){}
+  constructor(private service : ExamenService ){}
   displayedColumns: string[] = ['id','matter','examen_name','examen_date', 'semester' , 'Update'];
   ListExamensWithoutNotes !: ExamenProfDto[];
   personId !: number;
   ngOnInit(): void {
     this.getIdPersonFromJwt();
-      this.service.getAllExamenWithoutNoteByProf(this.personId).subscribe(data =>{
-        this.ListExamensWithoutNotes = data;
-      })
+    this.getAllExamWithoutNote();
+
+      this.service.getAssignChanges().subscribe(()=> {
+        this.getAllExamWithoutNote();
+      });
+  }
+
+  getAllExamWithoutNote(){
+    this.service.getAllExamenWithoutNoteByProf(this.personId).subscribe(data =>{
+      this.ListExamensWithoutNotes = data;
+    })
   }
 
   getIdPersonFromJwt(){

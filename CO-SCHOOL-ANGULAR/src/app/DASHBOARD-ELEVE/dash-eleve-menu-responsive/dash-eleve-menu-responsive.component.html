@@ -1,32 +1,48 @@
+
 <div class="main">
+    <div class="menu"></div>
+  
     <ul>
-        <li>
-            <a 
-               routerLink="/admin-dashboard" 
-               [ngClass]="{'active': isLinkActive('/admin-dashboard')}">
-               <i class="pi pi-home"></i>
-            </a>
-        </li>
-        <li>
-            <a 
-               routerLink="/admin-dashboard/gestion-profs" 
-               [ngClass]="{'active': isLinkActive('/admin-dashboard/gestion-profs')}">
-               <i class="pi pi-chart-pie"></i>
-            </a>
-        </li>
-        <li>
-            <a 
-               routerLink="/admin-dashboard/result" 
-               [ngClass]="{'active': isLinkActive('/admin-dashboard/result')}">
-               <i class="pi pi-clipboard"></i>
-            </a>
-        </li>
-        <li>
-            <a 
-               routerLink="/admin-dashboard/calendar" 
-               [ngClass]="{'active': isLinkActive('/admin-dashboard/calendar')}">
-               <i class="pi pi-calendar"></i>
-            </a>
-        </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard" 
+           (click)="setActiveLink('/eleve-dashboard')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard')
+           }">
+           <i class="pi pi-home"></i>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard/statistics" 
+           (click)="setActiveLink('/eleve-dashboard/statistics')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard/statistics')
+           }">
+           <i class="pi pi-chart-pie"></i>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard/result" 
+           (click)="setActiveLink('/eleve-dashboard/result')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard/result')
+           }">
+           <i class="pi pi-clipboard"></i>
+        </a>
+      </li>
+      <li>
+        <a 
+           routerLink="/eleve-dashboard/calendar" 
+           (click)="setActiveLink('/eleve-dashboard/calendar')" 
+           [ngClass]="{
+             'active': isLinkActive('/eleve-dashboard/calendar')
+           }">
+           <i class="pi pi-calendar"></i>
+        </a>
+      </li>
     </ul>
-</div>
+  </div>
+  
