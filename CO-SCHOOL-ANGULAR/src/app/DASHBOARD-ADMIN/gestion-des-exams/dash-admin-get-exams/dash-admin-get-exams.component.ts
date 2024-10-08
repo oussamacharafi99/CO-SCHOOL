@@ -33,14 +33,22 @@ export class DashAdminGetExamsComponent implements OnInit {
       this.ListProfs = data;
     });
 
+
     this.service.getAllExamens().subscribe(data => {
       this.ListExamens = data;
       console.log(data[0]?.examen_name);
     });
+
+    this.service.getExamenChanges().subscribe(()=>{
+      this.service.getAllExamens().subscribe(data => {
+        this.ListExamens = data;
+        console.log(data[0]?.examen_name);
+      });
+    })
   }
 
   search() {
-    if (this.FromSearch.valid) {
+    if(this.FromSearch.valid) {
       const selectedProfId = this.FromSearch.value.profId;
       this.service.getAllExmanesByProfId(selectedProfId).subscribe((data) => {
         this.ListExamens = data;

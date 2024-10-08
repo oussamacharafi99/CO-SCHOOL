@@ -12,18 +12,28 @@ export class DashEleveMenuResponsiveComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.updateActiveLink(this.router.url);
       }
     });
+
+    
+    this.updateActiveLink(this.router.url);
+  }
+
+  setActiveLink(link: string): void {
+    this.activeLink = link;
   }
 
   updateActiveLink(url: string): void {
     this.activeLink = url;
   }
 
+  
   isLinkActive(link: string): boolean {
     return this.activeLink === link;
   }
 }
+

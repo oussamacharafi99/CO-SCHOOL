@@ -31,11 +31,10 @@ export class DashboardProfNoteEleveExamComponent implements OnInit {
     private ExSuService : ExamSubjectService
   ) { }
 
-        
-
   ngOnInit(): void {
     // this.idEx = +this.route.snapshot.paramMap.get('id')!;
     this.ExSuService.examSelected$.subscribe(exId =>{
+      this.idEx = exId;
       this.service.getElevesByExamenIdForUpdateNotes(exId).subscribe(data => {
       this.listEleves = data;
     });
@@ -44,6 +43,7 @@ export class DashboardProfNoteEleveExamComponent implements OnInit {
       this.newExamen = data;
     })
     })
+
     
     this.formCorrection = this.fb.group({
       note : ['' , Validators.required]

@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ExamenDateDto } from 'src/app/Models/dto/ExamenDateDto';
 import { JwtDto } from 'src/app/Models/dto/Jwt';
+import { ExamenService } from 'src/app/Services/examen.service';
 import { examenEleveService } from 'src/app/Services/examen_eleve.service';
 
 @Component({
@@ -28,10 +29,19 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
     eventTextColor: "var(--text-color)",
   };
 
-  constructor(private service: examenEleveService) { }
+  constructor(private service: examenEleveService , private exameService : ExamenService) { }
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
+    this.getExamDates();
+    this.exameService.getExamenChanges().subscribe(()=>{
+      this.getExamDates();
+    })
+    const now = new Date();
+    this.currentDate = now.toLocaleDateString();
+  }
+
+  getExamDates(){
     this.service.getExamenDates(this.personId).subscribe(data => {
       this.examensDates = data;
       const events = this.examensDates.map(exam => ({
@@ -52,9 +62,6 @@ export class DashboardEleveCalendarExamComponent implements OnInit {
         events: events
       };
     });
-
-    const now = new Date();
-    this.currentDate = now.toLocaleDateString();
   }
 
   handleEventClick(arg: EventClickArg) {

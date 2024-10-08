@@ -102,6 +102,14 @@ header{
 .user-info > h1{
     font-size: 16px;
     margin: 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: .7rem;
+}
+.user-info > h1 > p{
+    margin-bottom: 0px;
+    padding: 0px;
 }
 .user-info > h1 > span{
     font-size: 14px;

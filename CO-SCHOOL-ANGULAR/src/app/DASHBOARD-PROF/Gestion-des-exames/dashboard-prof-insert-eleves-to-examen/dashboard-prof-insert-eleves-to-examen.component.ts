@@ -24,18 +24,26 @@ export class DashboardProfInsertElevesToExamenComponent implements OnInit {
 
     ngOnInit(): void {
       this.getIdPersonFromJwt();
+      this.getExamInAssign();
 
       this.classeService.getClassesNameOfProf(this.personId).subscribe(data => {
         this.ListClasse = data;
       });
 
-      this.service.getAllExamenInassign(this.personId).subscribe(data => {
-        this.ListExamens = data;
-      });
 
+      this.service.getExamenChanges().subscribe(()=>{
+        this.getExamInAssign();
+      })
+    
       this.FormExamenEleves = this.fb.group({
         examenId : ['', [Validators.required]],
         classeId : ['', [Validators.required]],
+      });
+    }
+
+    getExamInAssign(){
+      this.service.getAllExamenInassign(this.personId).subscribe(data => {
+        this.ListExamens = data;
       });
     }
 
@@ -46,17 +54,22 @@ export class DashboardProfInsertElevesToExamenComponent implements OnInit {
           classeId: this.FormExamenEleves.value.classeId
         };
     
-        this.exService.insertElevesToExamen(newExamenEleveDto).subscribe(
-          data => {
-            alert("Élèves ajoutés à l'examen avec succès" + data);
+        this.service.insertElevesToExamen(newExamenEleveDto).subscribe(
+          ()=>{
+            alert("Élèves ajoutés à l'examen avec succès");
+            this.FormExamenEleves.reset();
+            this.ngOnInit(); 
           }
         );
+        
       }
       this.FormExamenEleves = this.fb.group({
         examenId : ['', [Validators.required]],
         classeId : ['', [Validators.required]],
       });
-      this.showAlert = true; 
+      this.showAlert = true;    
+      this.FormExamenEleves.reset();
+      this.ngOnInit();    
     }
 
     getIdPersonFromJwt(){
