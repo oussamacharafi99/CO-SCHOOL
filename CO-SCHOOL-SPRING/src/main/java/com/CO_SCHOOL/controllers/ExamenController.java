@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -67,7 +68,7 @@ public class ExamenController {
 
 
     @DeleteMapping("delete/{id}")
-    public String deleteExamen(@PathVariable int id) {
+    public Map<String, String> deleteExamen(@PathVariable int id) {
         return examenService.deleteExamen(id);
     }
 

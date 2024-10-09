@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/examen_eleve")
@@ -18,12 +19,12 @@ public class ExamenEleveController {
     private ExamenEleveService examenEleveService;
 
     @PostMapping("insert")
-    public String insertEleve(@RequestBody ExamenEleveDto examenEleveDto) {
+    public  Map<String, String> insertEleve(@RequestBody ExamenEleveDto examenEleveDto) {
         return examenEleveService.insertElevesToExamen(examenEleveDto);
     }
 
     @PutMapping("insert_note/{examenId}/{eleveId}")
-    public String insert_note(@RequestBody ExamenEleveNoteDto examenEleveNoteDto, @PathVariable Integer examenId, @PathVariable Integer eleveId ) {
+    public Map<String, String> insert_note(@RequestBody ExamenEleveNoteDto examenEleveNoteDto, @PathVariable Integer examenId, @PathVariable Integer eleveId ) {
         return examenEleveService.updateEleveNote(examenEleveNoteDto, examenId, eleveId);
     }
 
@@ -78,5 +79,10 @@ public class ExamenEleveController {
     @GetMapping("get+exams+by+eleve+prof/{ide}/{idp}")
     public List<ExamenDateDto> getExamenEleveByEleveIdAndProfId(@PathVariable Integer ide, @PathVariable Integer idp) {
         return examenEleveService.getExamenEleveByEleveIdAndProfId(ide, idp);
+    }
+
+    @PostMapping("delete")
+    public Map<String, String> delete(@RequestBody ExamenEleveDto examenEleveDto) {
+        return examenEleveService.deleteInsertionElevesToExamen(examenEleveDto);
     }
 }
