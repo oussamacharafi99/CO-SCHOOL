@@ -46,4 +46,9 @@ public class PersonAuth {
         return personService.UpdatePassword(id , changePasswordDto);
     }
 
+    @GetMapping("get+person/{id}")
+    public Person getPerson(@PathVariable int id) {
+        return personService.findById(id);
+    }
+
 }

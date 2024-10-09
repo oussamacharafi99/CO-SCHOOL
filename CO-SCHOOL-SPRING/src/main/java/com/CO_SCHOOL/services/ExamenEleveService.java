@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,14 +31,12 @@ public class ExamenEleveService {
     @Autowired
     private ExamenRepo examenRepo;
 
-    public String insertElevesToExamen(ExamenEleveDto examenEleveDto) {
+    public Map<String, String> insertElevesToExamen(ExamenEleveDto examenEleveDto) {
 
         Examen examen = examenService.GetExamanById(examenEleveDto.getExamenId());
 
         System.out.println("examen: " + examenEleveDto.getExamenId());
         System.out.println("classe: " + examenEleveDto.getClasseId());
-
-
         examen.setAssign(Assign.ASSIGN);
         System.out.println("009----x> " + examen.getId());
 
@@ -58,24 +54,49 @@ public class ExamenEleveService {
             examenEleve.setExamen(examen);
             examenEleve.setEleve(eleve);
             examenEleve.setExamen_note(null);
-
             examenEleveRepo.save(examenEleve);
         }
 
+        Map<String,String> map = new HashMap<>();
+        map.put("msg","Les élèves ont été assignés avec succès à l'examen.");
 
-//        examenRepo.save(examen);
+        return map;
+    }
 
-        return "Les élèves ont été assignés avec succès à l'examen.";
+    public Map<String, String> deleteInsertionElevesToExamen(ExamenEleveDto examenEleveDto) {
+        List<Eleve> eleves = eleveService.GetAllElevesByClasseId(examenEleveDto.getClasseId());
+        Examen examen = examenService.GetExamanById(examenEleveDto.getExamenId());
+
+        if (examen.getAssign() == Assign.ASSIGN) {
+            for (Eleve eleve : eleves) {
+                if (eleve.getId() != null) {
+                    ExamenEleveId examenEleveId = new ExamenEleveId(examenEleveDto.getExamenId(), eleve.getId());
+                    ExamenEleve exEl = examenEleveRepo.findById(examenEleveId);
+                    if (exEl != null && exEl.getExamen_note() == null) {
+                        examen.setAssign(Assign.INASSIGN);
+                        examenRepo.save(examen);
+                        examenEleveRepo.delete(exEl);
+                    }
+                }
+            }
+        }
+        Map<String , String> map = new HashMap<>();
+        map.put("msg" , "Les élèves ont été assignés pas  avec succès à l'examen.");
+        return map;
     }
 
 
 
-    public String updateEleveNote(ExamenEleveNoteDto examenEleveNoteDto, Integer examenId, Integer eleveId) {
+
+    public  Map<String, String> updateEleveNote(ExamenEleveNoteDto examenEleveNoteDto, Integer examenId, Integer eleveId) {
         ExamenEleveId examenEleveId = new ExamenEleveId(examenId , eleveId);
         ExamenEleve examenEleve = examenEleveRepo.findById(examenEleveId);
         examenEleve.setExamen_note(examenEleveNoteDto.getExamenNote());
         examenEleveRepo.save(examenEleve);
-        return "the Note Added Successfully in the Eleve";
+
+        Map<String , String> map = new HashMap<>();
+        map.put("msg", "the Note Added Successfully in the Eleve");
+        return map;
     }
 
     @Transactional
@@ -242,5 +263,8 @@ public class ExamenEleveService {
             return  new ExamenDateDto(matter , examenNote , semester , examName , examen_date);
         }).collect(Collectors.toList());
     }
+
+
+
 }
 

@@ -37,6 +37,7 @@ public class ConfigSecurity {
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
+                                .requestMatchers("/api/auth/get+person/**").permitAll() // all roles
                                 .requestMatchers("api/auth/change+password/**", "api/eleve/get+eleve+by+id/**").permitAll()
                                 .requestMatchers("api/eleve/get+all","api/eleve/get+all/**", "api/eleve/get+absences+eleve+by+classe+id/**", "api/eleve/get+absences+eleves").permitAll()//admin
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").permitAll()//admin
@@ -49,6 +50,7 @@ public class ConfigSecurity {
                                 .requestMatchers("api/examen_eleve/result/total/**","api/examen_eleve/result/**","api/examen_eleve/result/examen+date/**").permitAll()
                                 .requestMatchers("api/examen_eleve/examen+prof+without+note/**").permitAll() // prof admin
                                 .requestMatchers("api/examen_eleve/examen+prof+encoure+correction/**","api/examen_eleve/examen+prof+correction+terminer/**","api/examen_eleve/get+exams+by+eleve+prof/**").permitAll() // prof admin
+                                .requestMatchers("/api/examen_eleve/delete").permitAll() // prof
                                 .requestMatchers("api/examen_eleve/**").permitAll() //prof
                                 
                                 .requestMatchers("api/classeGroup/Prof_eleves/**").permitAll() //prof // admin

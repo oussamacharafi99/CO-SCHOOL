@@ -16,7 +16,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,7 +64,7 @@ public class ExamenService {
         examen.setClassGroup(classeGroup);
         examen.setMatter(insertExamenDto.getMatter());
         examen.setSemester(insertExamenDto.getSemester());
-        examen.setAssign(Assign.ASSIGN);
+        examen.setAssign(Assign.INASSIGN);
         return examenRepo.save(examen);
     }
 
@@ -94,9 +96,12 @@ public class ExamenService {
     }
 
 
-    public String deleteExamen(Integer id){
+    public Map<String, String> deleteExamen(Integer id){
         examenRepo.deleteById(id);
-        return "The Examen Deleted !";
+
+        Map<String, String> map = new HashMap<>();
+        map.put("msg", "The Examen Deleted !");
+        return map;
     }
 
 //    public List<Examen> getExamenByEleveId(Integer id) {
