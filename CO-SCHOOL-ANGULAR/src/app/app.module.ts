@@ -75,6 +75,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './Services/Guard/Guards/auth.guard';
 import { SectionLoginComponent } from './HOME/section-login/section-login.component';
 import { DashAdminGetExamsComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-get-exams/dash-admin-get-exams.component';
+import { LoadingComponent } from './HOME/loading/loading.component';
 
 
 @NgModule({
@@ -139,6 +140,7 @@ import { DashAdminGetExamsComponent } from './DASHBOARD-ADMIN/gestion-des-exams/
     DashProfMenuResponsiveComponent,
     SectionLoginComponent,
     DashAdminGetExamsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

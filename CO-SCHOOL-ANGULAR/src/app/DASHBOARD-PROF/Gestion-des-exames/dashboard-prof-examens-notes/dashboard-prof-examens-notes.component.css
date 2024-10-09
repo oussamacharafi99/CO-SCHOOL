@@ -38,3 +38,68 @@ td > button , a {
 td > button:hover , a:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.137);
 }
+/* ----------------------- */
+
+#alert{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    right: 30%;
+    width: 40%;
+    background: var(--background-color);
+    box-shadow: 5px 5px 55px rgba(0, 0, 0, 0.306);
+}
+#alert > a {
+    text-decoration: underline;
+    font-weight: 700;
+    color: var(--color-primary);
+    padding: 5px 0;
+}
+#alert > i {
+    color: var(--text-color);
+}
+.btns{
+    display: flex;
+    padding-bottom: 10px;
+}
+.btns > button{
+    padding: 7px 10px;
+    border-radius: 5px;
+    background: var(--background-color);
+    color: var(--text-color);
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    font-size: 14px;
+}
+.delete{
+    background: transparent !important;
+    color: #c61212 !important;
+}
+.cancel{
+    background: var(--color-primary) !important;
+    color: var(--text-color) !important;
+}
+.cancel:hover{
+    background: transparent !important;
+    border: 1px solid var(--text-color);
+}
+.delete:hover{
+    background: #c61212 !important;
+    color: white !important;
+}
+.btn-close > i{
+    color: var(--color-primary) !important;
+}
+strong{
+    color: var(--text-color) !important;
+}
+p{
+    color: white;
+    background: black;
+}
+em{
+    color: var(--color-primary) !important; 
+}

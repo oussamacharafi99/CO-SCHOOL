@@ -149,7 +149,6 @@ button:hover{
     border: 1px solid  var(--text-color);
     position: relative;
     border-radius: 12px;
-    overflow-x: auto;
 }
 .eleve-exames-info-content > h2{
     font-size: 16px;
@@ -236,6 +235,17 @@ tbody > tr > td{
 }
 
 @media only screen and (max-width: 800px) {
+    .eleve-exames-info-content{
+        overflow-x: auto;
+        padding-top: 20px;
+    }
+    .eleve-exames-info-content > h2{
+        font-size: 16px;
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        background: var(--background-color);
+    }
     .main-wrapper {
         width: 100%;
         padding: 13px 15px;

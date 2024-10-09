@@ -27,10 +27,6 @@ export class DashboardExamNotAssignComponent  implements OnInit {
     this.service.getExamenChanges().subscribe(()=>{
       this.getExamens();
     })
-
-    this.service.getAssignChanges().subscribe(()=>{
-      this.getExamens();
-    })
   }
 
   getExamens(): void {

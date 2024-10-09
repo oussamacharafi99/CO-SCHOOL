@@ -31,7 +31,7 @@
         <ng-container matColumnDef="Delete">
             <th mat-header-cell id="th" *matHeaderCellDef><i class="pi pi-delete-left"></i></th>
             <td mat-cell *matCellDef="let examen"> 
-                <button><i class="pi pi-times"></i></button>
+                <button (click)="getIdExam(examen.id)"><i class="pi pi-times"></i></button>
             </td>
         </ng-container>
 
@@ -46,6 +46,18 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+</div>
+
+<div class="alert alert-dark alert-dismissible fade show" id="alert" role="alert" *ngIf="showAlert == false">
+  <button type="button" class="btn-close btn-text btn-primary custom-button" data-bs-dismiss="alert"
+        aria-label="Close" (click)="showAlert = true"><i class="pi pi-times-circle"></i></button>
+  <div class="content">
+    <strong>Voulez-vous In Assignez ?</strong><br><br><br>
+  <div class="btns">
+    <button class="btn delete" (click)="delete()">Supprimer</button>
+    <button class="btn cancel" (click)="showAlert = true">Annuler</button> 
+  </div>
+  </div>
 </div>
 
 

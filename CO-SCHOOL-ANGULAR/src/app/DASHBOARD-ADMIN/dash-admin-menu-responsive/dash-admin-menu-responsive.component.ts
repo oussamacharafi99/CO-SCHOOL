@@ -35,4 +35,17 @@ export class DashAdminMenuResponsiveComponent implements OnInit {
   isLinkActive(link: string): boolean {
     return this.activeLink === link;
   }
+
+
+  check = false;
+  logout(check : boolean) {
+    if(check){
+      localStorage.removeItem('jwtData');
+    this.router.navigateByUrl('');
+    }
+    else{
+      console.log("wa hasan");
+    }
+    
+  }
 }

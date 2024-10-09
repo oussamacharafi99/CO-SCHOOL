@@ -11,11 +11,11 @@
     justify-content: space-between;
 }
 .add-examen{
-    width: 37%;
+    width: 35%;
     height: 300px;
 }
 .tab-examen{
-    width: 62%;
+    width: 64%;
     background: var(--background-color);
     margin-left: 10px;
     padding: 20px;

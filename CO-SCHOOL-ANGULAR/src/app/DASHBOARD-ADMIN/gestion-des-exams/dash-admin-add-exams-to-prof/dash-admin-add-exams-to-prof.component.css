@@ -74,3 +74,19 @@ input:disabled, select:disabled {
     background-color: #e9ecef; /* Optional: To give it a disabled look */
     color: #6c757d; /* Optional: A muted text color */
 }
+
+@media only screen and (max-width: 800px) {
+    .group{
+        width: 100%;
+        display: block;
+    }
+    .group > .form-group{
+        width: 100%;
+    }
+    #last-group{
+        display: flex;
+    }
+    #last-group > .form-group{
+        width: 60%;
+    }
+}

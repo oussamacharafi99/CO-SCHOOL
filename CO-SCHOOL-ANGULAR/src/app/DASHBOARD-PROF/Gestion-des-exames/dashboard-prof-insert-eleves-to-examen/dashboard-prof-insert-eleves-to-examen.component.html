@@ -4,9 +4,9 @@
 <form [formGroup]="FormExamenEleves" (ngSubmit)="submit()">
 
     <div class="form-group">
-        <label for="examenId">Select Examen </label>
+        <label for="examenId">Select Exam </label>
         <select id="examenId" formControlName="examenId" class="form-control">
-          <option value="" disabled>Select Examen</option>
+          <option value="" disabled>Select Exam</option>
           <option *ngFor="let examen of ListExamens" [value]="examen.examenId">{{examen.matter}}</option>
         </select>
     </div>
