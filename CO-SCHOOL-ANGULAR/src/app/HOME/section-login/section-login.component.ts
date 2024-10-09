@@ -38,45 +38,34 @@ export class SectionLoginComponent implements OnInit{
 
   onSubmit() {
     if (this.formLogin.valid) {
-      this.isLoading = true;
       const person: Person = this.formLogin.value;
+      this.isLoading = true;
       this.authService.login(person).subscribe(
         (res) => {
           localStorage.setItem('jwtData', JSON.stringify(res));
-
           const decodedToken: any = jwtDecode(res.token);
           console.log('Decoded Token:', decodedToken);
-
-          if (
-            decodedToken.roles &&
-            decodedToken.roles.includes(Role[Role.ROLE_PROF])
-          ) {
+  
+          if (decodedToken.roles.includes(Role[Role.ROLE_PROF])) {
             this.router.navigateByUrl('prof-dashboard');
-          } else if (
-            decodedToken.roles &&
-            decodedToken.roles.includes(Role[Role.ROLE_ELEVE])
-          ) {
+          } else if (decodedToken.roles.includes(Role[Role.ROLE_ELEVE])) {
             this.router.navigateByUrl('eleve-dashboard');
-          } else if (
-            decodedToken.roles &&
-            decodedToken.roles.includes(Role[Role.ROLE_ADMIN])
-          ) {
+          } else if (decodedToken.roles.includes(Role[Role.ROLE_ADMIN])) {
             this.router.navigateByUrl('admin-dashboard');
           } else {
-            alert('Unauthorized role, please try again!');
-            this.router.navigateByUrl('');
+            this.errorMessage = 'Unauthorized role, please try again!';
           }
           this.isLoading = false;
+          this.ngOnInit();
         },
+        (error) => {
+          this.errorMessage = 'Login failed. Please check your credentials.';
+          this.isLoading = false;
+        }
       );
     } else {
-      this.errorMessage = 'All fields are required.';
-      console.log('Form is invalid.');
+      this.errorMessage = 'Form is invalid. Please fill out all required fields.';
     }
-    this.valide();
   }
-  check: boolean = false;
-  onOpenOrClose(check: boolean): void {
-    this.check = check;
-  }
+  
 }

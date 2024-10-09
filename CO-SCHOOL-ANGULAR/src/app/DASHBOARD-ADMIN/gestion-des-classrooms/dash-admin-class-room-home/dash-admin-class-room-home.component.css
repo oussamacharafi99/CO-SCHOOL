@@ -50,4 +50,7 @@
     .first-section{
         display: block;
     }
+    .profs{
+        width: 100%;
+    }
 }

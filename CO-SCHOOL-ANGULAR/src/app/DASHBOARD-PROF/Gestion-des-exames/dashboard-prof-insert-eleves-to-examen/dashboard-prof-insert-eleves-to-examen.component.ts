@@ -55,8 +55,12 @@ export class DashboardProfInsertElevesToExamenComponent implements OnInit {
         };
     
         this.service.insertElevesToExamen(newExamenEleveDto).subscribe(
-          ()=>{
+          (res)=>{
+            console.log(res);
+            
             alert("Élèves ajoutés à l'examen avec succès");
+            console.log("3>>>>>>>>>>>>>>>>>>>");
+            
             this.FormExamenEleves.reset();
             this.ngOnInit(); 
           }
@@ -68,7 +72,6 @@ export class DashboardProfInsertElevesToExamenComponent implements OnInit {
         classeId : ['', [Validators.required]],
       });
       this.showAlert = true;    
-      this.FormExamenEleves.reset();
       this.ngOnInit();    
     }
 

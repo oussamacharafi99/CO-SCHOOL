@@ -25,6 +25,7 @@ li > a {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.089);
     transition: .5s;
     margin: 3px;
+    cursor: pointer;
 }
 
 li > a:hover {

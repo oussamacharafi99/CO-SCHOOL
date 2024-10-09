@@ -15,25 +15,24 @@
 
         <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
             <div class="group">
-                <label for="username">username</label><br>
-                <div class="icon-input">
-                    <input id="username" formControlName="username" type="text" placeholder="@enna.com"
-                        aria-label="Username" />
-                    <i class="pi pi-user"></i>
-                </div>
+              <label for="username">username</label><br />
+              <div class="icon-input">
+                <input id="username" formControlName="username" type="text" placeholder="@enna.com" aria-label="Username" />
+                <i class="pi pi-user"></i>
+              </div>
             </div>
             <div class="group">
-                <label for="password">password</label><br>
-                <div class="icon-input">
-                    <input id="password" formControlName="password" type="password" placeholder="*******"
-                        aria-label="Password" />
-                    <i class="pi pi-unlock"></i>
-                </div>
+              <label for="password">password</label><br />
+              <div class="icon-input">
+                <input id="password" formControlName="password" type="password" placeholder="*******" aria-label="Password" />
+                <i class="pi pi-unlock"></i>
+              </div>
             </div>
-            <a>Forgot password ?</a><br>
+            <a>Forgot password ?</a><br />
             <button type="submit" [disabled]="formLogin.invalid || isLoading">Login</button>
-            <div *ngIf="isLoading">Loading...</div>
-        </form>
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          </form>
+          
 
     </div>
 </div>

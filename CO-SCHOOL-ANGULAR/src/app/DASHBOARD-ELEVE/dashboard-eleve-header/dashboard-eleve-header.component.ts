@@ -5,6 +5,7 @@ import { Person } from 'src/app/Models/person';
 import { JwtDto } from 'src/app/Models/dto/Jwt';
 import { jwtDecode } from 'jwt-decode';
 import { Role } from 'src/app/Models/enums/enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-eleve-header',
@@ -17,7 +18,7 @@ export class DashboardEleveHeaderComponent implements OnInit {
   personId!: number;
   role !: string;
 
-  constructor(@Inject(DOCUMENT) private document: Document,) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private router : Router) { }
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
@@ -80,5 +81,17 @@ export class DashboardEleveHeaderComponent implements OnInit {
     } else {
       console.log('No JWT found in localStorage');
     }
+  }
+
+  check = false;
+  logout(check : boolean) {
+    if(check){
+      localStorage.removeItem('jwtData');
+    this.router.navigateByUrl('');
+    }
+    else{
+      console.log("wa hasan");
+    }
+    
   }
 }

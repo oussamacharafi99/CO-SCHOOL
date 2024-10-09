@@ -89,8 +89,8 @@ const routes: Routes = [
       { path: 'exam', component: DashAdminExamsHomeComponent }
     ]
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path:'error' , component : ErrorMainComponent}
+  { path:'error' , component : ErrorMainComponent},
+  { path: '', redirectTo: 'error', pathMatch: 'full' }
 ];
 
 

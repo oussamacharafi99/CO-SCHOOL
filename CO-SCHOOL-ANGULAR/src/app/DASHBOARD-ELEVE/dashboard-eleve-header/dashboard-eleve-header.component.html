@@ -25,7 +25,12 @@
         <h1>
             <p *ngIf="username">{{ username }}</p>
             <br>
-            <span *ngIf="role">{{ role }}</span> 
+            <div>
+                <span *ngIf="role">{{ role }}</span> 
+                <a (click)="logout(true)">
+                    <i class="pi pi-sign-out"></i>
+                 </a>
+                </div>
         </h1>
     </div>
   </header>
