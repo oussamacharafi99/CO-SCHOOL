@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Update Eleve</h1>
+  
+    <form [formGroup]="FormEleve" (ngSubmit)="updateEleve()">
+      <div class="group">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter Username">
+        </div>
+  
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" formControlName="age" class="form-control" placeholder="Enter Age">
+        </div>
+      </div>
+  
+      <div class="group">
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" formControlName="gender" class="form-control">
+            <option value="" disabled>Select Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter Email">
+        </div>
+      </div>
+  
+      <div class="group">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter Password">
+        </div>
+  
+        <div class="form-group">
+          <label for="classeId">Select Classe</label>
+          <select id="classeId" formControlName="classeId" class="form-control">
+            <option value="" disabled>Select Classe</option>
+            <option *ngFor="let classe of ListClasseGroup" [value]="classe.id">{{classe.class_room_name}}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="form-group" id="btnS">
+        <button type="submit" class="btn btn-primary" [disabled]="!FormEleve.valid">Update Eleve</button>
+      </div>
+    </form>
+  </div>
+  

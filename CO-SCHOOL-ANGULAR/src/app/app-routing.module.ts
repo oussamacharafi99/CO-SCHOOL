@@ -28,6 +28,11 @@ import { Role } from './Models/enums/enum';
 import { ErrorMainComponent } from './HOME/error-main/error-main.component';
 import { DashboardProfExamenTermineComponent } from './DASHBOARD-PROF/Gestion-des-notes/dashboard-prof-examen-termine/dashboard-prof-examen-termine.component';
 import { DashAdminExamsHomeComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-exams-home/dash-admin-exams-home.component';
+import { DashAdminUpdateEleveComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-update-eleve/dash-admin-update-eleve.component';
+import { DashAdminAddEleveComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-add-eleve/dash-admin-add-eleve.component';
+import { DashAdminAddProfComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-add-prof/dash-admin-add-prof.component';
+import { DashAdminUpdateProfComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-update-prof/dash-admin-update-prof.component';
+import { DashAdminChatIAComponent } from './DASHBOARD-ADMIN/dash-admin-chat-ia/dash-admin-chat-ia.component';
 
 const routes: Routes = [
   { path: '', component: HomeMainComponent },
@@ -42,6 +47,7 @@ const routes: Routes = [
       { path: 'statistics', component: DashboardEleveStatisticsComponent },
       { path: 'result', component: DashboardEleveNotesComponent },
       { path: 'calendar', component: DashboardEleveCalendarExamComponent },
+      { path: 'chat-ia', component : DashAdminChatIAComponent}
     ]
   },
 
@@ -72,7 +78,8 @@ const routes: Routes = [
         path: 'dash-gestion',
         component: DashboardProfGestionComponent,
       },
-      { path: 'info-eleves', component: DashboardProfElevesHomeComponent }
+      { path: 'info-eleves', component: DashboardProfElevesHomeComponent },
+      { path: 'chat-ia', component : DashAdminChatIAComponent}
     ]
   },
 
@@ -82,11 +89,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: Role.ROLE_ADMIN }, 
     children: [
-      { path: '', component: DashAdminGestionEleveHomeComponent },
-      { path: 'gestion-profs', component: DashAdminGestionProfHomeComponent },
+      { path: '', component: DashAdminGestionEleveHomeComponent , children : [
+        { path :'' ,component:DashAdminAddEleveComponent },
+        { path :'update/:id' , component: DashAdminUpdateEleveComponent}
+      ]},
+      { path: 'gestion-profs', component: DashAdminGestionProfHomeComponent, children:[
+        { path :'' ,component:DashAdminAddProfComponent },
+        { path :'update/:id' , component: DashAdminUpdateProfComponent}
+      ] },
       { path: 'classe', component: DashAdminClassRoomHomeComponent },
       { path: 'absence', component: DashAdminAbsenceHomeComponent },
-      { path: 'exam', component: DashAdminExamsHomeComponent }
+      { path: 'exam', component: DashAdminExamsHomeComponent },
+      { path: 'chat-ia', component : DashAdminChatIAComponent}
     ]
   },
   { path:'error' , component : ErrorMainComponent},

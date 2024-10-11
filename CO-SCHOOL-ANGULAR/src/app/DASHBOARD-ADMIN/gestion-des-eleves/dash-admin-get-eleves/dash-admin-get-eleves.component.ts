@@ -13,7 +13,7 @@ import { ProfService } from 'src/app/Services/prof.service';
   styleUrls: ['./dash-admin-get-eleves.component.css']
 })
 export class DashAdminGetElevesComponent implements OnInit {
-  displayedColumns: string[] = ['identificationId', 'username', 'email', 'gender', 'age'];
+  displayedColumns: string[] = ['identificationId', 'username', 'email', 'gender', 'age' , 'update'];
   FromSearch!: FormGroup;
   ListClasseGroup!: ClasseGroup[];
   ListEleves!: Eleve[];
@@ -29,13 +29,18 @@ export class DashAdminGetElevesComponent implements OnInit {
     this.FromSearch = this.fb.group({
       classeId: ['', Validators.required],
     });
+    this.getAllEleves();
 
+    this.eleveService.getChangesEleve().subscribe(()=>{
+      this.getAllEleves();
+    })
 
     this.classeGroupService.getAllClasseGroup().subscribe((data) => {
       this.ListClasseGroup = data;
     });
+  }
 
-    
+  getAllEleves(){
     this.eleveService.getAllEleves().subscribe((data) => {
       this.ListEleves = data;
     });
