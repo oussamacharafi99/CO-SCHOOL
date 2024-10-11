@@ -3,6 +3,7 @@ C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\con
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\config\JwtAuthorizationFilter.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\controllers\AbsenceController.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\controllers\ClasseGroupController.java
+C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\controllers\ClasseProfController.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\controllers\EleveController.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\controllers\ExamenController.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\controllers\ExamenEleveController.java
@@ -15,6 +16,7 @@ C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\ClasseNameDto.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\ClasseProfDto.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\ClassPersonDto.java
+C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\EleveAbsenceDto.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\ExamenDateDto.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\ExamenEleveDto.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\dto\ExamenEleveNoteDto.java
@@ -32,6 +34,8 @@ C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\exe
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\Absence.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\Admin.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\ClasseGroup.java
+C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\ClasseProf.java
+C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\ClasseProfId.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\Eleve.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\Examen.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\ExamenEleve.java
@@ -41,6 +45,7 @@ C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\mod
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\models\Professeur.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\repositories\AbsenceRepo.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\repositories\AdminRepo.java
+C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\repositories\ClasseProfRepo.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\repositories\ClassGroupRepo.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\repositories\EleveRepo.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\repositories\ExamenEleveRepo.java
@@ -51,6 +56,7 @@ C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\rep
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\AbsenceService.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\AdminService.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\ClasseGroupService.java
+C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\ClasseProfService.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\EleveService.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\ExamenEleveService.java
 C:\Users\user\Desktop\CO-SCHOOL\CO-SCHOOL-SPRING\src\main\java\com\CO_SCHOOL\services\ExamenService.java

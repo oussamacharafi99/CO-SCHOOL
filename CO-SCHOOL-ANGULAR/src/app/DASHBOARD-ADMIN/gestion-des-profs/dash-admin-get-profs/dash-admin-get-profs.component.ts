@@ -11,7 +11,7 @@ import { ProfService } from 'src/app/Services/prof.service';
   styleUrls: ['./dash-admin-get-profs.component.css']
 })
 export class DashAdminGetProfsComponent implements OnInit {
-  displayedColumns: string[] = ['identificationId', 'username', 'email', 'gender', 'age'];
+  displayedColumns: string[] = ['identificationId', 'username', 'email', 'gender', 'age','update'];
   FromSearch!: FormGroup;
   ListClasseGroup!: ClasseGroup[];
   ListProfs!: Professeur[];
@@ -23,7 +23,7 @@ export class DashAdminGetProfsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+    this.getAllProfs();
     this.FromSearch = this.fb.group({
       classeId: ['', Validators.required],
     });
@@ -32,7 +32,15 @@ export class DashAdminGetProfsComponent implements OnInit {
     this.classeGroupService.getAllClasseGroup().subscribe((data) => {
       this.ListClasseGroup = data;
     });
+
+    this.profService.getExamenChanges().subscribe(()=>{
+      this.getAllProfs();
+    })
     
+  }
+
+
+  getAllProfs(){
     this.profService.getAllProfs().subscribe((data) => {
       this.ListProfs = data;
     });

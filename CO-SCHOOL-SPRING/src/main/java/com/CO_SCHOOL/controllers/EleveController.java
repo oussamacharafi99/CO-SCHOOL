@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin("*")
@@ -30,7 +31,7 @@ public class EleveController {
 
     @GetMapping("get+eleve+by+id/{id}")
     public Eleve getEleveById(@PathVariable("id") Integer id) {
-        return eleveService.getEleveByIdentity(id);
+        return eleveService.getEleveById(id);
     }
 
     @GetMapping("get+all")
@@ -53,9 +54,10 @@ public class EleveController {
     }
 
 
-//    @PutMapping("change+password/{id}")
-//    public String changePassword(@PathVariable int id, @RequestBody Eleve eleve) {
-//        return eleveService.UpdatePassword(id , eleve);
-//    }
+    @PutMapping("update/{id}")
+    public Map<String, String> updateEleve(@RequestBody Eleve eleve, @PathVariable Integer id) {
+        return eleveService.updateEleve(id , eleve);
+    }
+
 
 }
