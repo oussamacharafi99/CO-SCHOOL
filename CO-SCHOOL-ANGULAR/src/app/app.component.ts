@@ -9,6 +9,9 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationErr
 export class AppComponent {
   title = 'CO-SCHOOL-ANGULAR';
   isLoading = false;
+  private intervalId: any;
+  private checkInterval = 200;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -23,7 +26,7 @@ export class AppComponent {
       ) {
         setTimeout(() => {
           this.isLoading = false;
-        }, 400);
+        }, 2000);
       }
     });
   }

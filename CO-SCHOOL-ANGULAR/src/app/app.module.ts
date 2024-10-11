@@ -76,9 +76,6 @@ import { AuthGuard } from './Services/Guard/Guards/auth.guard';
 import { SectionLoginComponent } from './HOME/section-login/section-login.component';
 import { DashAdminGetExamsComponent } from './DASHBOARD-ADMIN/gestion-des-exams/dash-admin-get-exams/dash-admin-get-exams.component';
 import { LoadingComponent } from './HOME/loading/loading.component';
-import { DashAdminUpdateEleveComponent } from './DASHBOARD-ADMIN/gestion-des-eleves/dash-admin-update-eleve/dash-admin-update-eleve.component';
-import { DashAdminUpdateProfComponent } from './DASHBOARD-ADMIN/gestion-des-profs/dash-admin-update-prof/dash-admin-update-prof.component';
-import { DashAdminChatIAComponent } from './DASHBOARD-ADMIN/dash-admin-chat-ia/dash-admin-chat-ia.component';
 
 
 @NgModule({
@@ -144,9 +141,6 @@ import { DashAdminChatIAComponent } from './DASHBOARD-ADMIN/dash-admin-chat-ia/d
     SectionLoginComponent,
     DashAdminGetExamsComponent,
     LoadingComponent,
-    DashAdminUpdateEleveComponent,
-    DashAdminUpdateProfComponent,
-    DashAdminChatIAComponent,
   ],
   imports: [
     BrowserModule,

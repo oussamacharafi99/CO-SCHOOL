@@ -40,6 +40,10 @@ public class ExamenController {
         return examenService.getExamenByProfId(id);
     }
 
+//    @GetMapping("get_examens_eleve/{id}")
+//    public List<Examen> getExamenEleve(@PathVariable Integer id) {
+//        return examenService.getExamenByEleveId(id);
+//    }
 
     @GetMapping("get+examen+inassign/{id}")
     public List<ExamenNameDto> getExamenInassign(@PathVariable Integer id) {

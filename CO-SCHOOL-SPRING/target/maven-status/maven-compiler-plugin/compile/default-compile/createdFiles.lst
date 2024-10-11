@@ -1,4 +1,3 @@
-com\CO_SCHOOL\controllers\ClasseProfController.class
 com\CO_SCHOOL\controllers\AbsenceController.class
 com\CO_SCHOOL\services\ProfService.class
 com\CO_SCHOOL\models\Admin.class
@@ -15,7 +14,6 @@ com\CO_SCHOOL\controllers\ParentController.class
 com\CO_SCHOOL\repositories\ProfRepo.class
 com\CO_SCHOOL\dto\SearchResultDto.class
 com\CO_SCHOOL\dto\ResultDto.class
-com\CO_SCHOOL\repositories\ClasseProfRepo.class
 com\CO_SCHOOL\repositories\PersonRepo.class
 com\CO_SCHOOL\controllers\EleveController.class
 com\CO_SCHOOL\models\Examen.class
@@ -42,7 +40,6 @@ com\CO_SCHOOL\dto\ExamenEleveDto.class
 com\CO_SCHOOL\controllers\PersonAuth.class
 com\CO_SCHOOL\repositories\AbsenceRepo.class
 com\CO_SCHOOL\config\ConfigSecurity.class
-com\CO_SCHOOL\models\ClasseProf.class
 com\CO_SCHOOL\services\ExamenService.class
 com\CO_SCHOOL\models\Professeur.class
 com\CO_SCHOOL\services\ParentService.class
@@ -52,16 +49,13 @@ com\CO_SCHOOL\controllers\ClasseGroupController.class
 com\CO_SCHOOL\dto\ClasseProfDto.class
 com\CO_SCHOOL\models\Absence.class
 com\CO_SCHOOL\services\AdminService.class
-com\CO_SCHOOL\services\ClasseProfService.class
 com\CO_SCHOOL\dto\ExamenDateDto.class
-com\CO_SCHOOL\models\ClasseProfId.class
 com\CO_SCHOOL\models\Parent.class
 com\CO_SCHOOL\services\PersonService.class
 com\CO_SCHOOL\repositories\AdminRepo.class
 com\CO_SCHOOL\controllers\ExamenController.class
 com\CO_SCHOOL\dto\ChangePasswordDto.class
 com\CO_SCHOOL\enums\Role.class
-com\CO_SCHOOL\dto\EleveAbsenceDto.class
 com\CO_SCHOOL\exeptions\CoEcoSchoolExepion.class
 com\CO_SCHOOL\models\ClasseGroup.class
 com\CO_SCHOOL\models\ExamenEleveId.class

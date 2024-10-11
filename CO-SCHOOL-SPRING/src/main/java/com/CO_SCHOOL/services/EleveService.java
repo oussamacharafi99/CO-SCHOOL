@@ -11,7 +11,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -118,34 +121,6 @@ public class EleveService {
             return new EleveAbsenceDto(idEleve, identificationId, username, email, gender, age, totalAbsences);
         }).collect(Collectors.toList());
     }
-
-
-    public Map<String, String> updateEleve(Integer id, Eleve eleve) {
-        Eleve updatedEleve = eleveRepo.findEleveById(id);
-        if (updatedEleve != null) {
-            updatedEleve.setUsername(eleve.getUsername());
-
-            if (eleve.getPassword() != null){
-                String encodedPassword = passwordEncoder.encode(eleve.getPassword());
-                updatedEleve.setPassword(encodedPassword);
-            }
-            updatedEleve.setRoles(eleve.getRoles());
-            updatedEleve.setClasseGroup(eleve.getClasseGroup());
-            updatedEleve.setAge(eleve.getAge());
-            updatedEleve.setEmail(eleve.getEmail());
-            updatedEleve.setGender(eleve.getGender());
-            eleveRepo.save(updatedEleve);
-
-            Map<String, String> map = new HashMap<>();
-            map.put("msg", "The Eleve updated successfully");
-            return map;
-        } else {
-            Map<String, String> errorMap = new HashMap<>();
-            errorMap.put("error", "Eleve not found with ID: " + id);
-            return errorMap;
-        }
-    }
-
 
 
 }
