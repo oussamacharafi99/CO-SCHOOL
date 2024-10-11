@@ -59,9 +59,5 @@ public class EleveController {
         return eleveService.updateEleve(id , eleve);
     }
 
-//    @PutMapping("change+password/{id}")
-//    public String changePassword(@PathVariable int id, @RequestBody Eleve eleve) {
-//        return eleveService.UpdatePassword(id , eleve);
-//    }
 
 }

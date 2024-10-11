@@ -32,7 +32,7 @@ public class ChatController {
                         .body("No response from AI service");
             }
 
-            // Limit response to 60 words
+
             String[] words = response.split("\\s+");
             String limitedResponse = String.join(" ", java.util.Arrays.copyOf(words, Math.min(words.length, 60)));
 

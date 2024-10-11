@@ -54,7 +54,7 @@ pipeline {
 
         stage('Deploy with Docker Compose') {
             steps {
-                dir('CO-SCHOOL-SPRING') { 
+                dir('CO-SCHOOL-SPRING') {
                     bat 'docker-compose up -d'
                 }
             }
