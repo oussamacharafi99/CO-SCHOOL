@@ -14,56 +14,43 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                dir('CO-SCHOOL-SPRING') {
-                    bat 'git branch: "jenkins", url: "https://github.com/oussamacharafi99/CO-SCHOOL.git"'
-                    bat 'dir'
-                }
+                git branch: 'jenkins', url: 'https://github.com/oussamacharafi99/CO-SCHOOL.git'
             }
         }
 
         stage('Build and Test') {
             steps {
                 dir('CO-SCHOOL-SPRING') {
-                    bat 'mvn clean package'
-                    bat 'dir'
-                    bat 'mvn test'
-                    bat 'dir'
+                    withMaven(maven: 'mvn') {
+                        bat 'mvn clean package'
+                    }
                 }
             }
         }
 
-        stage('CO-SCHOOL-SPRING') {
+        stage('SonarQube Analysis') {
             steps {
-                dir('./') {
-                    script {
-                        def scannerHome = tool 'SonarQubeScanner'
-                        bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=co-school -Dsonar.sources=. -Dsonar.host.url=${SONARQUBE_SERVER} -Dsonar.login=${SONARQUBE_TOKEN} -Dsonar.java.binaries=target/classes"
-                    }
-                    bat 'dir'
+                script {
+                    def scannerHome = tool 'SonarQubeScanner'
+                    bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=co-school -Dsonar.sources=. -Dsonar.host.url=${SONARQUBE_SERVER} -Dsonar.login=${SONARQUBE_TOKEN} -Dsonar.java.binaries=target/classes"
                 }
             }
         }
 
         stage('Build Docker Images & Push') {
             steps {
-                dir('CO-SCHOOL-SPRING') {
-                    script {
-                        def dockerImage = docker.build("oussamacharafi/co-school-repo:${env.TAG_VERSION ?: 'latest'}")
-                        docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
-                            dockerImage.push()
-                        }
+                script {
+                    def dockerImage = docker.build("oussamacharafi/co-school-repo:${env.TAG_VERSION ?: 'latest'}")
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
+                        dockerImage.push()
                     }
-                    bat 'dir'
                 }
             }
         }
 
         stage('Deploy with Docker Compose') {
             steps {
-                dir('CO-SCHOOL-SPRING') {
-                    bat 'docker-compose up -d'
-                    bat 'dir'
-                }
+                bat 'docker-compose up -d'
             }
         }
     }
