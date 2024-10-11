@@ -25,7 +25,7 @@ public class EleveController {
     private PersonService personService;
 
     @PostMapping("add")
-    public String insertEleve(@RequestBody Eleve eleve) {
+    public Map<String, String> insertEleve(@RequestBody Eleve eleve) {
         return eleveService.insertEleve(eleve);
     }
 

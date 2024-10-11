@@ -28,7 +28,7 @@ public class EleveService {
     private BCryptPasswordEncoder passwordEncoder;
 
 
-    public String insertEleve(Eleve eleve) {
+    public Map<String , String> insertEleve(Eleve eleve) {
         eleve.setPassword(passwordEncoder.encode(eleve.getPassword()));
         Set<Role> roles = new HashSet<>();
         roles.add(Role.ROLE_ELEVE);
@@ -38,8 +38,10 @@ public class EleveService {
         eleve.setIdentificationId(generateUniqueIdentificationId());
 
         eleveRepo.save(eleve);
+        Map<String , String> map = new HashMap<>();
+        map.put("msg" ,"The Eleve added successfully" );
 
-        return "The Eleve added successfully";
+        return map;
     }
 
     private String generateUniqueIdentificationId() {

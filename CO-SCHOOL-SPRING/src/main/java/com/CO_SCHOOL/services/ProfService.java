@@ -26,7 +26,7 @@ public class ProfService {
     private static final int NUMBER_LENGTH = 6;
     private static final SecureRandom RANDOM = new SecureRandom();
 
-    public String insertProf(Professeur professeur) {
+    public Map<String, String> insertProf(Professeur professeur) {
 
         professeur.setPassword(passwordEncoder.encode(professeur.getPassword()));
 
@@ -38,8 +38,10 @@ public class ProfService {
         professeur.setIdentificationId(generateUniqueIdentificationId());
 
         profRepo.save(professeur);
+        Map<String , String> map = new HashMap<>();
+        map.put("msg" ,"The Prof added successfully" );
 
-        return "The Prof added successfully";
+        return map;
     }
 
     public Map<String, String> updateProf(Integer id, Professeur professeur) {

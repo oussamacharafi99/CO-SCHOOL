@@ -18,7 +18,7 @@ public class ProfController {
     private ProfService profService;
 
     @PostMapping("add")
-    public String insertProf(@RequestBody Professeur professeur) {
+    public Map<String, String> insertProf(@RequestBody Professeur professeur) {
         return profService.insertProf(professeur);
     }
 
