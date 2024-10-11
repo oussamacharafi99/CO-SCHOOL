@@ -37,10 +37,12 @@ public class ConfigSecurity {
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
+                                .requestMatchers("api/chat/ask").permitAll()
                                 .requestMatchers("/api/auth/get+person/**").permitAll() // all roles
                                 .requestMatchers("api/auth/change+password/**", "api/eleve/get+eleve+by+id/**").permitAll()
                                 .requestMatchers("api/eleve/get+all","api/eleve/get+all/**", "api/eleve/get+absences+eleve+by+classe+id/**", "api/eleve/get+absences+eleves").permitAll()//admin
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").permitAll()//admin
+                                .requestMatchers("api/eleve/update/**", "api/prof/update/**", "api/eleve/get+eleve+by+id/**", "api/prof/get+prof+by+id/**").permitAll()//admin
                                 .requestMatchers("api/prof/get+all","api/prof/get+all+class+room/**").permitAll()//admin
                                 .requestMatchers("api/examen/get+examen+by+prof/**").permitAll() // prof
                                 .requestMatchers("api/examen/get+examen+inassign/**" , "api/examen/get+examen+inassign+by+prof+id/**").permitAll() // prof
