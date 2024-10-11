@@ -1,7 +1,6 @@
 package com.CO_SCHOOL.services;
 
 import com.CO_SCHOOL.enums.Role;
-import com.CO_SCHOOL.models.Eleve;
 import com.CO_SCHOOL.models.Parent;
 import com.CO_SCHOOL.models.Professeur;
 import com.CO_SCHOOL.repositories.ProfRepo;
@@ -11,7 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProfService {
@@ -40,34 +41,6 @@ public class ProfService {
         profRepo.save(professeur);
 
         return "The Prof added successfully";
-    }
-
-    public Map<String, String> updateProf(Integer id, Professeur professeur) {
-
-        Professeur updatedProfesseur = profRepo.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("Professeur not found with ID: " + id));
-
-
-        updatedProfesseur.setUsername(professeur.getUsername());
-        if(professeur.getPassword() != null){
-            String encodedPassword = passwordEncoder.encode(professeur.getPassword());
-            updatedProfesseur.setPassword(encodedPassword);
-        }
-        updatedProfesseur.setRoles(professeur.getRoles());
-        updatedProfesseur.setAge(professeur.getAge());
-        updatedProfesseur.setEmail(professeur.getEmail());
-        updatedProfesseur.setGender(professeur.getGender());
-
-        profRepo.save(updatedProfesseur);
-
-        Map<String, String> map = new HashMap<>();
-        map.put("msg", "The Professeur updated successfully");
-        return map;
-    }
-
-    public Professeur getProfById(Integer id) {
-        return profRepo.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("Professeur not found with ID: " + id));
     }
 
     private String generateUniqueIdentificationId() {

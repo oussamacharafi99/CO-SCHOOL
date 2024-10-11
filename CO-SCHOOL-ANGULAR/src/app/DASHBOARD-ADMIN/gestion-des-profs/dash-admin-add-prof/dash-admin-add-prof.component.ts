@@ -19,7 +19,7 @@ export class DashAdminAddProfComponent implements OnInit{
       age: ['', [Validators.required, Validators.min(20), Validators.max(70)]],
       gender: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
