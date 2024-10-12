@@ -20,9 +20,9 @@ public class ClasseGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String classRoomName;
+    private String class_room_name;
 
-    private String schoolName = "CO-SCHOOL";
+    private String school_name = "CO-SCHOOL";
 
     @OneToMany(mappedBy = "classeGroup")
     @JsonIgnore

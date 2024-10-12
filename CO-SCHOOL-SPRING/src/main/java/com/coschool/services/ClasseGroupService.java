@@ -6,8 +6,10 @@ import com.coschool.dto.ClasseProfDto;
 import com.coschool.exeptions.CoEcoSchoolExepion;
 import com.coschool.models.ClasseGroup;
 import com.coschool.repositories.ClassGroupRepo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +17,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class ClasseGroupService {
-
     private static final Logger log = LoggerFactory.getLogger(ClasseGroupService.class);
 
     private final ClassGroupRepo classGroupRepo;
@@ -25,6 +26,7 @@ public class ClasseGroupService {
     }
 
     public ClasseGroup save(ClasseGroup classGroup) {
+        classGroup.setSchool_name("CO-SCHOOL");
         return classGroupRepo.save(classGroup);
     }
 
@@ -33,52 +35,60 @@ public class ClasseGroupService {
     }
 
     public ClasseGroup findById(int id) {
-        return classGroupRepo.findById(id)
-                .orElseThrow(() -> new CoEcoSchoolExepion("ClasseGroup not found with id: " + id));
+        return classGroupRepo.findById(id).orElseThrow();
     }
 
     public void delete(Integer id) {
         classGroupRepo.deleteById(id);
     }
 
-    public ClasseGroup update(Integer id, ClasseGroup updatedClassGroup) {
-        ClasseGroup existingClassGroup = classGroupRepo.findById(id)
-                .orElseThrow(() -> new CoEcoSchoolExepion("ClasseGroup not found with id: " + id));
-
-        existingClassGroup.setClassRoomName(updatedClassGroup.getClassRoomName());
-        existingClassGroup.setSchoolName(updatedClassGroup.getSchoolName());
-        return classGroupRepo.save(existingClassGroup);
+    public ClasseGroup update(Integer id , ClasseGroup classGroup) {
+        ClasseGroup classGroup1 = classGroupRepo.findById(id).orElseThrow(()-> new CoEcoSchoolExepion("not found by :" + id));
+        classGroup1.setId(id);
+        classGroup1.setClass_room_name(classGroup.getClass_room_name());
+        return classGroupRepo.save(classGroup1);
     }
 
     public List<ClasseProfDto> findAllProfByClassGroupId(Integer id) {
         List<Object[]> profsClass = classGroupRepo.getProfByClassGroupId(id);
-        return profsClass.stream()
-                .map(profClass -> new ClasseProfDto((String) profClass[0], (String) profClass[1]))
-                .collect(Collectors.toList());
+        return profsClass.stream().map(profClass -> {
+            String professor_name = (String) profClass[0];
+            String class_name = (String) profClass[1];
+            return new ClasseProfDto(professor_name, class_name);
+        }).collect(Collectors.toList());
     }
 
     public List<ClasseNameDto> getClasseNameByProfId(Integer id) {
-        List<Object[]> classList = classGroupRepo.getClasseNameByProfId(id);
-        return classList.stream()
-                .map(classes -> new ClasseNameDto((Integer) classes[0], (String) classes[1]))
-                .collect(Collectors.toList());
+        System.out.println(id + "----");
+        List<Object[]> ListClassesNames = classGroupRepo.classeNameByProfId(id);
+        return ListClassesNames.stream().map(classes -> {
+            Integer idc = (Integer) classes [0];
+            String class_name = (String) classes[1];
+            return new ClasseNameDto(idc, class_name);
+        }).collect(Collectors.toList());
     }
 
     public List<ClassPersonDto> getProfEleveByProfId(Integer id) {
         List<Object[]> eleves = classGroupRepo.getProfEleveByProfId(id);
-        return eleves.stream()
-                .map(eleve -> new ClassPersonDto(
-                        (Integer) eleve[0], (Integer) eleve[1], (String) eleve[2],
-                        (String) eleve[3], (String) eleve[4], (String) eleve[5],
-                        (String) eleve[6], (Integer) eleve[7]
-                ))
-                .collect(Collectors.toList());
+        return eleves.stream().map(eleve ->{
+            Integer idP = (Integer)eleve[0];
+            Integer classeId = (Integer) eleve[1];
+            String classRoomName = (String) eleve[2];
+            String identificationId = (String) eleve[3];
+            String username = (String) eleve[4];
+            String email = (String) eleve[5];
+            String gender = (String) eleve[6];
+            Integer age = (Integer) eleve[7];
+            return new ClassPersonDto(idP, classeId, classRoomName, identificationId, username, email, gender, age);
+        }).collect(Collectors.toList());
     }
 
     public List<ClasseNameDto> getProfEleveNameByProfId(Integer id) {
-        List<Object[]> classList = classGroupRepo.getAllClasseGroupNameByProfId(id);
-        return classList.stream()
-                .map(classe -> new ClasseNameDto((Integer) classe[0], (String) classe[1]))
-                .collect(Collectors.toList());
+        List<Object[]> ListClasse = classGroupRepo.getAllClasseGroupNameByProfId(id);
+        return ListClasse.stream().map(classe ->{
+            Integer idC = (Integer) classe[0];
+            String classRoomName = (String) classe[1];
+            return new ClasseNameDto(idC, classRoomName);
+        }).collect(Collectors.toList());
     }
 }
