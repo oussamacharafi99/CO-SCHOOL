@@ -46,6 +46,7 @@ com\CO_SCHOOL\models\ClasseProf.class
 com\CO_SCHOOL\services\ExamenService.class
 com\CO_SCHOOL\models\Professeur.class
 com\CO_SCHOOL\services\ParentService.class
+com\CO_SCHOOL\controllers\ChatController.class
 com\CO_SCHOOL\repositories\ParentRepo.class
 com\CO_SCHOOL\services\ClasseGroupService.class
 com\CO_SCHOOL\controllers\ClasseGroupController.class
