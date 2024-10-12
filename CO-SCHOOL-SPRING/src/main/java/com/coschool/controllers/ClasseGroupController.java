@@ -60,7 +60,7 @@ public class ClasseGroupController {
 
 
     @GetMapping("get+class+by+prof+id/{id}")
-    public List<ClasseNameDto> GetClasseNameByProfId(@PathVariable Integer id) {
+    public List<ClasseNameDto> findClasseNameByProfId(@PathVariable Integer id) {
         return classeGroupService.getClasseNameByProfId(id);
     }
 

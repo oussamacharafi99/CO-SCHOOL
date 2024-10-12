@@ -60,7 +60,7 @@ public class ClasseGroupService {
 
     public List<ClasseNameDto> getClasseNameByProfId(Integer id) {
         System.out.println(id + "----");
-        List<Object[]> ListClassesNames = classGroupRepo.getClasseNameByProfId(id);
+        List<Object[]> ListClassesNames = classGroupRepo.classeNameByProfId(id);
         return ListClassesNames.stream().map(classes -> {
             Integer idc = (Integer) classes [0];
             String class_name = (String) classes[1];

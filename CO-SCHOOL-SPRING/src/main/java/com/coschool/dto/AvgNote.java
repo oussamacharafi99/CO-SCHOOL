@@ -10,5 +10,5 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AvgNote {
-    private Double avg_note;
+    private Double avg;
 }
