@@ -1,17 +1,18 @@
 package com.CO_SCHOOL;
 
-import com.CO_SCHOOL.dto.*;
-import com.CO_SCHOOL.enums.Controle;
-import com.CO_SCHOOL.enums.Semester;
-import com.CO_SCHOOL.models.ClasseGroup;
-import com.CO_SCHOOL.models.Examen;
-import com.CO_SCHOOL.services.ClasseGroupService;
-import com.CO_SCHOOL.services.EleveService;
-import com.CO_SCHOOL.services.ExamenEleveService;
-import com.CO_SCHOOL.services.ExamenService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.coschool.dto.*;
+import com.coschool.enums.Controle;
+import com.coschool.enums.Semester;
+import com.coschool.models.ClasseGroup;
+import com.coschool.models.Examen;
+import com.coschool.services.ClasseGroupService;
+import com.coschool.services.EleveService;
+import com.coschool.services.ExamenEleveService;
+import com.coschool.services.ExamenService;
 
 import java.time.LocalDate;
 import java.util.List;
