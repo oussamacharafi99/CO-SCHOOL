@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RequestMapping("api/chat")
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ChatController {
 
     private final ChatClient chatClient;

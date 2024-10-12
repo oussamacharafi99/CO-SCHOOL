@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/prof")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProfController {
 
     private final ProfService profService;

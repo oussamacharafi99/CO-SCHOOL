@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/examen_eleve")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ExamenEleveController {
 
     private final ExamenEleveService examenEleveService;
