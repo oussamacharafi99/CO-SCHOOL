@@ -58,7 +58,7 @@ public class ClasseGroupService {
         }).collect(Collectors.toList());
     }
 
-    public List<ClasseNameDto> GetClasseNameByProfId(Integer id) {
+    public List<ClasseNameDto> getClasseNameByProfId(Integer id) {
         System.out.println(id + "----");
         List<Object[]> ListClassesNames = classGroupRepo.getClasseNameByProfId(id);
         return ListClassesNames.stream().map(classes -> {
