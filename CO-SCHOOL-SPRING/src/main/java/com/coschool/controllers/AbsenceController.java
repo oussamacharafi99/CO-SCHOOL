@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/absence")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class AbsenceController {
 
 

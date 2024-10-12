@@ -6,9 +6,9 @@ import com.coschool.services.ClasseProfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RestController
-@RequestMapping("api/classe+prof")
+@RequestMapping("api/classe-prof")
 public class ClasseProfController {
 
     private final ClasseProfService classeProfService;
