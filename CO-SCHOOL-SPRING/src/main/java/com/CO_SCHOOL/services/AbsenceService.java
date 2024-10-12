@@ -5,16 +5,20 @@ import com.CO_SCHOOL.repositories.AbsenceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AbsenceService {
     @Autowired
     private AbsenceRepo absenceRepo;
 
-    public String insertAbsenceToEleve(Absence absence) {
+    public Map<String , String> insertAbsenceToEleve(Absence absence) {
         absenceRepo.save(absence);
-        return "Absence inserted successfully";
+        Map<String , String> map = new HashMap<>();
+        map.put("msg" ,  "Absence inserted successfully");
+        return map;
     }
 
 //    public List<Absence> getAllAbsences() {

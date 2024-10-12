@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/absence")
@@ -16,7 +17,8 @@ public class AbsenceController {
     private AbsenceService absenceService;
 
     @PostMapping("insert")
-    public String insertAbsence(@RequestBody Absence absence) {
+    public Map<String, String>
+    insertAbsence(@RequestBody Absence absence) {
         return absenceService.insertAbsenceToEleve(absence);
     }
 
