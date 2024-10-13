@@ -13,7 +13,9 @@ import com.coschool.repositories.ProfRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ClasseProfService {
@@ -32,7 +34,7 @@ public class ClasseProfService {
         return classeProfRepo.findAll();
     }
 
-    public String assignProfToClass(ClasseProfDto classeProfDto) {
+    public Map<String , String> assignProfToClass(ClasseProfDto classeProfDto) {
         Professeur professeur = profRepo.findById(classeProfDto.getProfessor_id())
                 .orElseThrow(() -> new CoEcoSchoolExepion("Professor not found"));
         ClasseGroup classe = classGroupRepo.findById(classeProfDto.getClass_id())
@@ -42,7 +44,9 @@ public class ClasseProfService {
 
         // Check if the professor is already assigned to the class
         if (classeProfRepo.existsById(classeProfId)) {
-            return "Professor already assigned to this class";
+            Map<String , String> map = new HashMap<>();
+            map.put("msg" , "Professor already assigned to this class");
+            return map;
         }
 
         ClasseProf classeProf = new ClasseProf();
@@ -51,6 +55,8 @@ public class ClasseProfService {
         classeProf.setProf(professeur);
 
         classeProfRepo.save(classeProf);
-        return "The professor was assigned successfully";
+        Map<String, String> map = new HashMap<>();
+        map.put("msg" ,"The professor was assigned successfully");
+        return map;
     }
 }

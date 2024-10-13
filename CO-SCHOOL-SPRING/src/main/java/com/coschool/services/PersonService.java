@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class PersonService {
 
@@ -29,11 +32,13 @@ public class PersonService {
         return personRepo.findByIdentificationId(identificationId);
     }
 
-    public String UpdatePassword(Integer id , ChangePasswordDto changePasswordDto) {
+    public Map<String, String> UpdatePassword(Integer id , ChangePasswordDto changePasswordDto) {
         Person person1 = personRepo.findById(id).orElseThrow();
         person1.setPassword(passwordEncoder.encode(changePasswordDto.getPassword()));
         personRepo.save(person1);
-        return "The password updated successfully";
+        Map<String, String> map = new HashMap<>();
+        map.put("msg" ,"The password updated successfully" );
+        return map;
     }
 
     public Person findById(Integer id) {

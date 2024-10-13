@@ -9,8 +9,10 @@ import com.coschool.services.ClasseGroupService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.stringtemplate.v4.ST;
 
 import java.util.List;
+import java.util.Map;
 
 
 @CrossOrigin("*")
@@ -26,9 +28,8 @@ public class ClasseGroupController {
     }
 
     @PostMapping("save")
-    public String save(@RequestBody ClasseGroup classeGroup) {
-        classeGroupService.save(classeGroup);
-        return "The class group has been saved";
+    public Map<String , String> save(@RequestBody ClasseGroup classeGroup) {
+        return classeGroupService.save(classeGroup);
     }
 
     @GetMapping("get+all")

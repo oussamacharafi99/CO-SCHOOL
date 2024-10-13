@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,9 +27,12 @@ public class ClasseGroupService {
         this.classGroupRepo = classGroupRepo;
     }
 
-    public ClasseGroup save(ClasseGroup classGroup) {
+    public Map<String , String> save(ClasseGroup classGroup) {
         classGroup.setSchool_name("CO-SCHOOL");
-        return classGroupRepo.save(classGroup);
+        classGroupRepo.save(classGroup);
+        Map<String , String> map = new HashMap<>();
+        map.put("msg", "the classe added successfully");
+        return map;
     }
 
     public List<ClasseGroup> findAll() {

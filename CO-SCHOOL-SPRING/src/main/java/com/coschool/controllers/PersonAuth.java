@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,7 @@ public class PersonAuth {
     }
 
     @PutMapping("change+password/{id}")
-    public String changePassword(@PathVariable int id, @RequestBody ChangePasswordDto changePasswordDto) {
+    public Map<String, String> changePassword(@PathVariable int id, @RequestBody ChangePasswordDto changePasswordDto) {
         return personService.UpdatePassword(id , changePasswordDto);
     }
 

@@ -42,32 +42,36 @@ public class ConfigSecurity {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
                                 .requestMatchers("api/chat/ask").permitAll()
-                                .requestMatchers("/api/auth/get+person/**").permitAll() // all roles
-                                .requestMatchers("api/auth/change+password/**", "api/eleve/get+eleve+by+id/**").permitAll()
-                                .requestMatchers("api/eleve/get+all","api/eleve/get+all/**", "api/eleve/get+absences+eleve+by+classe+id/**", "api/eleve/get+absences+eleves").permitAll()//admin
-                                .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").permitAll()//admin
-                                .requestMatchers("api/eleve/update/**", "api/prof/update/**", "api/eleve/get+eleve+by+id/**", "api/prof/get+prof+by+id/**").permitAll()//admin
-                                .requestMatchers("api/prof/get+all","api/prof/get+all+class+room/**").permitAll()//admin
-                                .requestMatchers("api/examen/get+examen+by+prof/**").permitAll() // prof
-                                .requestMatchers("api/examen/get+examen+inassign/**" , "api/examen/get+examen+inassign+by+prof+id/**").permitAll() // prof
-                                .requestMatchers("api/examen/update+examen/**").permitAll() // prof
-                                .requestMatchers("api/examen/**").permitAll()
+                                .requestMatchers("/api/auth/get+person/**").hasAnyRole("PROF","ADMIN","ELEVE")
+                                .requestMatchers("api/eleve/get+eleve+by+id/**").hasAnyRole("ADMIN","ELEVE","PROF")
+                                .requestMatchers("api/auth/change+password/**").hasAnyRole("ADMIN","ELEVE","PROF")
+                                .requestMatchers("api/eleve/get+all","api/eleve/get+all/**", "api/eleve/get+absences+eleve+by+classe+id/**", "api/eleve/get+absences+eleves").hasRole("ADMIN")//admin
+                                .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").hasRole("ADMIN")//admin
+                                .requestMatchers("api/eleve/update/**", "api/prof/update/**", "api/eleve/get+eleve+by+id/**", "api/prof/get+prof+by+id/**").hasRole("ADMIN")//admin
+                                .requestMatchers("api/prof/get+all","api/prof/get+all+class+room/**").hasRole("ADMIN")//admin
+                                .requestMatchers("api/examen/get+examen+by+prof/**").hasRole("PROF") // prof
+                                .requestMatchers("api/examen/get+examen+inassign/**" , "api/examen/get+examen+inassign+by+prof+id/**").hasRole("PROF") // prof
+                                .requestMatchers("api/examen/update+examen/**").hasRole("PROF") // prof
+                                .requestMatchers("api/examen/**").hasAnyRole("PROF","ELEVE","ADMIN")
 
+                                .requestMatchers("api/examen_eleve/result/total/**","api/examen_eleve/result/**").permitAll()
                                 .requestMatchers("api/examen_eleve/result/total/**","api/examen_eleve/result/**","api/examen_eleve/result/examen+date/**").permitAll()
-                                .requestMatchers("api/examen_eleve/examen+prof+without+note/**").permitAll() // prof admin
-                                .requestMatchers("api/examen_eleve/examen+prof+encoure+correction/**","api/examen_eleve/examen+prof+correction+terminer/**","api/examen_eleve/get+exams+by+eleve+prof/**").permitAll() // prof admin
-                                .requestMatchers("/api/examen_eleve/delete").permitAll() // prof
-                                .requestMatchers("api/examen_eleve/**").permitAll() //prof
+                                .requestMatchers("api/examen_eleve/examen+prof+without+note/**").hasAnyRole("PROF","ADMIN") // prof admin
+                                .requestMatchers("api/examen_eleve/examen+prof+encoure+correction/**","api/examen_eleve/examen+prof+correction+terminer/**","api/examen_eleve/get+exams+by+eleve+prof/**").hasAnyRole("PROF","ADMIN") // prof admin
+                                .requestMatchers("api/examen_eleve/delete").hasAnyRole("PROF","ADMIN") // prof
+                                .requestMatchers("api/examen_eleve/**").hasAnyRole("PROF","ELEVE","ADMIN") //prof
 
-                                .requestMatchers("api/classeGroup/Prof_eleves/**").permitAll() //prof // admin
-                                .requestMatchers("api/classeGroup/profs+class/**","api/classeGroup/get+class+by+prof+id/**").permitAll()
-                                .requestMatchers("api/classeGroup/save" ,"api/classeGroup/get+all", "api/classeGroup/get+classe+by+prof+id/**").permitAll()//admin
-                                .requestMatchers("api/classeGroup/**").permitAll()//admin
+                                .requestMatchers("api/classeGroup/Prof_eleves/**").hasAnyRole("PROF", "ADMIN") //prof // admin
+                                .requestMatchers("api/classeGroup/profs+class/**").hasAnyRole("ADMIN","PROF","ELEVE")
+                                .requestMatchers("api/classeGroup/get+class+by+prof+id/**").hasAnyRole("ADMIN","PROF")
+                                .requestMatchers("api/classeGroup/save" ,"api/classeGroup/get+all", "api/classeGroup/get+classe+by+prof+id/**").hasAnyRole("PROF","ADMIN")//admin
+                                .requestMatchers("api/classeGroup/**").hasAnyRole("PROF", "ADMIN", "ELEVE")//admin
 //                              .requestMatchers("api/absence/get+all+by:/**").hasRole("ELEVE")
-                                .requestMatchers("api/absence/get+all+by:/**", "api/absence/insert").permitAll() // prof admin
-                                .requestMatchers("api/absence/**").permitAll()//prof
+                                .requestMatchers("api/absence/get+all+by:/**").hasAnyRole("ADMIN","ELEVE","PROF")
+                                .requestMatchers("api/absence/get+all+by:/**", "api/absence/insert").hasAnyRole("PROF","ADMIN") // prof admin
+                                .requestMatchers("api/absence/**").hasAnyRole("PROF","ELEVE","ADMIN")//prof
 
-                                .requestMatchers("api/classe+prof/assign").permitAll() //admin
+                                .requestMatchers("api/classe+prof/assign").hasAnyRole("PROF","ADMIN") //admin
                                 .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable);
