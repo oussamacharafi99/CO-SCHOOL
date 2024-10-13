@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/classe-prof")
+@RequestMapping("api/classe+prof")
 public class ClasseProfController {
 
     private final ClasseProfService classeProfService;

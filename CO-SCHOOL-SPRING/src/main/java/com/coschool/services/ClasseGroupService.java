@@ -83,12 +83,4 @@ public class ClasseGroupService {
         }).collect(Collectors.toList());
     }
 
-    public List<ClasseNameDto> getProfEleveNameByProfId(Integer id) {
-        List<Object[]> ListClasse = classGroupRepo.getAllClasseGroupNameByProfId(id);
-        return ListClasse.stream().map(classe ->{
-            Integer idC = (Integer) classe[0];
-            String classRoomName = (String) classe[1];
-            return new ClasseNameDto(idC, classRoomName);
-        }).collect(Collectors.toList());
-    }
 }

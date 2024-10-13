@@ -22,7 +22,7 @@ public class ClasseGroup {
 
     private String class_room_name;
 
-    private String school_name = "CO-SCHOOL";
+    private String school_name;
 
     @OneToMany(mappedBy = "classeGroup")
     @JsonIgnore

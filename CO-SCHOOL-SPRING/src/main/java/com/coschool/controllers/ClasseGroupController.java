@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/classe_group")
+@RequestMapping("api/classeGroup")
 public class ClasseGroupController {
 
 
@@ -31,12 +31,12 @@ public class ClasseGroupController {
         return "The class group has been saved";
     }
 
-    @GetMapping("get-all")
+    @GetMapping("get+all")
     public List<ClasseGroup> findAll() {
         return classeGroupService.findAll();
     }
 
-    @GetMapping("get-id/{id}")
+    @GetMapping("get+id/{id}")
     public ClasseGroup findById(@PathVariable Integer id) {
         return classeGroupService.findById(id);
     }
@@ -53,24 +53,19 @@ public class ClasseGroupController {
         return "The class group has been updated";
     }
 
-    @GetMapping("profs-class/{id}")
+    @GetMapping("profs+class/{id}")
     public List<ClasseProfDto> getProsByClassGroupId(@PathVariable Integer id) {
         return classeGroupService.findAllProfByClassGroupId(id);
     }
 
 
-    @GetMapping("get-class-by-prof-id/{id}")
-    public List<ClasseNameDto> GetClasseNameByProfId(@PathVariable Integer id) {
+    @GetMapping("get+class+by+prof+id/{id}")
+    public List<ClasseNameDto> findClasseNameByProfId(@PathVariable Integer id) {
         return classeGroupService.getClasseNameByProfId(id);
     }
 
-    @GetMapping("prof-eleves/{id}")
-    public List<ClassPersonDto> getProfEleves(@PathVariable Integer id){
+    @GetMapping("Prof_eleves/{id}")
+    public List<ClassPersonDto> getProfEleves(@PathVariable Integer id) {
         return classeGroupService.getProfEleveByProfId(id);
-    }
-
-    @GetMapping("get-classe-by-prof-id/{id}")
-    public List<ClasseNameDto> getClasseNameByProfId(@PathVariable Integer id){
-        return classeGroupService.getProfEleveNameByProfId(id);
     }
 }
