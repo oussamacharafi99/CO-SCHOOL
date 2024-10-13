@@ -45,7 +45,7 @@
         <ng-container matColumnDef="Delete" >
             <th mat-header-cell id="th" *matHeaderCellDef><i class="pi pi-delete-left"></i></th>
             <td mat-cell *matCellDef="let examen"> 
-                <button *ngIf="examen.assign !== 'ASSIGN'"><i class="pi pi-times"></i></button>
+                <button (click)="deleteExam(examen.id)" *ngIf="examen.assign !== 'ASSIGN'"><i class="pi pi-times"></i></button>
             </td>
         </ng-container>
 

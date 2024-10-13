@@ -28,10 +28,9 @@ export class DashAdminAddClassRoomComponent implements OnInit{
         eleves: [],
         professeurs: []
       }
-      this.classeGroupService.insertClasseGroup(newClasse).subscribe(
-        (response) => {
-          console.log(response);
-          },
+      this.classeGroupService.insertClasseGroup(newClasse).subscribe(() => {
+          alert("Classe group ajouté avec succès");
+        },
       )
     }
     this.FormClasseGroup = this.fb.group({

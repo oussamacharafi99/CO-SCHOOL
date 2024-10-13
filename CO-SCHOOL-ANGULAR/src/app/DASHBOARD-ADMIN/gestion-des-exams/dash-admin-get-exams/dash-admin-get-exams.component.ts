@@ -56,6 +56,11 @@ export class DashAdminGetExamsComponent implements OnInit {
     }
   }
 
+  deleteExam(id: number) {
+    this.service.deleteExamen(id).subscribe(() => {
+      alert("l'exam a ete supprime !")
+    })
+  }
   realod(){
     this.ngOnInit();
   }

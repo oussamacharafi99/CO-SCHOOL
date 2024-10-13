@@ -72,7 +72,7 @@ export class DashboardEleveNotesComponent implements OnInit {
       });
 
         this.service.getAvgNote(newSearch.eleve_id , newSearch.semester , newSearch.year).subscribe(data => {
-          this.avgNote = data.avgNote;
+          this.avgNote = data.avg;
           console.log("data note : " + this.avgNote);
           
         })

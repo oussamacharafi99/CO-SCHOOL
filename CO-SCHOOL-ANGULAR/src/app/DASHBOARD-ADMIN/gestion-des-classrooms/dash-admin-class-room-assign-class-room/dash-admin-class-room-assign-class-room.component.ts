@@ -49,7 +49,7 @@ export class DashAdminClassRoomAssignClassRoomComponent implements OnInit{
       }
 
       this.classeGroupService.assignClasseToProf(newClassProf).subscribe(msg =>{
-        console.log(msg);
+        alert(msg);
       })
 
       this.FormAssign.reset();

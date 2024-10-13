@@ -57,11 +57,18 @@ export class DashboardProfUpdateExamenComponent implements OnInit {
         });
       });
 
+      this.getClassesOfProf();
+      this.classeService.getChanges().subscribe(()=>{
+        this.getClassesOfProf();
+      })
       
-      this.classeService.getClassesNameOfProf(this.personId).subscribe((data) => {
+    });
+  }
+
+  getClassesOfProf(){
+    this.classeService.getClassesNameOfProf(this.personId).subscribe((data) => {
         this.ListClasseRooms = data;
       });
-    });
   }
 
   update() {

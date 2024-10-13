@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Absence } from '../Models/absence';
 import { EleveAbsenceDto } from '../../app/Models/dto/EleveAbsenceDto'
 
@@ -12,6 +12,7 @@ import { EleveAbsenceDto } from '../../app/Models/dto/EleveAbsenceDto'
 export class AbsenceService {
 
   constructor(private http : HttpClient) { }
+  private AbsenceSubject = new Subject<boolean>();
 
  private _API_ABSENCE_ELEVE = "http://localhost:9091/api/absence/get+all+by:";
  private _API_ADD_ABSENCE = "http://localhost:9091/api/absence/insert"
@@ -19,6 +20,13 @@ export class AbsenceService {
  private _API_GET_ABSENCES_ELEVES = "http://localhost:9091/api/eleve/get+absences+eleves"
 
 
+ emitSubject(){
+  return this.AbsenceSubject.next(true)
+ }
+
+ getchanges():Observable<boolean>{
+  return this.AbsenceSubject.asObservable();
+ }
 
   /****___________  get absence eleve _____________*****/
   getAbsenceEleve(id : number):Observable<Absence[]>{
@@ -27,7 +35,9 @@ export class AbsenceService {
 
   /****___________  Insert Absence _____________*****/
   insertAbsence(absence : Absence):Observable<Absence>{
-    return this.http.post<Absence>(this._API_ADD_ABSENCE, absence);
+    return this.http.post<Absence>(this._API_ADD_ABSENCE, absence).pipe(tap(()=>{
+      return  this.emitSubject();
+    }));
   }
 
   getAllAbsence():Observable<EleveAbsenceDto[]>{

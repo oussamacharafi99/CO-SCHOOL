@@ -38,6 +38,12 @@ export class DashAdminGetAbsencesComponent  implements OnInit {
     this.absenceService.getAllAbsence().subscribe((data) => {
       this.ListElevesAbsences = data;
     });
+
+    this.absenceService.getchanges().subscribe(()=>{
+      this.absenceService.getAllAbsence().subscribe((data) => {
+        this.ListElevesAbsences = data;
+      });
+    })
   }
 
   search() {

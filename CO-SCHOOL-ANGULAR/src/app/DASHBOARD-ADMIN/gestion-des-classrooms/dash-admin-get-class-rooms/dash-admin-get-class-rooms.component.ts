@@ -13,9 +13,15 @@ export class DashAdminGetClassRoomsComponent implements OnInit{
   constructor( private classeGroupService : classeGroupService){}
 
   ngOnInit(): void {
+    this.getAllClasseGroup();
+    this.classeGroupService.getChanges().subscribe(()=>{
+        this.getAllClasseGroup();
+    })
+  }
+
+  getAllClasseGroup(){
     this.classeGroupService.getAllClasseGroup().subscribe(data =>{
       this.ListClasseGroup = data;
-      console.log(data[0].class_room_name + "------");
     })
   }
 

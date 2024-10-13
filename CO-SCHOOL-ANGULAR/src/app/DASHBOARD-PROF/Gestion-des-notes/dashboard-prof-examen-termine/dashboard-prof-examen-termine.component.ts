@@ -18,8 +18,15 @@ export class DashboardProfExamenTermineComponent implements OnInit {
 
   ngOnInit(): void {
       this.getIdPersonFromJwt();
+      this.getAllExamTerminer();
+      this.service.getExamenChanges().subscribe(()=>{
+        this.getAllExamTerminer();
+      })
+      
+  }
 
-      this.service.getAllExamenCorrectionTerminer(this.personId).subscribe(data =>{
+  getAllExamTerminer(){
+    this.service.getAllExamenCorrectionTerminer(this.personId).subscribe(data =>{
         this.ListExamensWithoutNotes = data;
       })
   }

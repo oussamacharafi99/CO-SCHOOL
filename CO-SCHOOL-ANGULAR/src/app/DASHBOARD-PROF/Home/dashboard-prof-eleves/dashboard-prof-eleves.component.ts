@@ -26,6 +26,14 @@ export class DashboardProfElevesComponent implements OnInit {
   personId !: number;
   ngOnInit(): void {
     this.getIdPersonFromJwt();
+    this.getElevesByProfId();
+    this.service.getChanges().subscribe(()=>{
+      this.getElevesByProfId();
+    })
+    
+  }
+
+  getElevesByProfId(){
     this.service.getElevesByProfId(this.personId).subscribe(data => {
       this.ListEleves = data;
     });

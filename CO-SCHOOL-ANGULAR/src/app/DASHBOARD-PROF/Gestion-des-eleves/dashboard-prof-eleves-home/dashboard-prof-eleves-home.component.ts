@@ -26,6 +26,14 @@ export class DashboardProfElevesHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIdPersonFromJwt();
+    this.getElevesByProfId();
+
+    this.service.getChanges().subscribe(()=>{
+        this.getElevesByProfId();
+    })
+  }
+
+  getElevesByProfId(){
     this.service.getElevesByProfId(this.personId).subscribe(
       data => {
         console.log('Liste des élèves:', data); 
@@ -37,15 +45,13 @@ export class DashboardProfElevesHomeComponent implements OnInit {
     );
   }
 
+
   getEleveAndExam(idE: number) {
     console.log("--- > " + idE);
     this.authService.getEleveById(idE).subscribe(
       eleve => {
         this.eleve = eleve;
         console.log('Détails de l\'élève:', eleve);
-      },
-      error => {
-        console.error('Erreur lors de la récupération de l\'élève', error);
       }
     );
 

@@ -126,7 +126,7 @@ export class DashboardEleveStatisticsComponent implements OnInit {
         }
 
         this.service.getAvgNote(newSearch.eleve_id, newSearch.semester, newSearch.year).subscribe(avgData => {
-          this.avgNote = avgData.avgNote;
+          this.avgNote = avgData.avg;
         
           if (this.radar) {
             this.radar.data.datasets[0].data = [this.avgNote];

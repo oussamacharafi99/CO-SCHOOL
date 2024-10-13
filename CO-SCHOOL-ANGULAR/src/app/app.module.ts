@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './HOME/login/login.component';
@@ -164,11 +164,8 @@ import { DashAdminChatIAComponent } from './DASHBOARD-ADMIN/dash-admin-chat-ia/d
     MatTableModule,
   ],
   providers: [
-    {
-      provide: [AuthGuard, HTTP_INTERCEPTORS],
-      useClass: InterceptorAuth,
-      multi: true
-    }
+    provideClientHydration(),
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorAuth, multi: true },
   ],
   bootstrap: [AppComponent]
 })

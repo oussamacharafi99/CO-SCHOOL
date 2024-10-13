@@ -28,14 +28,20 @@ export class DashboardAdminExamCorrectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.idEx = +this.route.snapshot.paramMap.get('id')!;
-
-    this.service.getElevesByExamenId(this.idEx).subscribe(data => {
-      this.listEleves = data;
-    });
+    this.getElevesByExamId();
+    this.service.getChanges().subscribe(()=>{
+      this.getElevesByExamId();
+    })
 
     this.formCorrection = this.fb.group({
       note : ['' , Validators.required]
     })
+  }
+
+  getElevesByExamId(){
+    this.service.getElevesByExamenId(this.idEx).subscribe(data => {
+      this.listEleves = data;
+    });
   }
 
   print(id : number , eleve : string){

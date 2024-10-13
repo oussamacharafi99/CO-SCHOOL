@@ -1,3 +1,3 @@
 export interface AvgNote{
-    avgNote : number;
+    avg : number;
 }
