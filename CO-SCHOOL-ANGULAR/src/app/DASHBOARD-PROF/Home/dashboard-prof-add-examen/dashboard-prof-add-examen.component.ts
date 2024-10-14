@@ -40,17 +40,11 @@ export class DashboardProfAddExamenComponent implements OnInit {
 
       this.service.insertExamen(newExamen).subscribe(data => {
         alert('Examen ajouté avec succès ');  
+        this.formExamen.reset();
+        this.ngOnInit();
       });
 
     }
-    this.formExamen = this.fb.group({
-      examenName: ['', [Validators.required]],
-      examenDate: ['', [Validators.required]],
-      classGroupId: ['', [Validators.required]],
-      matter: ['', [Validators.required]],
-      semester: ['', [Validators.required]],
-      profId:'',
-    });
   }
 
   getIdPersonFromJwt(){

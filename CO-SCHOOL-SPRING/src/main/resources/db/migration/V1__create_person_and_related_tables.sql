@@ -31,8 +31,6 @@ CREATE TABLE IF NOT EXISTS classe_group (
     class_room_name VARCHAR(255),
     school_name VARCHAR(255)
     );
-
-
 CREATE TABLE IF NOT EXISTS examen (
     id INT PRIMARY KEY AUTO_INCREMENT,
     examen_name VARCHAR(50),

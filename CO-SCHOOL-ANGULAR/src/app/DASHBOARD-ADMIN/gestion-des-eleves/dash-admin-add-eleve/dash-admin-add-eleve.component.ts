@@ -66,7 +66,7 @@ export class DashAdminAddEleveComponent implements OnInit{
       age: ['', Validators.required],
       gender: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       classeId:['', Validators.required]
     });
   }
