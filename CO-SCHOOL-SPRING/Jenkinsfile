@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'jenkins', url: 'https://github.com/oussamacharafi99/CO-SCHOOL.git'
+                git branch: 'final', url: 'https://github.com/oussamacharafi99/CO-SCHOOL.git'
             }
         }
 
