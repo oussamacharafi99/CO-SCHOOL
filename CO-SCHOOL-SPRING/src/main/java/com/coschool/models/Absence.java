@@ -35,3 +35,4 @@ public class Absence {
     @JoinColumn(name = "eleve_id")
     private Eleve eleve;
 }
+
