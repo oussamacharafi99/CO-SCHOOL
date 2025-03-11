@@ -37,7 +37,7 @@ public class ConfigSecurity {
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .requestMatchers("api/auth/login").permitAll()
-                                .requestMatchers("/api/auth/get+person/**").permitAll() // all roles
+                                .requestMatchers("api/auth/get+person/**").permitAll() // all roles
                                 .requestMatchers("api/auth/change+password/**", "api/eleve/get+eleve+by+id/**").permitAll()
                                 .requestMatchers("api/eleve/get+all","api/eleve/get+all/**", "api/eleve/get+absences+eleve+by+classe+id/**", "api/eleve/get+absences+eleves").permitAll()//admin
                                 .requestMatchers("api/eleve/add", "api/prof/add", "api/parent/add").permitAll()//admin
