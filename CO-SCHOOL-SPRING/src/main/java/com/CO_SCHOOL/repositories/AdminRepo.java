@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdminRepo extends CrudRepository<Admin, Integer> {
+    Boolean existsByEmail(String email);
 }

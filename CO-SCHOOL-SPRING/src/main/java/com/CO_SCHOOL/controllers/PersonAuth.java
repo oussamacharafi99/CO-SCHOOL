@@ -27,7 +27,7 @@ public class PersonAuth {
     private PersonService personService;
 
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public JwtDto login(@RequestBody Person personLogin) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(personLogin.getUsername().toUpperCase(), personLogin.getPassword())
